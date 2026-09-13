@@ -1,0 +1,1312 @@
+var LEVEL = "A1";
+
+var CATEGORIES = {
+  everyday: {
+    name: "روزمره",
+    words: [
+      { word: "water", meaning: "آب", en: "I drink water every morning.", fa: "من هر روز صبح آب می‌نوشم.", icon: "💧", examples: [{ en: "I drink water every morning.", fa: "من هر روز صبح آب می‌نوشم." }, { en: "Can I have a glass of water, please?", fa: "می‌شه لطفاً یک لیوان آب به من بدید؟" }, { en: "The water in this lake is very clean.", fa: "آب این دریاچه خیلی تمیز است." }] },
+      { word: "house", meaning: "خانه", en: "This is my house.", fa: "این خانه‌ی من است.", icon: "🏠", examples: [{ en: "This is my house.", fa: "این خانه‌ی من است." }, { en: "Their house is near the park.", fa: "خانه‌ی آن‌ها نزدیک پارک است." }, { en: "We are painting our house this weekend.", fa: "ما این آخر هفته داریم خانه‌مان را رنگ می‌زنیم." }] },
+      { word: "book", meaning: "کتاب", en: "She reads a book every night.", fa: "او هر شب یک کتاب می‌خواند.", icon: "📖", examples: [{ en: "She reads a book every night.", fa: "او هر شب یک کتاب می‌خواند." }, { en: "This book is very interesting.", fa: "این کتاب خیلی جذاب است." }, { en: "I bought a new book yesterday.", fa: "من دیروز یک کتاب جدید خریدم." }] },
+      { word: "food", meaning: "غذا", en: "We eat food together.", fa: "ما با هم غذا می‌خوریم.", icon: "🍽️", examples: [{ en: "We eat food together.", fa: "ما با هم غذا می‌خوریم." }, { en: "The food smells good.", fa: "غذا بوی خوبی می‌دهد." }, { en: "I like homemade food.", fa: "من غذای خانگی دوست دارم." }] },
+      { word: "friend", meaning: "دوست", en: "He is my best friend.", fa: "او بهترین دوست من است.", icon: "🧑‍🤝‍🧑", examples: [{ en: "He is my best friend.", fa: "او بهترین دوست من است." }, { en: "I called my friend yesterday.", fa: "دیروز به دوستم زنگ زدم." }, { en: "We play soccer with friends.", fa: "ما با دوستان فوتبال بازی می‌کنیم." }] },
+      { word: "school", meaning: "مدرسه", en: "I go to school by bus.", fa: "من با اتوبوس به مدرسه می‌روم.", icon: "🏫", examples: [{ en: "I go to school by bus.", fa: "من با اتوبوس به مدرسه می‌روم." }, { en: "The school starts at eight.", fa: "مدرسه ساعت هشت شروع می‌شود." }, { en: "Her daughter loves school.", fa: "دخترش عاشق مدرسه است." }] },
+      { word: "family", meaning: "خانواده", en: "My family is big.", fa: "خانواده‌ی من بزرگ است.", icon: "👨‍👩‍👧‍👦", examples: [{ en: "My family is big.", fa: "خانواده‌ی من بزرگ است." }, { en: "We have dinner with the family.", fa: "ما با خانواده شام می‌خوریم." }, { en: "His family lives in Shiraz.", fa: "خانواده‌اش در شیراز زندگی می‌کنند." }] },
+      { word: "car", meaning: "ماشین", en: "They have a new car.", fa: "آن‌ها یک ماشین جدید دارند.", icon: "🚗", examples: [{ en: "They have a new car.", fa: "آن‌ها یک ماشین جدید دارند." }, { en: "My car is parked outside.", fa: "ماشینم بیرون پارک شده است." }, { en: "She drives her car to work.", fa: "او با ماشینش به سر کار می‌رود." }] },
+      { word: "phone", meaning: "تلفن", en: "Can I use your phone?", fa: "می‌توانم از تلفن شما استفاده کنم؟", icon: "📱", examples: [{ en: "Can I use your phone?", fa: "می‌توانم از تلفن شما استفاده کنم؟" }, { en: "My phone is on the table.", fa: "تلفنم روی میز است." }, { en: "He bought a new phone.", fa: "او یک تلفن جدید خرید." }] },
+      { word: "money", meaning: "پول", en: "I need more money.", fa: "من به پول بیشتری نیاز دارم.", icon: "💰", examples: [{ en: "I need more money.", fa: "من به پول بیشتری نیاز دارم." }, { en: "She saves money every month.", fa: "او هر ماه پول پس‌انداز می‌کند." }, { en: "Do not forget your money.", fa: "پولت را فراموش نکن." }] },
+      { word: "time", meaning: "زمان", en: "What time is it?", fa: "ساعت چند است؟", icon: "⏰", examples: [{ en: "What time is it?", fa: "ساعت چند است؟" }, { en: "See you next time.", fa: "دفعه بعد می‌بینمت." }, { en: "It is time for lunch.", fa: "وقت ناهار است." }] },
+      { word: "day", meaning: "روز", en: "Today is a good day.", fa: "امروز روز خوبی است.", icon: "☀️", examples: [{ en: "Today is a good day.", fa: "امروز روز خوبی است." }, { en: "Have a nice day!", fa: "روز خوبی داشته باشی!" }, { en: "We work eight hours a day.", fa: "ما روزانه هشت ساعت کار می‌کنیم." }] },
+      { word: "night", meaning: "شب", en: "I sleep at night.", fa: "من شب‌ها می‌خوابم.", icon: "🌙", examples: [{ en: "I sleep at night.", fa: "من شب‌ها می‌خوابم." }, { en: "The city is quiet at night.", fa: "شهر شب‌ها ساکت است." }, { en: "Good night, see you tomorrow.", fa: "شب بخیر، فردا می‌بینمت." }] },
+      { word: "work", meaning: "کار", en: "I go to work at 8 AM.", fa: "من ساعت ۸ صبح سر کار می‌روم.", icon: "💼", examples: [{ en: "I go to work at 8 AM.", fa: "من ساعت ۸ صبح سر کار می‌روم." }, { en: "I like my work.", fa: "کارم را دوست دارم." }, { en: "She finishes work at five.", fa: "او ساعت پنج کارش تمام می‌شود." }] },
+      { word: "city", meaning: "شهر", en: "This city is very big.", fa: "این شهر خیلی بزرگ است.", icon: "🏙️", examples: [{ en: "This city is very big.", fa: "این شهر خیلی بزرگ است." }, { en: "The city has many parks.", fa: "این شهر پارک‌های زیادی دارد." }, { en: "We walked around the city.", fa: "دور شهر قدم زدیم." }] },
+      { word: "street", meaning: "خیابان", en: "The shop is on this street.", fa: "مغازه در این خیابان است.", icon: "🛣️", examples: [{ en: "The shop is on this street.", fa: "مغازه در این خیابان است." }, { en: "Our street is very quiet.", fa: "خیابان ما خیلی ساکت است." }, { en: "She lives on this street.", fa: "او در این خیابان زندگی می‌کند." }] },
+      { word: "weather", meaning: "هوا", en: "The weather is nice today.", fa: "امروز هوا خوب است.", icon: "⛅", examples: [{ en: "The weather is nice today.", fa: "امروز هوا خوب است." }, { en: "The weather gets cold at night.", fa: "هوا شب‌ها سرد می‌شود." }, { en: "How is the weather there?", fa: "آنجا هوا چطور است؟" }] },
+      { word: "computer", meaning: "کامپیوتر", en: "I use my computer every day.", fa: "من هر روز از کامپیوترم استفاده می‌کنم.", icon: "💻", examples: [{ en: "I use my computer every day.", fa: "من هر روز از کامپیوترم استفاده می‌کنم." }, { en: "Her computer is very fast.", fa: "کامپیوترش خیلی سریع است." }, { en: "Turn off the computer, please.", fa: "لطفاً کامپیوتر را خاموش کن." }] },
+      { word: "teacher", meaning: "معلم", en: "Our teacher is very kind.", fa: "معلم ما خیلی مهربان است.", icon: "👩‍🏫", examples: [{ en: "Our teacher is very kind.", fa: "معلم ما خیلی مهربان است." }, { en: "The teacher writes on the board.", fa: "معلم روی تخته می‌نویسد." }, { en: "Ask your teacher for help.", fa: "از معلمت کمک بخواه." }] },
+      { word: "door", meaning: "در", en: "Please close the door.", fa: "لطفاً در را ببند.", icon: "🚪", examples: [{ en: "Please close the door.", fa: "لطفاً در را ببند." }, { en: "Someone is at the door.", fa: "یک نفر پشت در است." }, { en: "The door is open.", fa: "در باز است." }] },
+      { word: "table", meaning: "میز", en: "The table is in the kitchen.", fa: "میز در آشپزخانه است.", icon: "🛋️", examples: [{ en: "The table is in the kitchen.", fa: "میز در آشپزخانه است." }, { en: "Put the book on the table.", fa: "کتاب را روی میز بگذار." }, { en: "We sat at the table.", fa: "دور میز نشستیم." }] },
+      { word: "chair", meaning: "صندلی", en: "Please sit on the chair.", fa: "لطفاً روی صندلی بنشین.", icon: "🪑", examples: [{ en: "Please sit on the chair.", fa: "لطفاً روی صندلی بنشین." }, { en: "This chair is very comfortable.", fa: "این صندلی خیلی راحت است." }, { en: "There are four chairs.", fa: "چهار صندلی هست." }] },
+      { word: "bed", meaning: "تخت", en: "I sleep in my bed.", fa: "من روی تختم می‌خوابم.", icon: "🛏️", examples: [{ en: "I sleep in my bed.", fa: "من روی تختم می‌خوابم." }, { en: "The bed is very soft.", fa: "تخت خیلی نرم است." }, { en: "She reads in bed.", fa: "او روی تخت کتاب می‌خواند." }] },
+      { word: "window", meaning: "پنجره", en: "Open the window, please.", fa: "لطفاً پنجره را باز کن.", icon: "🖼️", examples: [{ en: "Open the window, please.", fa: "لطفاً پنجره را باز کن." }, { en: "The window is dirty.", fa: "پنجره کثیف است." }, { en: "I looked out of the window.", fa: "از پنجره به بیرون نگاه کردم." }] },
+      { word: "kitchen", meaning: "آشپزخانه", en: "My mother cooks in the kitchen.", fa: "مادرم در آشپزخانه غذا می‌پزد.", icon: "🍳", examples: [{ en: "My mother cooks in the kitchen.", fa: "مادرم در آشپزخانه غذا می‌پزد." }, { en: "The kitchen smells nice.", fa: "آشپزخانه بوی خوبی می‌دهد." }, { en: "We eat in the kitchen.", fa: "ما در آشپزخانه غذا می‌خوریم." }] },
+      { word: "bathroom", meaning: "حمام", en: "The bathroom is clean.", fa: "حمام تمیز است.", icon: "🚿", examples: [{ en: "The bathroom is clean.", fa: "حمام تمیز است." }, { en: "Where is the bathroom?", fa: "حمام کجاست؟" }, { en: "He is in the bathroom.", fa: "او در حمام است." }] },
+      { word: "garden", meaning: "باغچه", en: "There are flowers in the garden.", fa: "در باغچه گل هست.", icon: "🌷", examples: [{ en: "There are flowers in the garden.", fa: "در باغچه گل هست." }, { en: "We play in the garden.", fa: "ما در باغچه بازی می‌کنیم." }, { en: "Her garden is beautiful.", fa: "باغچه‌اش زیباست." }] },
+      { word: "mother", meaning: "مادر", en: "My mother is kind.", fa: "مادرم مهربان است.", icon: "👩", examples: [{ en: "My mother is kind.", fa: "مادرم مهربان است." }, { en: "I call my mother every day.", fa: "من هر روز به مادرم زنگ می‌زنم." }, { en: "Her mother is a doctor.", fa: "مادرش دکتر است." }] },
+      { word: "father", meaning: "پدر", en: "My father works every day.", fa: "پدرم هر روز کار می‌کند.", icon: "👨", examples: [{ en: "My father works every day.", fa: "پدرم هر روز کار می‌کند." }, { en: "His father drives a taxi.", fa: "پدرش تاکسی رانندگی می‌کند." }, { en: "I look like my father.", fa: "من شبیه پدرم هستم." }] },
+      { word: "brother", meaning: "برادر", en: "I have one brother.", fa: "من یک برادر دارم.", icon: "👦", examples: [{ en: "I have one brother.", fa: "من یک برادر دارم." }, { en: "My brother plays soccer.", fa: "برادرم فوتبال بازی می‌کند." }, { en: "Her brother is tall.", fa: "برادرش قد بلند است." }] },
+      { word: "sister", meaning: "خواهر", en: "My sister is younger than me.", fa: "خواهرم از من کوچک‌تر است.", icon: "👧", examples: [{ en: "My sister is younger than me.", fa: "خواهرم از من کوچک‌تر است." }, { en: "Her sister lives abroad.", fa: "خواهرش در خارج از کشور زندگی می‌کند." }, { en: "I walk with my sister.", fa: "من با خواهرم قدم می‌زنم." }] },
+      { word: "baby", meaning: "نوزاد", en: "The baby is sleeping.", fa: "نوزاد خوابیده است.", icon: "👶", examples: [{ en: "The baby is sleeping.", fa: "نوزاد خوابیده است." }, { en: "The baby smiled at me.", fa: "نوزاد به من لبخند زد." }, { en: "She holds the baby gently.", fa: "او نوزاد را آرام نگه داشته است." }] },
+      { word: "dog", meaning: "سگ", en: "The dog is playing outside.", fa: "سگ بیرون بازی می‌کند.", icon: "🐶", examples: [{ en: "The dog is playing outside.", fa: "سگ بیرون بازی می‌کند." }, { en: "My dog runs fast.", fa: "سگ من سریع می‌دود." }, { en: "She feeds the dog twice a day.", fa: "او روزی دو بار به سگ غذا می‌دهد." }] },
+      { word: "cat", meaning: "گربه", en: "My cat likes milk.", fa: "گربه‌ی من شیر دوست دارد.", icon: "🐱", examples: [{ en: "My cat likes milk.", fa: "گربه‌ی من شیر دوست دارد." }, { en: "The cat sleeps on the sofa.", fa: "گربه روی مبل می‌خوابد." }, { en: "Her cat is very quiet.", fa: "گربه‌اش خیلی ساکت است." }] },
+      { word: "bird", meaning: "پرنده", en: "The bird is singing.", fa: "پرنده آواز می‌خواند.", icon: "🐦", examples: [{ en: "The bird is singing.", fa: "پرنده آواز می‌خواند." }, { en: "A small bird sat on the tree.", fa: "یک پرنده کوچک روی درخت نشست." }, { en: "I saw a bird in the sky.", fa: "یک پرنده در آسمان دیدم." }] },
+      { word: "tree", meaning: "درخت", en: "There is a tree in front of the house.", fa: "جلوی خانه یک درخت هست.", icon: "🌳", examples: [{ en: "There is a tree in front of the house.", fa: "جلوی خانه یک درخت هست." }, { en: "The tree gives us shade.", fa: "درخت به ما سایه می‌دهد." }, { en: "They planted a tree.", fa: "آن‌ها یک درخت کاشتند." }] },
+      { word: "flower", meaning: "گل", en: "She likes red flowers.", fa: "او گل‌های قرمز را دوست دارد.", icon: "🌸", examples: [{ en: "She likes red flowers.", fa: "او گل‌های قرمز را دوست دارد." }, { en: "I gave her a flower.", fa: "من به او یک گل دادم." }, { en: "The flowers smell sweet.", fa: "گل‌ها بوی شیرینی می‌دهند." }] },
+      { word: "sun", meaning: "خورشید", en: "The sun is very bright today.", fa: "امروز خورشید خیلی روشن است.", icon: "🌞", examples: [{ en: "The sun is very bright today.", fa: "امروز خورشید خیلی روشن است." }, { en: "The sun sets at seven.", fa: "خورشید ساعت هفت غروب می‌کند." }, { en: "Do not look at the sun.", fa: "به خورشید نگاه نکن." }] },
+      { word: "moon", meaning: "ماه", en: "The moon is full tonight.", fa: "امشب ماه کامل است.", icon: "🌕", examples: [{ en: "The moon is full tonight.", fa: "امشب ماه کامل است." }, { en: "The moon looks beautiful.", fa: "ماه زیبا به نظر می‌رسد." }, { en: "We watched the moon together.", fa: "ما با هم ماه را تماشا کردیم." }] },
+      { word: "star", meaning: "ستاره", en: "I can see many stars.", fa: "من می‌توانم ستاره‌های زیادی ببینم.", icon: "⭐", examples: [{ en: "I can see many stars.", fa: "من می‌توانم ستاره‌های زیادی ببینم." }, { en: "That star is very bright.", fa: "آن ستاره خیلی روشن است." }, { en: "Count the stars with me.", fa: "با من ستاره‌ها را بشمار." }] },
+      { word: "rain", meaning: "باران", en: "It is raining outside.", fa: "بیرون باران می‌بارد.", icon: "🌧️", examples: [{ en: "It is raining outside.", fa: "بیرون باران می‌بارد." }, { en: "I like the sound of rain.", fa: "من صدای باران را دوست دارم." }, { en: "The rain stopped an hour ago.", fa: "باران یک ساعت پیش بند آمد." }] },
+      { word: "snow", meaning: "برف", en: "The snow is white.", fa: "برف سفید است.", icon: "❄️", examples: [{ en: "The snow is white.", fa: "برف سفید است." }, { en: "Children play in the snow.", fa: "بچه‌ها در برف بازی می‌کنند." }, { en: "It snowed last night.", fa: "دیشب برف آمد." }] },
+      { word: "wind", meaning: "باد", en: "The wind is strong today.", fa: "امروز باد قوی است.", icon: "💨", examples: [{ en: "The wind is strong today.", fa: "امروز باد قوی است." }, { en: "The wind moves the trees.", fa: "باد درختان را تکان می‌دهد." }, { en: "I heard the wind at night.", fa: "شب صدای باد را شنیدم." }] },
+      { word: "cloud", meaning: "ابر", en: "There are many clouds in the sky.", fa: "ابرهای زیادی در آسمان هست.", icon: "☁️", examples: [{ en: "There are many clouds in the sky.", fa: "ابرهای زیادی در آسمان هست." }, { en: "That cloud looks like a cat.", fa: "آن ابر شبیه یک گربه است." }, { en: "The sun is behind a cloud.", fa: "خورشید پشت یک ابر است." }] },
+      { word: "coffee", meaning: "قهوه", en: "I drink coffee in the morning.", fa: "من صبح‌ها قهوه می‌نوشم.", icon: "☕", examples: [{ en: "I drink coffee in the morning.", fa: "من صبح‌ها قهوه می‌نوشم." }, { en: "This coffee is too hot.", fa: "این قهوه خیلی داغ است." }, { en: "Do you want some coffee?", fa: "قهوه می‌خواهی؟" }] },
+      { word: "tea", meaning: "چای", en: "She drinks tea every afternoon.", fa: "او هر بعدازظهر چای می‌نوشد.", icon: "🍵", examples: [{ en: "She drinks tea every afternoon.", fa: "او هر بعدازظهر چای می‌نوشد." }, { en: "Would you like a cup of tea?", fa: "یک فنجان چای میل داری؟" }, { en: "The tea is getting cold.", fa: "چای دارد سرد می‌شود." }] },
+      { word: "milk", meaning: "شیر", en: "Children need milk.", fa: "بچه‌ها به شیر نیاز دارند.", icon: "🥛", examples: [{ en: "Children need milk.", fa: "بچه‌ها به شیر نیاز دارند." }, { en: "The milk is in the fridge.", fa: "شیر در یخچال است." }, { en: "She drinks warm milk at night.", fa: "او شب‌ها شیر گرم می‌نوشد." }] },
+      { word: "bread", meaning: "نان", en: "We eat bread for breakfast.", fa: "ما برای صبحانه نان می‌خوریم.", icon: "🍞", examples: [{ en: "We eat bread for breakfast.", fa: "ما برای صبحانه نان می‌خوریم." }, { en: "The bread is fresh today.", fa: "نان امروز تازه است." }, { en: "He bought two loaves of bread.", fa: "او دو نان خرید." }] },
+      { word: "egg", meaning: "تخم‌مرغ", en: "I eat an egg every morning.", fa: "من هر روز صبح یک تخم‌مرغ می‌خورم.", icon: "🥚", examples: [{ en: "I eat an egg every morning.", fa: "من هر روز صبح یک تخم‌مرغ می‌خورم." }, { en: "She boiled two eggs.", fa: "او دو تخم‌مرغ آب‌پز کرد." }, { en: "The egg is in the pan.", fa: "تخم‌مرغ در ماهیتابه است." }] },
+      { word: "apple", meaning: "سیب", en: "She eats an apple every day.", fa: "او هر روز یک سیب می‌خورد.", icon: "🍎", examples: [{ en: "She eats an apple every day.", fa: "او هر روز یک سیب می‌خورد." }, { en: "These apples are sweet.", fa: "این سیب‌ها شیرین هستند." }, { en: "I packed an apple for lunch.", fa: "برای ناهار یک سیب گذاشتم." }] },
+      { word: "banana", meaning: "موز", en: "The banana is yellow.", fa: "موز زرد است.", icon: "🍌", examples: [{ en: "The banana is yellow.", fa: "موز زرد است." }, { en: "She eats a banana after running.", fa: "او بعد از دویدن یک موز می‌خورد." }, { en: "The bananas are ripe.", fa: "موزها رسیده‌اند." }] },
+      { word: "orange", meaning: "پرتقال", en: "I like orange juice.", fa: "من آب‌پرتقال دوست دارم.", icon: "🍊", examples: [{ en: "I like orange juice.", fa: "من آب‌پرتقال دوست دارم." }, { en: "This orange is very juicy.", fa: "این پرتقال خیلی آبدار است." }, { en: "She peeled an orange for me.", fa: "او برایم یک پرتقال پوست کند." }] },
+      { word: "rice", meaning: "برنج", en: "We eat rice for lunch.", fa: "ما برای ناهار برنج می‌خوریم.", icon: "🍚", examples: [{ en: "We eat rice for lunch.", fa: "ما برای ناهار برنج می‌خوریم." }, { en: "The rice is still hot.", fa: "برنج هنوز داغ است." }, { en: "She cooks rice very well.", fa: "او برنج را خیلی خوب می‌پزد." }] },
+      { word: "sugar", meaning: "شکر", en: "Please pass the sugar.", fa: "لطفاً شکر را بده.", icon: "🍬", examples: [{ en: "Please pass the sugar.", fa: "لطفاً شکر را بده." }, { en: "Do you take sugar in your tea?", fa: "توی چای‌ات شکر می‌ریزی؟" }, { en: "The sugar is next to the cups.", fa: "شکر کنار فنجان‌هاست." }] },
+      { word: "salt", meaning: "نمک", en: "This food needs more salt.", fa: "این غذا نمک بیشتری نیاز دارد.", icon: "🧂", examples: [{ en: "This food needs more salt.", fa: "این غذا نمک بیشتری نیاز دارد." }, { en: "There is salt on the table.", fa: "نمک روی میز است." }, { en: "She added a little salt.", fa: "او کمی نمک اضافه کرد." }] },
+      { word: "breakfast", meaning: "صبحانه", en: "I eat breakfast at 7 AM.", fa: "من ساعت ۷ صبح صبحانه می‌خورم.", icon: "🍳", examples: [{ en: "I eat breakfast at 7 AM.", fa: "من ساعت ۷ صبح صبحانه می‌خورم." }, { en: "Breakfast is the most important meal.", fa: "صبحانه مهم‌ترین وعده است." }, { en: "We had breakfast together.", fa: "ما با هم صبحانه خوردیم." }] },
+      { word: "lunch", meaning: "ناهار", en: "We have lunch at noon.", fa: "ما ظهر ناهار می‌خوریم.", icon: "🍱", examples: [{ en: "We have lunch at noon.", fa: "ما ظهر ناهار می‌خوریم." }, { en: "What is for lunch today?", fa: "امروز ناهار چی داریم؟" }, { en: "She packed her lunch.", fa: "او ناهارش را بسته‌بندی کرد." }] },
+      { word: "dinner", meaning: "شام", en: "Dinner is ready.", fa: "شام آماده است.", icon: "🍽️", examples: [{ en: "Dinner is ready.", fa: "شام آماده است." }, { en: "We are having dinner at eight.", fa: "ما ساعت هشت شام می‌خوریم." }, { en: "He cooked dinner for us.", fa: "او برایمان شام پخت." }] },
+      { word: "cup", meaning: "فنجان", en: "This is my coffee cup.", fa: "این فنجان قهوه‌ی من است.", icon: "🥤", examples: [{ en: "This is my coffee cup.", fa: "این فنجان قهوه‌ی من است." }, { en: "The cup is empty.", fa: "فنجان خالی است." }, { en: "She broke her favorite cup.", fa: "او فنجان محبوبش را شکست." }] },
+      { word: "plate", meaning: "بشقاب", en: "Put the food on the plate.", fa: "غذا را در بشقاب بگذار.", icon: "🥣", examples: [{ en: "Put the food on the plate.", fa: "غذا را در بشقاب بگذار." }, { en: "Wash the plates after dinner.", fa: "بعد از شام بشقاب‌ها را بشور." }, { en: "There is rice on your plate.", fa: "روی بشقابت برنج هست." }] },
+      { word: "spoon", meaning: "قاشق", en: "I need a spoon.", fa: "من به یک قاشق نیاز دارم.", icon: "🥄", examples: [{ en: "I need a spoon.", fa: "من به یک قاشق نیاز دارم." }, { en: "The baby eats with a small spoon.", fa: "نوزاد با قاشق کوچک غذا می‌خورد." }, { en: "Where is the sugar spoon?", fa: "قاشق شکر کجاست؟" }] },
+      { word: "fork", meaning: "چنگال", en: "Use a fork to eat.", fa: "برای غذا خوردن از چنگال استفاده کن.", icon: "🍴", examples: [{ en: "Use a fork to eat.", fa: "برای غذا خوردن از چنگال استفاده کن." }, { en: "Put the fork next to the plate.", fa: "چنگال را کنار بشقاب بگذار." }, { en: "This fork is clean.", fa: "این چنگال تمیز است." }] },
+      { word: "knife", meaning: "چاقو", en: "Be careful with the knife.", fa: "با چاقو مراقب باش.", icon: "🔪", examples: [{ en: "Be careful with the knife.", fa: "با چاقو مراقب باش." }, { en: "The knife is very sharp.", fa: "چاقو خیلی تیز است." }, { en: "Cut the bread with a knife.", fa: "نان را با چاقو برش بزن." }] },
+      { word: "bag", meaning: "کیف", en: "She has a blue bag.", fa: "او یک کیف آبی دارد.", icon: "👜", examples: [{ en: "She has a blue bag.", fa: "او یک کیف آبی دارد." }, { en: "My bag is heavy today.", fa: "کیفم امروز سنگین است." }, { en: "He put his bag on the chair.", fa: "او کیفش را روی صندلی گذاشت." }] },
+      { word: "key", meaning: "کلید", en: "I lost my key.", fa: "من کلیدم را گم کردم.", icon: "🔑", examples: [{ en: "I lost my key.", fa: "من کلیدم را گم کردم." }, { en: "The keys are on the hook.", fa: "کلیدها روی قلاب هستند." }, { en: "Give me the car key, please.", fa: "لطفاً کلید ماشین را به من بده." }] },
+      { word: "wallet", meaning: "کیف پول", en: "My wallet is in my bag.", fa: "کیف پولم در کیفم است.", icon: "👛", examples: [{ en: "My wallet is in my bag.", fa: "کیف پولم در کیفم است." }, { en: "There is no money in my wallet.", fa: "در کیف پولم پول نیست." }, { en: "He found a wallet on the street.", fa: "او در خیابان یک کیف پول پیدا کرد." }] },
+      { word: "watch", meaning: "ساعت مچی", en: "He is wearing a nice watch.", fa: "او یک ساعت مچی قشنگ پوشیده است.", icon: "⌚", examples: [{ en: "He is wearing a nice watch.", fa: "او یک ساعت مچی قشنگ پوشیده است." }, { en: "My watch is five minutes fast.", fa: "ساعت مچی‌ام پنج دقیقه جلو است." }, { en: "She bought a watch for her father.", fa: "او برای پدرش یک ساعت مچی خرید." }] },
+      { word: "clock", meaning: "ساعت دیواری", en: "The clock is on the wall.", fa: "ساعت دیواری روی دیوار است.", icon: "🕐", examples: [{ en: "The clock is on the wall.", fa: "ساعت دیواری روی دیوار است." }, { en: "The clock shows nine thirty.", fa: "ساعت دیواری نه و نیم را نشان می‌دهد." }, { en: "That clock is older than me.", fa: "آن ساعت از من پیرتر است." }] },
+      { word: "mirror", meaning: "آینه", en: "She looks in the mirror.", fa: "او در آینه نگاه می‌کند.", icon: "👀", examples: [{ en: "She looks in the mirror.", fa: "او در آینه نگاه می‌کند." }, { en: "The mirror is above the sink.", fa: "آینه بالای سینک است." }, { en: "He fixed his hair in the mirror.", fa: "او جلوی آینه موهایش را مرتب کرد." }] },
+      { word: "soap", meaning: "صابون", en: "Wash your hands with soap.", fa: "دست‌هایت را با صابون بشور.", icon: "🧼", examples: [{ en: "Wash your hands with soap.", fa: "دست‌هایت را با صابون بشور." }, { en: "The soap smells like lavender.", fa: "صابون بوی اسطوخودوس می‌دهد." }, { en: "There is no soap in the bathroom.", fa: "در حمام صابون نیست." }] },
+      { word: "towel", meaning: "حوله", en: "The towel is clean.", fa: "حوله تمیز است.", icon: "🧺", examples: [{ en: "The towel is clean.", fa: "حوله تمیز است." }, { en: "Hang your towel here.", fa: "حوله‌ات را اینجا آویزان کن." }, { en: "She dried her hands with a towel.", fa: "او دست‌هایش را با حوله خشک کرد." }] },
+      { word: "shoes", meaning: "کفش", en: "I need new shoes.", fa: "من به کفش جدید نیاز دارم.", icon: "👟", examples: [{ en: "I need new shoes.", fa: "من به کفش جدید نیاز دارم." }, { en: "Take off your shoes at the door.", fa: "سر در کفش‌هایت را دربیاور." }, { en: "Her shoes are very comfortable.", fa: "کفش‌هایش خیلی راحت است." }] },
+      { word: "shirt", meaning: "پیراهن", en: "He is wearing a white shirt.", fa: "او پیراهن سفید پوشیده است.", icon: "👕", examples: [{ en: "He is wearing a white shirt.", fa: "او پیراهن سفید پوشیده است." }, { en: "This shirt is too big for me.", fa: "این پیراهن برای من خیلی بزرگ است." }, { en: "He washed his shirt yesterday.", fa: "او دیروز پیراهنش را شست." }] },
+      { word: "pants", meaning: "شلوار", en: "These pants are new.", fa: "این شلوار جدید است.", icon: "👖", examples: [{ en: "These pants are new.", fa: "این شلوار جدید است." }, { en: "Where are my black pants?", fa: "شلوار مشکی‌ام کجاست؟" }, { en: "She bought new pants.", fa: "او یک شلوار جدید خرید." }] },
+      { word: "dress", meaning: "لباس", en: "She is wearing a beautiful dress.", fa: "او یک لباس زیبا پوشیده است.", icon: "👗", examples: [{ en: "She is wearing a beautiful dress.", fa: "او یک لباس زیبا پوشیده است." }, { en: "This dress is perfect for summer.", fa: "این لباس برای تابستان عالی است." }, { en: "Her dress is light blue.", fa: "لباسش آبی روشن است." }] },
+      { word: "hat", meaning: "کلاه", en: "He always wears a hat.", fa: "او همیشه کلاه می‌گذارد.", icon: "🧢", examples: [{ en: "He always wears a hat.", fa: "او همیشه کلاه می‌گذارد." }, { en: "The hat protects you from the sun.", fa: "کلاه تو را از آفتاب محافظت می‌کند." }, { en: "I like your red hat.", fa: "کلاه قرمزت را دوست دارم." }] },
+      { word: "coat", meaning: "پالتو", en: "Wear your coat, it's cold.", fa: "پالتوت را بپوش، هوا سرد است.", icon: "🧥", examples: [{ en: "Wear your coat, it's cold.", fa: "پالتوت را بپوش، هوا سرد است." }, { en: "His coat keeps him warm.", fa: "پالتویش او را گرم نگه می‌دارد." }, { en: "Hang your coat here.", fa: "پالتویت را اینجا آویزان کن." }] },
+      { word: "umbrella", meaning: "چتر", en: "Take your umbrella, it's raining.", fa: "چترت را بردار، باران می‌بارد.", icon: "☂️", examples: [{ en: "Take your umbrella, it's raining.", fa: "چترت را بردار، باران می‌بارد." }, { en: "My umbrella is broken.", fa: "چترم خراب است." }, { en: "She shared her umbrella with me.", fa: "او چترش را با من شریک شد." }] },
+      { word: "bicycle", meaning: "دوچرخه", en: "I ride my bicycle to school.", fa: "من با دوچرخه به مدرسه می‌روم.", icon: "🚲", examples: [{ en: "I ride my bicycle to school.", fa: "من با دوچرخه به مدرسه می‌روم." }, { en: "His bicycle is red.", fa: "دوچرخه‌اش قرمز است." }, { en: "We ride bicycles in the park.", fa: "ما در پارک دوچرخه سواری می‌کنیم." }] },
+      { word: "bus", meaning: "اتوبوس", en: "We go by bus.", fa: "ما با اتوبوس می‌رویم.", icon: "🚌", examples: [{ en: "We go by bus.", fa: "ما با اتوبوس می‌رویم." }, { en: "The bus is late today.", fa: "اتوبوس امروز دیر کرده است." }, { en: "She waits for the bus here.", fa: "او اینجا منتظر اتوبوس می‌ماند." }] },
+      { word: "train", meaning: "قطار", en: "The train is fast.", fa: "قطار سریع است.", icon: "🚆", examples: [{ en: "The train is fast.", fa: "قطار سریع است." }, { en: "We take the train to the north.", fa: "ما با قطار به شمال می‌رویم." }, { en: "The train leaves at six.", fa: "قطار ساعت شش حرکت می‌کند." }] },
+      { word: "taxi", meaning: "تاکسی", en: "We took a taxi home.", fa: "ما با تاکسی به خانه رفتیم.", icon: "🚕", examples: [{ en: "We took a taxi home.", fa: "ما با تاکسی به خانه رفتیم." }, { en: "Call a taxi for me, please.", fa: "لطفاً برایم تاکسی بگیر." }, { en: "The taxi is waiting outside.", fa: "تاکسی بیرون منتظر است." }] },
+      { word: "road", meaning: "جاده", en: "This road is very long.", fa: "این جاده خیلی طولانی است.", icon: "🚦", examples: [{ en: "This road is very long.", fa: "این جاده خیلی طولانی است." }, { en: "The road is wet after the rain.", fa: "جاده بعد از باران خیس است." }, { en: "Be careful on the road.", fa: "در جاده مراقب باش." }] },
+      { word: "bridge", meaning: "پل", en: "The bridge is over the river.", fa: "پل روی رودخانه است.", icon: "🌉", examples: [{ en: "The bridge is over the river.", fa: "پل روی رودخانه است." }, { en: "We walked across the bridge.", fa: "ما از روی پل رد شدیم." }, { en: "The old bridge is beautiful.", fa: "پل قدیمی زیباست." }] },
+      { word: "park", meaning: "پارک", en: "Children play in the park.", fa: "بچه‌ها در پارک بازی می‌کنند.", icon: "🏞️", examples: [{ en: "Children play in the park.", fa: "بچه‌ها در پارک بازی می‌کنند." }, { en: "We walk in the park every evening.", fa: "ما هر عصر در پارک قدم می‌زنیم." }, { en: "The park is full of flowers.", fa: "پارک پر از گل است." }] },
+      { word: "market", meaning: "بازار", en: "We buy food at the market.", fa: "ما در بازار غذا می‌خریم.", icon: "🛒", examples: [{ en: "We buy food at the market.", fa: "ما در بازار غذا می‌خریم." }, { en: "The market is crowded on Fridays.", fa: "بازار جمعه‌ها شلوغ است." }, { en: "She went to the market early.", fa: "او زود به بازار رفت." }] },
+      { word: "store", meaning: "مغازه", en: "The store is open.", fa: "مغازه باز است.", icon: "🏬", examples: [{ en: "The store is open.", fa: "مغازه باز است." }, { en: "This store sells fresh bread.", fa: "این مغازه نان تازه می‌فروشد." }, { en: "The store closes at ten.", fa: "مغازه ساعت ده بسته می‌شود." }] },
+      { word: "hospital", meaning: "بیمارستان", en: "The hospital is near my house.", fa: "بیمارستان نزدیک خانه‌ی من است.", icon: "🏥", examples: [{ en: "The hospital is near my house.", fa: "بیمارستان نزدیک خانه‌ی من است." }, { en: "She works at the hospital.", fa: "او در بیمارستان کار می‌کند." }, { en: "They took him to the hospital.", fa: "آن‌ها او را به بیمارستان بردند." }] },
+      { word: "bank", meaning: "بانک", en: "I need to go to the bank.", fa: "من باید به بانک بروم.", icon: "🏦", examples: [{ en: "I need to go to the bank.", fa: "من باید به بانک بروم." }, { en: "The bank opens at nine.", fa: "بانک ساعت نه باز می‌شود." }, { en: "She works at a bank.", fa: "او در یک بانک کار می‌کند." }] },
+      { word: "post office", meaning: "اداره پست", en: "I sent a letter from the post office.", fa: "من از اداره پست یک نامه فرستادم.", icon: "📮", examples: [{ en: "I sent a letter from the post office.", fa: "من از اداره پست یک نامه فرستادم." }, { en: "The post office is closed today.", fa: "اداره پست امروز تعطیل است." }, { en: "There is a post office nearby.", fa: "یک اداره پست این نزدیکی هست." }] },
+      { word: "library", meaning: "کتابخانه", en: "She studies in the library.", fa: "او در کتابخانه درس می‌خواند.", icon: "📚", examples: [{ en: "She studies in the library.", fa: "او در کتابخانه درس می‌خواند." }, { en: "The library is quiet.", fa: "کتابخانه ساکت است." }, { en: "I borrowed two books from the library.", fa: "من از کتابخانه دو کتاب قرض گرفتم." }] },
+      { word: "restaurant", meaning: "رستوران", en: "We ate dinner at a restaurant.", fa: "ما شام را در رستوران خوردیم.", icon: "🍜", examples: [{ en: "We ate dinner at a restaurant.", fa: "ما شام را در رستوران خوردیم." }, { en: "This restaurant is famous for its rice.", fa: "این رستوران به برنجش معروف است." }, { en: "The restaurant opens at noon.", fa: "رستوران ظهر باز می‌شود." }] },
+      { word: "hotel", meaning: "هتل", en: "We stayed at a nice hotel.", fa: "ما در یک هتل خوب ماندیم.", icon: "🏨", examples: [{ en: "We stayed at a nice hotel.", fa: "ما در یک هتل خوب ماندیم." }, { en: "The hotel has a big pool.", fa: "هتل یک استخر بزرگ دارد." }, { en: "Our hotel is near the sea.", fa: "هتل ما نزدیک دریاست." }] },
+      { word: "museum", meaning: "موزه", en: "We visited a museum yesterday.", fa: "ما دیروز به موزه رفتیم.", icon: "🏛️", examples: [{ en: "We visited a museum yesterday.", fa: "ما دیروز به موزه رفتیم." }, { en: "The museum is free on Mondays.", fa: "موزه دوشنبه‌ها رایگان است." }, { en: "She learned a lot at the museum.", fa: "او در موزه چیزهای زیادی یاد گرفت." }] },
+      { word: "church", meaning: "کلیسا", en: "The church is very old.", fa: "کلیسا خیلی قدیمی است.", icon: "⛪", examples: [{ en: "The church is very old.", fa: "کلیسا خیلی قدیمی است." }, { en: "There is a small church in our street.", fa: "در خیابان ما یک کلیسای کوچک هست." }, { en: "We saw an old church in the city.", fa: "ما در شهر یک کلیسای قدیمی دیدیم." }] },
+      { word: "neighbor", meaning: "همسایه", en: "My neighbor is friendly.", fa: "همسایه‌ی من دوست‌داشتنی است.", icon: "🏘️", examples: [{ en: "My neighbor is friendly.", fa: "همسایه‌ی من دوست‌داشتنی است." }, { en: "Our neighbors helped us move.", fa: "همسایه‌هایمان به ما در اسباب‌کشی کمک کردند." }, { en: "Say hello to your neighbor.", fa: "به همسایه‌ات سلام کن." }] },
+      { word: "guest", meaning: "مهمان", en: "We have a guest today.", fa: "ما امروز یک مهمان داریم.", icon: "🤝", examples: [{ en: "We have a guest today.", fa: "ما امروز یک مهمان داریم." }, { en: "The guests arrived at seven.", fa: "مهمان‌ها ساعت هفت رسیدند." }, { en: "We prepared tea for our guests.", fa: "برای مهمان‌هایمان چای آماده کردیم." }] },
+      { word: "name", meaning: "اسم", en: "What is your name?", fa: "اسم شما چیست؟", icon: "🏷️", examples: [{ en: "What is your name?", fa: "اسم شما چیست؟" }, { en: "She wrote her name on the paper.", fa: "او اسمش را روی کاغذ نوشت." }, { en: "I forgot his name.", fa: "اسم او را فراموش کردم." }] },
+      { word: "address", meaning: "آدرس", en: "Please write your address.", fa: "لطفاً آدرست را بنویس.", icon: "📍", examples: [{ en: "Please write your address.", fa: "لطفاً آدرست را بنویس." }, { en: "What is your home address?", fa: "آدرس خانه‌ات چیست؟" }, { en: "He gave me his address.", fa: "او آدرسش را به من داد." }] },
+      { word: "letter", meaning: "نامه", en: "I wrote a letter to my friend.", fa: "من برای دوستم یک نامه نوشتم.", icon: "✉️", examples: [{ en: "I wrote a letter to my friend.", fa: "من برای دوستم یک نامه نوشتم." }, { en: "The letter arrived yesterday.", fa: "نامه دیروز رسید." }, { en: "She opened the letter slowly.", fa: "او نامه را آرام باز کرد." }] }
+    ]
+  },
+  travel: {
+    name: "سفر",
+    words: [
+      { word: "airport", meaning: "فرودگاه", en: "The airport is very busy today.", fa: "فرودگاه امروز خیلی شلوغ است.", icon: "🛫", examples: [{ en: "The airport is very busy today.", fa: "فرودگاه امروز خیلی شلوغ است." }, { en: "We arrived at the airport early.", fa: "ما زود به فرودگاه رسیدیم." }, { en: "The airport has many shops.", fa: "فرودگاه مغازه‌های زیادی دارد." }] },
+      { word: "ticket", meaning: "بلیط", en: "I bought a ticket for the train.", fa: "من یک بلیط برای قطار خریدم.", icon: "🎫", examples: [{ en: "I bought a ticket for the train.", fa: "من یک بلیط برای قطار خریدم." }, { en: "The ticket is in my bag.", fa: "بلیط در کیفم است." }, { en: "She showed her ticket to the driver.", fa: "او بلیطش را به راننده نشان داد." }] },
+      { word: "passport", meaning: "گذرنامه", en: "Don't forget your passport.", fa: "گذرنامه‌ات را فراموش نکن.", icon: "🛂", examples: [{ en: "Don't forget your passport.", fa: "گذرنامه‌ات را فراموش نکن." }, { en: "My passport is new.", fa: "گذرنامه‌ام نو است." }, { en: "Keep your passport safe.", fa: "گذرنامه‌ات را امن نگه دار." }] },
+      { word: "suitcase", meaning: "چمدان", en: "My suitcase is very heavy.", fa: "چمدان من خیلی سنگین است.", icon: "🧳", examples: [{ en: "My suitcase is very heavy.", fa: "چمدان من خیلی سنگین است." }, { en: "She opened her suitcase.", fa: "او چمدانش را باز کرد." }, { en: "The suitcase is too small.", fa: "چمدان خیلی کوچک است." }] },
+      { word: "hotel", meaning: "هتل", en: "We stayed at a nice hotel.", fa: "ما در یک هتل خوب ماندیم.", icon: "🏨", examples: [{ en: "We stayed at a nice hotel.", fa: "ما در یک هتل خوب ماندیم." }, { en: "The hotel room was clean.", fa: "اتاق هتل تمیز بود." }, { en: "We left the hotel at noon.", fa: "ما ظهر از هتل بیرون رفتیم." }] },
+      { word: "map", meaning: "نقشه", en: "Can you show me on the map?", fa: "می‌توانی روی نقشه به من نشان بدهی؟", icon: "🗺️", examples: [{ en: "Can you show me on the map?", fa: "می‌توانی روی نقشه به من نشان بدهی؟" }, { en: "I looked at the map.", fa: "به نقشه نگاه کردم." }, { en: "The map shows the city center.", fa: "نقشه مرکز شهر را نشان می‌دهد." }] },
+      { word: "train", meaning: "قطار", en: "The train leaves at nine.", fa: "قطار ساعت نه حرکت می‌کند.", icon: "🚆", examples: [{ en: "The train leaves at nine.", fa: "قطار ساعت نه حرکت می‌کند." }, { en: "The train was full of people.", fa: "قطار پر از آدم بود." }, { en: "I like traveling by train.", fa: "من سفر با قطار را دوست دارم." }] },
+      { word: "beach", meaning: "ساحل", en: "We walked on the beach.", fa: "ما در ساحل قدم زدیم.", icon: "🏖️", examples: [{ en: "We walked on the beach.", fa: "ما در ساحل قدم زدیم." }, { en: "The beach is clean and sandy.", fa: "ساحل تمیز و ماسه‌ای است." }, { en: "Children play on the beach.", fa: "بچه‌ها روی ساحل بازی می‌کنند." }] },
+      { word: "mountain", meaning: "کوه", en: "They climbed the mountain.", fa: "آنها از کوه بالا رفتند.", icon: "⛰️", examples: [{ en: "They climbed the mountain.", fa: "آنها از کوه بالا رفتند." }, { en: "The mountain is covered with snow.", fa: "کوه با برف پوشیده شده است." }, { en: "We saw a mountain far away.", fa: "از دور یک کوه دیدیم." }] },
+      { word: "camera", meaning: "دوربین", en: "I take my camera everywhere.", fa: "من دوربینم را همه‌جا می‌برم.", icon: "📷", examples: [{ en: "I take my camera everywhere.", fa: "من دوربینم را همه‌جا می‌برم." }, { en: "This camera takes great photos.", fa: "این دوربین عکس‌های عالی می‌گیرد." }, { en: "She bought a new camera.", fa: "او یک دوربین جدید خرید." }] },
+      { word: "flight", meaning: "پرواز", en: "Our flight was delayed.", fa: "پرواز ما تاخیر داشت.", icon: "✈️", examples: [{ en: "Our flight was delayed.", fa: "پرواز ما تاخیر داشت." }, { en: "The flight takes two hours.", fa: "پرواز دو ساعت طول می‌کشد." }, { en: "I slept during the flight.", fa: "من در طول پرواز خوابیدم." }] },
+      { word: "taxi", meaning: "تاکسی", en: "We took a taxi to the hotel.", fa: "ما با تاکسی به هتل رفتیم.", icon: "🚕", examples: [{ en: "We took a taxi to the hotel.", fa: "ما با تاکسی به هتل رفتیم." }, { en: "The taxi driver knows the city well.", fa: "راننده تاکسی شهر را خوب می‌شناسد." }, { en: "We shared a taxi with friends.", fa: "ما با دوستان یک تاکسی گرفتیم." }] },
+      { word: "backpack", meaning: "کیف پشتی", en: "He packed his backpack quickly.", fa: "او سریع کیف پشتی‌اش را بست.", icon: "🎒", examples: [{ en: "He packed his backpack quickly.", fa: "او سریع کیف پشتی‌اش را بست." }, { en: "My backpack has three pockets.", fa: "کیف پشتی‌ام سه جیب دارد." }, { en: "She carried the backpack all day.", fa: "او تمام روز کیف پشتی را حمل کرد." }] },
+      { word: "souvenir", meaning: "سوغاتی", en: "I bought a souvenir for my mom.", fa: "من یک سوغاتی برای مادرم خریدم.", icon: "🎁", examples: [{ en: "I bought a souvenir for my mom.", fa: "من یک سوغاتی برای مادرم خریدم." }, { en: "This shop sells nice souvenirs.", fa: "این مغازه سوغاتی‌های قشنگ می‌فروشد." }, { en: "She chose a small souvenir.", fa: "او یک سوغاتی کوچک انتخاب کرد." }] },
+      { word: "guide", meaning: "راهنمای تور", en: "Our guide spoke three languages.", fa: "راهنمای ما به سه زبان صحبت می‌کرد.", icon: "🧭", examples: [{ en: "Our guide spoke three languages.", fa: "راهنمای ما به سه زبان صحبت می‌کرد." }, { en: "The guide showed us the museum.", fa: "راهنما موزه را به ما نشان داد." }, { en: "Ask the guide for a map.", fa: "از راهنما یک نقشه بخواه." }] },
+      { word: "reservation", meaning: "رزرو", en: "I made a reservation online.", fa: "من یک رزرو آنلاین انجام دادم.", icon: "📅", examples: [{ en: "I made a reservation online.", fa: "من یک رزرو آنلاین انجام دادم." }, { en: "Can you check my reservation?", fa: "می‌توانی رزرو من را چک کنی؟" }, { en: "The reservation is for two nights.", fa: "رزرو برای دو شب است." }] },
+      { word: "visa", meaning: "ویزا", en: "You need a visa for this country.", fa: "برای این کشور به ویزا نیاز داری.", icon: "📄", examples: [{ en: "You need a visa for this country.", fa: "برای این کشور به ویزا نیاز داری." }, { en: "My visa is ready.", fa: "ویزای من آماده است." }, { en: "She applied for a visa last week.", fa: "او هفته پیش برای ویزا درخواست داد." }] },
+      { word: "currency", meaning: "ارز", en: "We changed our currency at the airport.", fa: "ما ارزمان را در فرودگاه تبدیل کردیم.", icon: "💱", examples: [{ en: "We changed our currency at the airport.", fa: "ما ارزمان را در فرودگاه تبدیل کردیم." }, { en: "What currency do they use here?", fa: "اینجا چه ارزی استفاده می‌کنند؟" }, { en: "I need some local currency.", fa: "من به کمی ارز محلی نیاز دارم." }] },
+      { word: "island", meaning: "جزیره", en: "This island is very beautiful.", fa: "این جزیره خیلی زیباست.", icon: "🏝️", examples: [{ en: "This island is very beautiful.", fa: "این جزیره خیلی زیباست." }, { en: "We took a boat to the island.", fa: "ما با قایق به جزیره رفتیم." }, { en: "The island has a small village.", fa: "جزیره یک روستای کوچک دارد." }] },
+      { word: "journey", meaning: "سفر", en: "It was a long journey.", fa: "آن یک سفر طولانی بود.", icon: "🛤️", examples: [{ en: "It was a long journey.", fa: "آن یک سفر طولانی بود." }, { en: "The journey took three days.", fa: "سفر سه روز طول کشید." }, { en: "Enjoy every journey you take.", fa: "از هر سفری که می‌روی لذت ببر." }] },
+      { word: "trip", meaning: "سفر کوتاه", en: "We had a great trip.", fa: "ما یک سفر خوب داشتیم.", icon: "📍", examples: [{ en: "We had a great trip.", fa: "ما یک سفر خوب داشتیم." }, { en: "The trip starts tomorrow.", fa: "سفر فردا شروع می‌شود." }, { en: "She planned the trip alone.", fa: "او سفر را تنها برنامه‌ریزی کرد." }] },
+      { word: "plane", meaning: "هواپیما", en: "The plane is in the sky.", fa: "هواپیما در آسمان است.", icon: "🛩️", examples: [{ en: "The plane is in the sky.", fa: "هواپیما در آسمان است." }, { en: "The plane landed safely.", fa: "هواپیما با امنیت فرود آمد." }, { en: "I watched the plane from the window.", fa: "از پنجره به هواپیما نگاه کردم." }] },
+      { word: "boat", meaning: "قایق", en: "We went by boat.", fa: "ما با قایق رفتیم.", icon: "⛵", examples: [{ en: "We went by boat.", fa: "ما با قایق رفتیم." }, { en: "The boat moves slowly.", fa: "قایق آهسته حرکت می‌کند." }, { en: "They rented a boat for a day.", fa: "آن‌ها برای یک روز قایق اجاره کردند." }] },
+      { word: "ship", meaning: "کشتی", en: "The ship is very big.", fa: "کشتی خیلی بزرگ است.", icon: "🚢", examples: [{ en: "The ship is very big.", fa: "کشتی خیلی بزرگ است." }, { en: "The ship left the port at dawn.", fa: "کشتی سحرگاه بندر را ترک کرد." }, { en: "We watched the ship from the beach.", fa: "از ساحل به کشتی نگاه کردیم." }] },
+      { word: "station", meaning: "ایستگاه", en: "I will meet you at the station.", fa: "من در ایستگاه منتظرت می‌مانم.", icon: "🚉", examples: [{ en: "I will meet you at the station.", fa: "من در ایستگاه منتظرت می‌مانم." }, { en: "The station is near my house.", fa: "ایستگاه نزدیک خانه‌ام است." }, { en: "We waited at the station.", fa: "در ایستگاه منتظر ماندیم." }] },
+      { word: "driver", meaning: "راننده", en: "The driver is very careful.", fa: "راننده خیلی محتاط است.", icon: "🚶", examples: [{ en: "The driver is very careful.", fa: "راننده خیلی محتاط است." }, { en: "The driver opened the door for us.", fa: "راننده در را برایمان باز کرد." }, { en: "Thank the driver when you leave.", fa: "وقتی پیاده می‌شوی از راننده تشکر کن." }] },
+      { word: "passenger", meaning: "مسافر", en: "The passenger has a ticket.", fa: "مسافر بلیط دارد.", icon: "👥", examples: [{ en: "The passenger has a ticket.", fa: "مسافر بلیط دارد." }, { en: "The passenger is reading a book.", fa: "مسافر دارد کتاب می‌خواند." }, { en: "Every passenger needs a ticket.", fa: "هر مسافر به بلیط نیاز دارد." }] },
+      { word: "luggage", meaning: "بار", en: "My luggage is in the car.", fa: "بار من در ماشین است.", icon: "📦", examples: [{ en: "My luggage is in the car.", fa: "بار من در ماشین است." }, { en: "The luggage is too heavy for me.", fa: "بار برای من خیلی سنگین است." }, { en: "Leave your luggage in the car.", fa: "بارت را در ماشین بگذار." }] },
+      { word: "gate", meaning: "گیت", en: "The gate is over there.", fa: "گیت آن‌جاست.", icon: "📋", examples: [{ en: "The gate is over there.", fa: "گیت آن‌جاست." }, { en: "Our gate is number twelve.", fa: "گیت ما شماره دوازده است." }, { en: "She waited at the gate.", fa: "او پشت گیت منتظر ماند." }] },
+      { word: "boarding pass", meaning: "کارت سوار شدن", en: "Show your boarding pass, please.", fa: "لطفاً کارت سوار شدن‌تان را نشان بدهید.", icon: "🎟️", examples: [{ en: "Show your boarding pass, please.", fa: "لطفاً کارت سوار شدن‌تان را نشان بدهید." }, { en: "I lost my boarding pass.", fa: "من کارت سوار شدنم را گم کردم." }, { en: "The boarding pass is on my phone.", fa: "کارت سوار شدن روی تلفنم است." }] },
+      { word: "departure", meaning: "حرکت", en: "The departure time is 10 AM.", fa: "ساعت حرکت ۱۰ صبح است.", icon: "📤", examples: [{ en: "The departure time is 10 AM.", fa: "ساعت حرکت ۱۰ صبح است." }, { en: "Check the departure time again.", fa: "زمان حرکت را دوباره چک کن." }, { en: "The departure was on time.", fa: "حرکت سر وقت بود." }] },
+      { word: "arrival", meaning: "ورود", en: "The arrival time is 3 PM.", fa: "ساعت ورود ۳ بعدازظهر است.", icon: "🛬", examples: [{ en: "The arrival time is 3 PM.", fa: "ساعت ورود ۳ بعدازظهر است." }, { en: "Our arrival is at eight.", fa: "ورود ما ساعت هشت است." }, { en: "She waited for my arrival.", fa: "او منتظر رسیدن من بود." }] },
+      { word: "delay", meaning: "تاخیر", en: "There is a delay of one hour.", fa: "یک ساعت تاخیر وجود دارد.", icon: "🕰️", examples: [{ en: "There is a delay of one hour.", fa: "یک ساعت تاخیر وجود دارد." }, { en: "The delay made us tired.", fa: "تاخیر ما را خسته کرد." }, { en: "They announced a two-hour delay.", fa: "آن‌ها دو ساعت تاخیر اعلام کردند." }] },
+      { word: "tourist", meaning: "توریست", en: "Many tourists visit this city.", fa: "توریست‌های زیادی از این شهر دیدن می‌کنند.", icon: "🤳", examples: [{ en: "Many tourists visit this city.", fa: "توریست‌های زیادی از این شهر دیدن می‌کنند." }, { en: "The tourist asked for help.", fa: "توریست کمک خواست." }, { en: "I took a photo with a tourist.", fa: "من با یک توریست عکس گرفتم." }] },
+      { word: "vacation", meaning: "تعطیلات", en: "I love my vacation.", fa: "من تعطیلاتم را دوست دارم.", icon: "🌴", examples: [{ en: "I love my vacation.", fa: "من تعطیلاتم را دوست دارم." }, { en: "Our vacation starts in June.", fa: "تعطیلات ما از ژوئن شروع می‌شود." }, { en: "She spent her vacation at the sea.", fa: "او تعطیلاتش را کنار دریا گذراند." }] },
+      { word: "holiday", meaning: "روز تعطیل", en: "Monday is a holiday.", fa: "دوشنبه روز تعطیل است.", icon: "🎉", examples: [{ en: "Monday is a holiday.", fa: "دوشنبه روز تعطیل است." }, { en: "We travel on holidays.", fa: "ما در روزهای تعطیل سفر می‌کنیم." }, { en: "The office is closed on the holiday.", fa: "اداره در روز تعطیل بسته است." }] },
+      { word: "summer", meaning: "تابستان", en: "Summer is my favorite season.", fa: "تابستان فصل مورد علاقه‌ی من است.", icon: "🌻", examples: [{ en: "Summer is my favorite season.", fa: "تابستان فصل مورد علاقه‌ی من است." }, { en: "We swim a lot in summer.", fa: "ما تابستان زیاد شنا می‌کنیم." }, { en: "The summer here is very hot.", fa: "تابستان اینجا خیلی گرم است." }] },
+      { word: "winter", meaning: "زمستان", en: "Winter is very cold here.", fa: "زمستان اینجا خیلی سرد است.", icon: "⛄", examples: [{ en: "Winter is very cold here.", fa: "زمستان اینجا خیلی سرد است." }, { en: "It snows a lot in winter.", fa: "زمستان زیاد برف می‌آید." }, { en: "I wear warm clothes in winter.", fa: "زمستان لباس گرم می‌پوشم." }] },
+      { word: "spring", meaning: "بهار", en: "Spring is a beautiful season.", fa: "بهار فصل زیبایی است.", icon: "🌱", examples: [{ en: "Spring is a beautiful season.", fa: "بهار فصل زیبایی است." }, { en: "Flowers open in spring.", fa: "گل‌ها در بهار باز می‌شوند." }, { en: "We travel every spring.", fa: "ما هر بهار سفر می‌کنیم." }] },
+      { word: "fall", meaning: "پاییز", en: "The leaves fall in fall.", fa: "برگ‌ها در پاییز می‌ریزند.", icon: "🍂", examples: [{ en: "The leaves fall in fall.", fa: "برگ‌ها در پاییز می‌ریزند." }, { en: "Fall is windy here.", fa: "پاییز اینجا بادی است." }, { en: "I love the colors of fall.", fa: "من رنگ‌های پاییز را دوست دارم." }] },
+      { word: "sea", meaning: "دریا", en: "The sea is blue and wide.", fa: "دریا آبی و پهناور است.", icon: "🌊", examples: [{ en: "The sea is blue and wide.", fa: "دریا آبی و پهناور است." }, { en: "We swam in the sea.", fa: "ما در دریا شنا کردیم." }, { en: "The sea was calm this morning.", fa: "دریا امروز صبح آرام بود." }] },
+      { word: "lake", meaning: "دریاچه", en: "We swam in the lake.", fa: "ما در دریاچه شنا کردیم.", icon: "🏞️", examples: [{ en: "We swam in the lake.", fa: "ما در دریاچه شنا کردیم." }, { en: "The lake is cold and clean.", fa: "دریاچه سرد و تمیز است." }, { en: "We had lunch by the lake.", fa: "کنار دریاچه ناهار خوردیم." }] },
+      { word: "river", meaning: "رودخانه", en: "The river is very long.", fa: "رودخانه خیلی طولانی است.", icon: "🚣", examples: [{ en: "The river is very long.", fa: "رودخانه خیلی طولانی است." }, { en: "A small bridge crosses the river.", fa: "یک پل کوچک از رودخانه رد می‌شود." }, { en: "We walked along the river.", fa: "کنار رودخانه قدم زدیم." }] },
+      { word: "forest", meaning: "جنگل", en: "The forest is dark and quiet.", fa: "جنگل تاریک و آرام است.", icon: "🌲", examples: [{ en: "The forest is dark and quiet.", fa: "جنگل تاریک و آرام است." }, { en: "We heard birds in the forest.", fa: "در جنگل صدای پرندگان را شنیدیم." }, { en: "The forest is full of trees.", fa: "جنگل پر از درخت است." }] },
+      { word: "desert", meaning: "بیابان", en: "The desert is hot and dry.", fa: "بیابان گرم و خشک است.", icon: "🐪", examples: [{ en: "The desert is hot and dry.", fa: "بیابان گرم و خشک است." }, { en: "The desert gets cold at night.", fa: "بیابان شب‌ها سرد می‌شود." }, { en: "We rode camels in the desert.", fa: "ما در بیابان شتر سواری کردیم." }] },
+      { word: "country", meaning: "کشور", en: "This country is beautiful.", fa: "این کشور زیباست.", icon: "🌍", examples: [{ en: "This country is beautiful.", fa: "این کشور زیباست." }, { en: "I want to visit every country.", fa: "من می‌خواهم از هر کشوری دیدن کنم." }, { en: "Which country are you from?", fa: "تو اهل کدام کشوری؟" }] },
+      { word: "world", meaning: "دنیا", en: "The world is very big.", fa: "دنیا خیلی بزرگ است.", icon: "🌎", examples: [{ en: "The world is very big.", fa: "دنیا خیلی بزرگ است." }, { en: "I want to see the world.", fa: "می‌خواهم دنیا را ببینم." }, { en: "She traveled around the world.", fa: "او دور دنیا سفر کرد." }] },
+      { word: "north", meaning: "شمال", en: "The north is colder than the south.", fa: "شمال از جنوب سردتر است.", icon: "⬆️", examples: [{ en: "The north is colder than the south.", fa: "شمال از جنوب سردتر است." }, { en: "The north has cold winters.", fa: "شمال زمستان‌های سردی دارد." }, { en: "They moved to the north.", fa: "آن‌ها به شمال نقل مکان کردند." }] },
+      { word: "south", meaning: "جنوب", en: "We drove to the south.", fa: "ما به سمت جنوب رانندگی کردیم.", icon: "⬇️", examples: [{ en: "We drove to the south.", fa: "ما به سمت جنوب رانندگی کردیم." }, { en: "The south is warm in winter.", fa: "جنوب در زمستان گرم است." }, { en: "She comes from the south.", fa: "او اهل جنوب است." }] },
+      { word: "east", meaning: "شرق", en: "The sun rises in the east.", fa: "خورشید از شرق طلوع می‌کند.", icon: "➡️", examples: [{ en: "The sun rises in the east.", fa: "خورشید از شرق طلوع می‌کند." }, { en: "We drove east for two hours.", fa: "دو ساعت به سمت شرق رانندگی کردیم." }, { en: "The east of the country is dry.", fa: "شرق کشور خشک است." }] },
+      { word: "west", meaning: "غرب", en: "The sun sets in the west.", fa: "خورشید در غرب غروب می‌کند.", icon: "🌇", examples: [{ en: "The sun sets in the west.", fa: "خورشید در غرب غروب می‌کند." }, { en: "The west has beautiful sunsets.", fa: "غرب غروب‌های زیبایی دارد." }, { en: "They traveled west by car.", fa: "آن‌ها با ماشین به سمت غرب سفر کردند." }] },
+      { word: "sign", meaning: "تابلو", en: "Read the sign on the wall.", fa: "تابلو روی دیوار را بخوان.", icon: "🚏", examples: [{ en: "Read the sign on the wall.", fa: "تابلو روی دیوار را بخوان." }, { en: "The sign says stop.", fa: "روی تابلو نوشته است: ایست." }, { en: "Follow the signs to the gate.", fa: "تابلوها را تا گیت دنبال کن." }] },
+      { word: "way", meaning: "راه", en: "Can you show me the way?", fa: "می‌توانی راه را به من نشان بدهی؟", icon: "🗾", examples: [{ en: "Can you show me the way?", fa: "می‌توانی راه را به من نشان بدهی؟" }, { en: "This way is shorter.", fa: "این راه کوتاه‌تر است." }, { en: "I know the way to the beach.", fa: "من راه ساحل را بلدم." }] },
+      { word: "path", meaning: "مسیر", en: "This path goes to the river.", fa: "این مسیر به رودخانه می‌رود.", icon: "🐾", examples: [{ en: "This path goes to the river.", fa: "این مسیر به رودخانه می‌رود." }, { en: "The path is easy to walk.", fa: "این مسیر پیاده‌روی‌اش آسان است." }, { en: "Stay on the path, please.", fa: "لطفاً در مسیر بمان." }] },
+      { word: "distance", meaning: "فاصله", en: "The distance is not far.", fa: "فاصله زیاد نیست.", icon: "📏", examples: [{ en: "The distance is not far.", fa: "فاصله زیاد نیست." }, { en: "The distance looks short on the map.", fa: "فاصله روی نقشه کوتاه به نظر می‌رسد." }, { en: "We walked a long distance.", fa: "ما فاصله زیادی راه رفتیم." }] },
+      { word: "near", meaning: "نزدیک", en: "The hotel is near here.", fa: "هتل نزدیک اینجاست.", icon: "🎯", examples: [{ en: "The hotel is near here.", fa: "هتل نزدیک اینجاست." }, { en: "Is there a bank near here?", fa: "این نزدیکی بانک هست؟" }, { en: "The beach is near our hotel.", fa: "ساحل نزدیک هتل ماست." }] },
+      { word: "far", meaning: "دور", en: "The airport is far from here.", fa: "فرودگاه از اینجا دور است.", icon: "🔭", examples: [{ en: "The airport is far from here.", fa: "فرودگاه از اینجا دور است." }, { en: "How far is the museum?", fa: "موزه چقدر دور است؟" }, { en: "The station is not far.", fa: "ایستگاه دور نیست." }] },
+      { word: "fast", meaning: "سریع", en: "The train is very fast.", fa: "قطار خیلی سریع است.", icon: "⚡", examples: [{ en: "The train is very fast.", fa: "قطار خیلی سریع است." }, { en: "The taxi drives too fast.", fa: "تاکسی خیلی سریع می‌رود." }, { en: "I like fast trains.", fa: "من قطارهای سریع را دوست دارم." }] },
+      { word: "slow", meaning: "آهسته", en: "The bus is slow today.", fa: "اتوبوس امروز آهسته است.", icon: "🐌", examples: [{ en: "The bus is slow today.", fa: "اتوبوس امروز آهسته است." }, { en: "The slow boat is relaxing.", fa: "قایق آهسته آرام‌بخش است." }, { en: "Traffic is slow this morning.", fa: "ترافیک امروز صبح کند است." }] },
+      { word: "stop", meaning: "توقف", en: "The bus will stop here.", fa: "اتوبوس اینجا توقف می‌کند.", icon: "✋", examples: [{ en: "The bus will stop here.", fa: "اتوبوس اینجا توقف می‌کند." }, { en: "The train makes one stop here.", fa: "قطار اینجا یک توقف دارد." }, { en: "Where is the next stop?", fa: "توقف بعدی کجاست؟" }] },
+      { word: "leave", meaning: "رفتن", en: "We leave at six in the morning.", fa: "ما ساعت شش صبح حرکت می‌کنیم.", icon: "👋", examples: [{ en: "We leave at six in the morning.", fa: "ما ساعت شش صبح حرکت می‌کنیم." }, { en: "Do not leave your bag here.", fa: "کیفت را اینجا نگذار (ترک نکن)." }, { en: "The bus leaves in ten minutes.", fa: "اتوبوس ده دقیقه دیگر حرکت می‌کند." }] },
+      { word: "arrive", meaning: "رسیدن", en: "We arrive at the hotel at night.", fa: "ما شب به هتل می‌رسیم.", icon: "🏁", examples: [{ en: "We arrive at the hotel at night.", fa: "ما شب به هتل می‌رسیم." }, { en: "We arrive early in the morning.", fa: "ما صبح زود می‌رسیم." }, { en: "When does the train arrive?", fa: "قطار کی می‌رسد؟" }] },
+      { word: "stay", meaning: "ماندن", en: "We stay at a small hotel.", fa: "ما در یک هتل کوچک می‌مانیم.", icon: "🛎️", examples: [{ en: "We stay at a small hotel.", fa: "ما در یک هتل کوچک می‌مانیم." }, { en: "Stay with me, please.", fa: "لطفاً با من بمان." }, { en: "They stayed three nights.", fa: "آن‌ها سه شب ماندند." }] },
+      { word: "visit", meaning: "دیدن", en: "I want to visit my friend.", fa: "من می‌خواهم از دوستم دیدن کنم.", icon: "🏘️", examples: [{ en: "I want to visit my friend.", fa: "من می‌خواهم از دوستم دیدن کنم." }, { en: "We visit the museum every year.", fa: "ما هر سال از موزه دیدن می‌کنیم." }, { en: "She wants to visit Paris.", fa: "او می‌خواهد از پاریس دیدن کند." }] },
+      { word: "tour", meaning: "تور", en: "We took a tour of the city.", fa: "ما یک تور از شهر گرفتیم.", icon: "🚌", examples: [{ en: "We took a tour of the city.", fa: "ما یک تور از شهر گرفتیم." }, { en: "The tour starts at ten.", fa: "تور ساعت ده شروع می‌شود." }, { en: "Our tour guide was funny.", fa: "راهنمای تور ما بامزه بود." }] },
+      { word: "price", meaning: "قیمت", en: "The price is very good.", fa: "قیمت خیلی خوب است.", icon: "💲", examples: [{ en: "The price is very good.", fa: "قیمت خیلی خوب است." }, { en: "The price includes breakfast.", fa: "قیمت شامل صبحانه است." }, { en: "Ask about the price first.", fa: "اول درباره قیمت بپرس." }] },
+      { word: "cheap", meaning: "ارزان", en: "This ticket is cheap.", fa: "این بلیط ارزان است.", icon: "🏷️", examples: [{ en: "This ticket is cheap.", fa: "این بلیط ارزان است." }, { en: "The food here is cheap.", fa: "غذای اینجا ارزان است." }, { en: "She found a cheap hotel.", fa: "او یک هتل ارزان پیدا کرد." }] },
+      { word: "expensive", meaning: "گران", en: "That hotel is expensive.", fa: "آن هتل گران است.", icon: "💎", examples: [{ en: "That hotel is expensive.", fa: "آن هتل گران است." }, { en: "This camera is too expensive for me.", fa: "این دوربین برای من خیلی گران است." }, { en: "The tickets were expensive.", fa: "بلیط‌ها گران بود." }] },
+      { word: "buy", meaning: "خریدن", en: "I want to buy a ticket.", fa: "من می‌خواهم یک بلیط بخرم.", icon: "🛒", examples: [{ en: "I want to buy a ticket.", fa: "من می‌خواهم یک بلیط بخرم." }, { en: "She wants to buy souvenirs.", fa: "او می‌خواهد سوغاتی بخرد." }, { en: "We bought water at the store.", fa: "ما از مغازه آب خریدیم." }] },
+      { word: "card", meaning: "کارت", en: "I pay with my card.", fa: "من با کارتم پرداخت می‌کنم.", icon: "💳", examples: [{ en: "I pay with my card.", fa: "من با کارتم پرداخت می‌کنم." }, { en: "The card does not work here.", fa: "کارت اینجا کار نمی‌کند." }, { en: "She paid with her card.", fa: "او با کارتش پرداخت کرد." }] },
+      { word: "pay", meaning: "پرداخت", en: "I pay for the ticket.", fa: "من برای بلیط پرداخت می‌کنم.", icon: "💵", examples: [{ en: "I pay for the ticket.", fa: "من برای بلیط پرداخت می‌کنم." }, { en: "Can I pay by card?", fa: "می‌توانم با کارت پرداخت کنم؟" }, { en: "He paid for both tickets.", fa: "او برای هر دو بلیط پرداخت کرد." }] },
+      { word: "cash", meaning: "پول نقد", en: "I pay with cash.", fa: "من با پول نقد پرداخت می‌کنم.", icon: "💴", examples: [{ en: "I pay with cash.", fa: "من با پول نقد پرداخت می‌کنم." }, { en: "I have no cash with me.", fa: "من پول نقد همراه ندارم." }, { en: "The taxi only takes cash.", fa: "تاکسی فقط نقد قبول می‌کند." }] },
+      { word: "receipt", meaning: "رسید", en: "Keep your receipt, please.", fa: "رسیدت را نگه دار، لطفاً.", icon: "🧾", examples: [{ en: "Keep your receipt, please.", fa: "رسیدت را نگه دار، لطفاً." }, { en: "The receipt is in the bag.", fa: "رسید در کیف است." }, { en: "Can I have a receipt, please?", fa: "می‌توانم رسید داشته باشم، لطفاً؟" }] },
+      { word: "gift", meaning: "هدیه", en: "I bought a gift for my mother.", fa: "من یک هدیه برای مادرم خریدم.", icon: "🎀", examples: [{ en: "I bought a gift for my mother.", fa: "من یک هدیه برای مادرم خریدم." }, { en: "She wrapped the gift nicely.", fa: "او هدیه را قشنگ بسته‌بندی کرد." }, { en: "This gift is for you.", fa: "این هدیه برای توست." }] },
+      { word: "photo", meaning: "عکس", en: "I took a photo of the beach.", fa: "من از ساحل عکس گرفتم.", icon: "📸", examples: [{ en: "I took a photo of the beach.", fa: "من از ساحل عکس گرفتم." }, { en: "This photo is from our trip.", fa: "این عکس از سفر ماست." }, { en: "She showed me her photos.", fa: "او عکس‌هایش را به من نشان داد." }] },
+      { word: "view", meaning: "منظره", en: "The view from the hotel is beautiful.", fa: "منظره از هتل زیباست.", icon: "🌅", examples: [{ en: "The view from the hotel is beautiful.", fa: "منظره از هتل زیباست." }, { en: "I love this view.", fa: "من این منظره را دوست دارم." }, { en: "The room has a sea view.", fa: "اتاق منظره دریا دارد." }] },
+      { word: "beautiful", meaning: "زیبا", en: "This place is very beautiful.", fa: "این مکان خیلی زیباست.", icon: "💐", examples: [{ en: "This place is very beautiful.", fa: "این مکان خیلی زیباست." }, { en: "The sunset was beautiful.", fa: "غروب زیبا بود." }, { en: "What a beautiful island!", fa: "چه جزیره زیبایی!" }] },
+      { word: "fun", meaning: "جالب", en: "The trip was a lot of fun.", fa: "سفر خیلی جالب بود.", icon: "🎮", examples: [{ en: "The trip was a lot of fun.", fa: "سفر خیلی جالب بود." }, { en: "We had fun at the beach.", fa: "ما در ساحل خوش گذراندیدم." }, { en: "The tour was fun.", fa: "تور جالب بود." }] },
+      { word: "tired", meaning: "خسته", en: "I am tired after the trip.", fa: "من بعد از سفر خسته‌ام.", icon: "😴", examples: [{ en: "I am tired after the trip.", fa: "من بعد از سفر خسته‌ام." }, { en: "The kids are tired from walking.", fa: "بچه‌ها از راه رفتن خسته‌اند." }, { en: "I feel tired today.", fa: "من امروز خسته‌ام." }] },
+      { word: "lost", meaning: "گم‌شده", en: "I am lost in the city.", fa: "من در شهر گم شده‌ام.", icon: "❓", examples: [{ en: "I am lost in the city.", fa: "من در شهر گم شده‌ام." }, { en: "She was lost in the market.", fa: "او در بازار گم شده بود." }, { en: "We are lost; let us ask someone.", fa: "ما گم شدیم؛ بذار از یکی بپرسیم." }] },
+      { word: "find", meaning: "پیدا کردن", en: "I cannot find my hotel.", fa: "من هتلم را پیدا نمی‌کنم.", icon: "🔍", examples: [{ en: "I cannot find my hotel.", fa: "من هتلم را پیدا نمی‌کنم." }, { en: "Did you find your passport?", fa: "گذرنامه‌ات را پیدا کردی؟" }, { en: "I found a nice café near here.", fa: "یک کافه قشنگ این نزدیکی پیدا کردم." }] },
+      { word: "ask", meaning: "پرسیدن", en: "I need to ask for directions.", fa: "من باید آدرس بپرسم.", icon: "🙋", examples: [{ en: "I need to ask for directions.", fa: "من باید آدرس بپرسم." }, { en: "Ask the guide about the city.", fa: "از راهنما درباره شهر بپرس." }, { en: "Can I ask a question?", fa: "می‌توانم یک سؤال بپرسم؟" }] },
+      { word: "help", meaning: "کمک", en: "Can you help me, please?", fa: "می‌توانی به من کمک کنی، لطفاً؟", icon: "🆘", examples: [{ en: "Can you help me, please?", fa: "می‌توانی به من کمک کنی، لطفاً؟" }, { en: "Thanks for your help.", fa: "از کمکت ممنونم." }, { en: "I need help with my luggage.", fa: "برای بارم به کمک نیاز دارم." }] },
+      { word: "language", meaning: "زبان", en: "I speak two languages.", fa: "من به دو زبان صحبت می‌کنم.", icon: "🔤", examples: [{ en: "I speak two languages.", fa: "من به دو زبان صحبت می‌کنم." }, { en: "English is a useful language.", fa: "انگلیسی زبان کاربردی است." }, { en: "What language do they speak here?", fa: "اینجا چه زبانی صحبت می‌کنند؟" }] },
+      { word: "tent", meaning: "چادر", en: "We put up the tent in the forest.", fa: "ما چادر را در جنگل برپا کردیم.", icon: "⛺", examples: [{ en: "We put up the tent in the forest.", fa: "ما چادر را در جنگل برپا کردیم." }, { en: "The tent is big enough for two.", fa: "چادر برای دو نفر به اندازه کافی بزرگ است." }, { en: "We slept in a tent.", fa: "ما در چادر خوابیدیم." }] },
+      { word: "camp", meaning: "کمپ", en: "We made a camp near the river.", fa: "ما نزدیک رودخانه کمپ زدیم.", icon: "🔥", examples: [{ en: "We made a camp near the river.", fa: "ما نزدیک رودخانه کمپ زدیم." }, { en: "The camp is near the lake.", fa: "کمپ نزدیک دریاچه است." }, { en: "We left the camp at sunrise.", fa: "ما هنگام طلوع کمپ را ترک کردیم." }] },
+      { word: "fire", meaning: "آتش", en: "We made a small fire.", fa: "ما یک آتش کوچک روشن کردیم.", icon: "🕯️", examples: [{ en: "We made a small fire.", fa: "ما یک آتش کوچک روشن کردیم." }, { en: "The fire keeps us warm.", fa: "آتش ما را گرم نگه می‌دارد." }, { en: "Sit near the fire.", fa: "کنار آتش بنشین." }] },
+      { word: "nature", meaning: "طبیعت", en: "I love nature.", fa: "من طبیعت را دوست دارم.", icon: "🌿", examples: [{ en: "I love nature.", fa: "من طبیعت را دوست دارم." }, { en: "The nature here is amazing.", fa: "طبیعت اینجا شگفت‌انگیز است." }, { en: "We spent the day in nature.", fa: "روز را در طبیعت گذراندیم." }] },
+      { word: "animal", meaning: "حیوان", en: "We saw many animals in the forest.", fa: "ما حیوانات زیادی در جنگل دیدیم.", icon: "🦁", examples: [{ en: "We saw many animals in the forest.", fa: "ما حیوانات زیادی در جنگل دیدیم." }, { en: "The animal ran into the forest.", fa: "حیوان به جنگل دوید." }, { en: "My favorite animal is the fox.", fa: "حیوان محبوب من روباه است." }] },
+      { word: "sky", meaning: "آسمان", en: "The sky is very blue today.", fa: "آسمان امروز خیلی آبی است.", icon: "🌈", examples: [{ en: "The sky is very blue today.", fa: "آسمان امروز خیلی آبی است." }, { en: "The sky turned pink at sunset.", fa: "آسمان هنگام غروب صورتی شد." }, { en: "There is not a cloud in the sky.", fa: "در آسمان ابری نیست." }] },
+      { word: "sand", meaning: "ماسه", en: "The sand on the beach is warm.", fa: "ماسه روی ساحل گرم است.", icon: "🏜️", examples: [{ en: "The sand on the beach is warm.", fa: "ماسه روی ساحل گرم است." }, { en: "The children played with sand.", fa: "بچه‌ها با ماسه بازی کردند." }, { en: "I have sand in my shoes.", fa: "در کفش‌هایم ماسه هست." }] },
+      { word: "wave", meaning: "موج", en: "The waves in the sea are big.", fa: "موج‌های دریا بزرگ هستند.", icon: "🏄", examples: [{ en: "The waves in the sea are big.", fa: "موج‌های دریا بزرگ هستند." }, { en: "The wave was bigger than me.", fa: "موج از من بزرگ‌تر بود." }, { en: "Listen to the waves at night.", fa: "شب به صدای موج‌ها گوش بده." }] },
+      { word: "fish", meaning: "ماهی", en: "I saw a fish in the river.", fa: "من در رودخانه ماهی دیدم.", icon: "🐟", examples: [{ en: "I saw a fish in the river.", fa: "من در رودخانه ماهی دیدم." }, { en: "The fish swam away quickly.", fa: "ماهی سریع دور شنا کرد." }, { en: "We caught two fish today.", fa: "ما امروز دو ماهی گرفتیم." }] },
+      { word: "swim", meaning: "شنا", en: "We swim in the sea every day.", fa: "ما هر روز در دریا شنا می‌کنیم.", icon: "🏊", examples: [{ en: "We swim in the sea every day.", fa: "ما هر روز در دریا شنا می‌کنیم." }, { en: "She taught me to swim.", fa: "او به من شنا یاد داد." }, { en: "It is safe to swim here.", fa: "اینجا شنا امن است." }] },
+      { word: "ocean", meaning: "اقیانوس", en: "The ocean is very deep.", fa: "اقیانوس خیلی عمیق است.", icon: "🐋", examples: [{ en: "The ocean is very deep.", fa: "اقیانوس خیلی عمیق است." }, { en: "We flew over the ocean.", fa: "ما از روی اقیانوس پرواز کردیم." }, { en: "The ocean water is salty.", fa: "آب اقیانوس شور است." }] },
+      { word: "coast", meaning: "ساحل", en: "We drove along the coast.", fa: "ما در امتداد ساحل رانندگی کردیم.", icon: "🛥️", examples: [{ en: "We drove along the coast.", fa: "ما در امتداد ساحل رانندگی کردیم." }, { en: "The coast is famous for its waves.", fa: "ساحل به موج‌هایش معروف است." }, { en: "We live near the coast.", fa: "ما نزدیک ساحل زندگی می‌کنیم." }] },
+      { word: "hill", meaning: "تپه", en: "The hill is green and small.", fa: "تپه سبز و کوچک است.", icon: "🗻", examples: [{ en: "The hill is green and small.", fa: "تپه سبز و کوچک است." }, { en: "We climbed the small hill.", fa: "ما از تپه کوچک بالا رفتیم." }, { en: "The house sits on a hill.", fa: "خانه روی یک تپه است." }] },
+      { word: "valley", meaning: "دره", en: "The valley is between two mountains.", fa: "دره بین دو کوه است.", icon: "🏕️", examples: [{ en: "The valley is between two mountains.", fa: "دره بین دو کوه است." }, { en: "The valley is green in spring.", fa: "دره در بهار سبز است." }, { en: "A river runs through the valley.", fa: "یک رودخانه از میان دره می‌گذرد." }] },
+      { word: "waterfall", meaning: "آبشار", en: "The waterfall is very tall.", fa: "آبشار خیلی بلند است.", icon: "💦", examples: [{ en: "The waterfall is very tall.", fa: "آبشار خیلی بلند است." }, { en: "We heard the waterfall from far.", fa: "صدای آبشار را از دور شنیدیم." }, { en: "The waterfall is beautiful in winter.", fa: "آبشار در زمستان زیباست." }] },
+      { word: "sunny", meaning: "آفتابی", en: "It is sunny and warm today.", fa: "امروز آفتابی و گرم است.", icon: "🌞", examples: [{ en: "It is sunny and warm today.", fa: "امروز آفتابی و گرم است." }, { en: "We had a sunny day at the beach.", fa: "روزی آفتابی در ساحل داشتیم." }, { en: "I love sunny mornings.", fa: "من صبح‌های آفتابی را دوست دارم." }] }
+    ]
+  },
+  food: {
+    name: "غذا و رستوران",
+    words: [
+      { word: "restaurant", meaning: "رستوران", en: "We ate dinner at a restaurant.", fa: "ما شام را در یک رستوران خوردیم.", icon: "🍽️", examples: [{ en: "We ate dinner at a restaurant.", fa: "ما شام را در یک رستوران خوردیم." }, { en: "The restaurant was full last night.", fa: "رستوران دیشب پر بود." }, { en: "We go to that restaurant often.", fa: "ما زیاد به آن رستوران می‌رویم." }] },
+      { word: "menu", meaning: "منو", en: "Can I see the menu, please?", fa: "می‌شود منو را ببینم؟", icon: "📋", examples: [{ en: "Can I see the menu, please?", fa: "می‌شود منو را ببینم؟" }, { en: "The menu has many choices.", fa: "منو انتخاب‌های زیادی دارد." }, { en: "She read the menu quickly.", fa: "او منو را سریع خواند." }] },
+      { word: "waiter", meaning: "گارسون", en: "The waiter brought our food.", fa: "گارسون غذای ما را آورد.", icon: "🤵", examples: [{ en: "The waiter brought our food.", fa: "گارسون غذای ما را آورد." }, { en: "The waiter is very polite.", fa: "گارسون خیلی مؤدب است." }, { en: "Ask the waiter for water.", fa: "از گارسون آب بخواه." }] },
+      { word: "bread", meaning: "نان", en: "I eat bread every morning.", fa: "من هر روز صبح نان می‌خورم.", icon: "🍞", examples: [{ en: "I eat bread every morning.", fa: "من هر روز صبح نان می‌خورم." }, { en: "This bread smells amazing.", fa: "این نان بوی فوق‌العاده‌ای می‌دهد." }, { en: "She sliced the bread.", fa: "او نان را ورقه کرد." }] },
+      { word: "rice", meaning: "برنج", en: "We usually cook rice for lunch.", fa: "ما معمولاً برای ناهار برنج می‌پزیم.", icon: "🍚", examples: [{ en: "We usually cook rice for lunch.", fa: "ما معمولاً برای ناهار برنج می‌پزیم." }, { en: "The rice needs more salt.", fa: "برنج نمک بیشتری نیاز دارد." }, { en: "They grow rice in the north.", fa: "آن‌ها در شمال برنج می‌کارند." }] },
+      { word: "meat", meaning: "گوشت", en: "She doesn't eat meat.", fa: "او گوشت نمی‌خورد.", icon: "🥩", examples: [{ en: "She doesn't eat meat.", fa: "او گوشت نمی‌خورد." }, { en: "The meat is cooked well.", fa: "گوشت خوب پخته شده است." }, { en: "We bought meat from the butcher.", fa: "ما از قصابی گوشت خریدیم." }] },
+      { word: "vegetable", meaning: "سبزیجات", en: "Vegetables are good for your health.", fa: "سبزیجات برای سلامتی خوب هستند.", icon: "🥦", examples: [{ en: "Vegetables are good for your health.", fa: "سبزیجات برای سلامتی خوب هستند." }, { en: "She grows vegetables in her garden.", fa: "او در باغچه‌اش سبزیجات می‌کارد." }, { en: "Eat your vegetables, please.", fa: "لطفاً سبزیجاتت را بخور." }] },
+      { word: "fruit", meaning: "میوه", en: "I eat fruit after lunch.", fa: "من بعد از ناهار میوه می‌خورم.", icon: "🍎", examples: [{ en: "I eat fruit after lunch.", fa: "من بعد از ناهار میوه می‌خورم." }, { en: "The fruit is fresh and sweet.", fa: "میوه تازه و شیرین است." }, { en: "We bought fruit at the market.", fa: "ما از بازار میوه خریدیم." }] },
+      { word: "juice", meaning: "آب‌میوه", en: "He drinks orange juice every day.", fa: "او هر روز آب‌پرتقال می‌نوشد.", icon: "🧃", examples: [{ en: "He drinks orange juice every day.", fa: "او هر روز آب‌پرتقال می‌نوشد." }, { en: "This juice is freshly squeezed.", fa: "این آب‌میوه تازه گرفته شده است." }, { en: "She made juice for the guests.", fa: "او برای مهمان‌ها آب‌میوه درست کرد." }] },
+      { word: "coffee", meaning: "قهوه", en: "I drink coffee in the morning.", fa: "من صبح‌ها قهوه می‌نوشم.", icon: "☕", examples: [{ en: "I drink coffee in the morning.", fa: "من صبح‌ها قهوه می‌نوشم." }, { en: "He never drinks coffee at night.", fa: "او هرگز شب‌ها قهوه نمی‌نوشد." }, { en: "The coffee here is famous.", fa: "قهوه اینجا معروف است." }] },
+      { word: "tea", meaning: "چای", en: "Would you like some tea?", fa: "چای میل داری؟", icon: "🍵", examples: [{ en: "Would you like some tea?", fa: "چای میل داری؟" }, { en: "The tea is too sweet for me.", fa: "چای برای من خیلی شیرین است." }, { en: "We drink tea after dinner.", fa: "ما بعد از شام چای می‌نوشیم." }] },
+      { word: "soup", meaning: "سوپ", en: "The soup was very hot.", fa: "سوپ خیلی داغ بود.", icon: "🍲", examples: [{ en: "The soup was very hot.", fa: "سوپ خیلی داغ بود." }, { en: "This soup needs more salt.", fa: "این سوپ نمک بیشتری نیاز دارد." }, { en: "She made chicken soup.", fa: "او سوپ مرغ درست کرد." }] },
+      { word: "cake", meaning: "کیک", en: "We made a cake for her birthday.", fa: "ما برای تولدش کیک درست کردیم.", icon: "🍰", examples: [{ en: "We made a cake for her birthday.", fa: "ما برای تولدش کیک درست کردیم." }, { en: "The cake has ten candles.", fa: "کیک ده شمع دارد." }, { en: "This cake tastes wonderful.", fa: "این کیک مزه فوق‌العاده‌ای دارد." }] },
+      { word: "spoon", meaning: "قاشق", en: "I need a spoon for the soup.", fa: "برای سوپ به قاشق نیاز دارم.", icon: "🥄", examples: [{ en: "I need a spoon for the soup.", fa: "برای سوپ به قاشق نیاز دارم." }, { en: "He ate the soup with a spoon.", fa: "او سوپ را با قاشق خورد." }, { en: "This spoon is made of wood.", fa: "این قاشق از چوب ساخته شده است." }] },
+      { word: "fork", meaning: "چنگال", en: "Please pass me the fork.", fa: "لطفاً چنگال را به من بده.", icon: "🍴", examples: [{ en: "Please pass me the fork.", fa: "لطفاً چنگال را به من بده." }, { en: "She eats salad with a fork.", fa: "او سالاد را با چنگال می‌خورد." }, { en: "The fork fell on the floor.", fa: "چنگال روی زمین افتاد." }] },
+      { word: "plate", meaning: "بشقاب", en: "Put the food on the plate.", fa: "غذا را در بشقاب بگذار.", icon: "🥘", examples: [{ en: "Put the food on the plate.", fa: "غذا را در بشقاب بگذار." }, { en: "She washed all the plates.", fa: "او همه بشقاب‌ها را شست." }, { en: "The plate is too hot to touch.", fa: "بشقاب آن‌قدر داغ است که نمی‌شود دست زد." }] },
+      { word: "bill", meaning: "صورت‌حساب", en: "Can we have the bill, please?", fa: "می‌شود صورت‌حساب را بیاورید؟", icon: "🧾", examples: [{ en: "Can we have the bill, please?", fa: "می‌شود صورت‌حساب را بیاورید؟" }, { en: "The bill is fifty dollars.", fa: "صورت‌حساب پنجاه دلار است." }, { en: "He paid the bill with cash.", fa: "او صورت‌حساب را نقدی پرداخت کرد." }] },
+      { word: "delicious", meaning: "خوشمزه", en: "This food is delicious.", fa: "این غذا خوشمزه است.", icon: "😋", examples: [{ en: "This food is delicious.", fa: "این غذا خوشمزه است." }, { en: "The soup smells delicious.", fa: "سوپ بوی خوشمزه‌ای می‌دهد." }, { en: "Your cookies are delicious.", fa: "کوکی‌هایت خوشمزه هستند." }] },
+      { word: "hungry", meaning: "گرسنه", en: "I am very hungry now.", fa: "من الان خیلی گرسنه‌ام.", icon: "🤤", examples: [{ en: "I am very hungry now.", fa: "من الان خیلی گرسنه‌ام." }, { en: "The kids are always hungry.", fa: "بچه‌ها همیشه گرسنه هستند." }, { en: "Are you hungry? Let's eat.", fa: "گرسنه‌ای؟ بزن بریم غذا بخوریم." }] },
+      { word: "thirsty", meaning: "تشنه", en: "I am thirsty, can I have some water?", fa: "من تشنه‌ام، می‌شود کمی آب داشته باشم؟", icon: "🥤", examples: [{ en: "I am thirsty, can I have some water?", fa: "من تشنه‌ام، می‌شود کمی آب داشته باشم؟" }, { en: "I get thirsty after running.", fa: "بعد از دویدن تشنه می‌شوم." }, { en: "She was thirsty after work.", fa: "او بعد از کار تشنه بود." }] },
+      { word: "cheese", meaning: "پنیر", en: "I like cheese on my bread.", fa: "من نان با پنیر دوست دارم.", icon: "🧀", examples: [{ en: "I like cheese on my bread.", fa: "من نان با پنیر دوست دارم." }, { en: "This cheese is from France.", fa: "این پنیر از فرانسه است." }, { en: "Add some cheese to the salad.", fa: "کمی پنیر به سالاد اضافه کن." }] },
+      { word: "butter", meaning: "کره", en: "She spreads butter on toast.", fa: "او کره روی نان تست می‌مالد.", icon: "🧈", examples: [{ en: "She spreads butter on toast.", fa: "او کره روی نان تست می‌مالد." }, { en: "The butter is too hard.", fa: "کره خیلی سفت است." }, { en: "We need butter for the cake.", fa: "برای کیک کره لازم داریم." }] },
+      { word: "chicken", meaning: "مرغ", en: "We had chicken for dinner.", fa: "ما شام مرغ خوردیم.", icon: "🍗", examples: [{ en: "We had chicken for dinner.", fa: "ما شام مرغ خوردیم." }, { en: "The chicken smells great.", fa: "مرغ بوی عالی می‌دهد." }, { en: "She grilled the chicken outside.", fa: "او مرغ را بیرون کباب کرد." }] },
+      { word: "shrimp", meaning: "میگو", en: "The shrimp is very fresh.", fa: "میگو خیلی تازه است.", icon: "🍤", examples: [{ en: "The shrimp is very fresh.", fa: "میگو خیلی تازه است." }, { en: "I tried shrimp for the first time.", fa: "برای اولین بار میگو امتحان کردم." }, { en: "The shrimp pasta is famous here.", fa: "پاستای میگوی اینجا معروف است." }] },
+      { word: "salad", meaning: "سالاد", en: "I eat salad every day.", fa: "من هر روز سالاد می‌خورم.", icon: "🥗", examples: [{ en: "I eat salad every day.", fa: "من هر روز سالاد می‌خورم." }, { en: "This salad has five vegetables.", fa: "این سالاد پنج سبزی دارد." }, { en: "She made a salad for lunch.", fa: "او برای ناهار سالاد درست کرد." }] },
+      { word: "pizza", meaning: "پیتزا", en: "Let's order a pizza.", fa: "بیا پیتزا سفارش بدهیم.", icon: "🍕", examples: [{ en: "Let's order a pizza.", fa: "بیا پیتزا سفارش بدهیم." }, { en: "The pizza arrived hot.", fa: "پیتزا داغ رسید." }, { en: "We shared a large pizza.", fa: "ما یک پیتزای بزرگ را تقسیم کردیم." }] },
+      { word: "sandwich", meaning: "ساندویچ", en: "He made a sandwich for lunch.", fa: "او برای ناهار ساندویچ درست کرد.", icon: "🥪", examples: [{ en: "He made a sandwich for lunch.", fa: "او برای ناهار ساندویچ درست کرد." }, { en: "This sandwich has cheese and tomato.", fa: "این ساندویچ پنیر و گوجه‌فرنگی دارد." }, { en: "She packed a sandwich for work.", fa: "او برای سر کار یک ساندویچ برداشت." }] },
+      { word: "snack", meaning: "میان‌وعده", en: "I want a small snack.", fa: "من یک میان‌وعده‌ی کوچک می‌خوام.", icon: "🍿", examples: [{ en: "I want a small snack.", fa: "من یک میان‌وعده‌ی کوچک می‌خوام." }, { en: "What snack do you want?", fa: "چه میان‌وعده‌ای می‌خواهی؟" }, { en: "He eats a snack at four.", fa: "او ساعت چهار یک میان‌وعده می‌خورد." }] },
+      { word: "dessert", meaning: "دسر", en: "What's for dessert tonight?", fa: "امشب دسر چیست؟", icon: "🍦", examples: [{ en: "What's for dessert tonight?", fa: "امشب دسر چیست؟" }, { en: "The dessert looks beautiful.", fa: "دسر قشنگ به نظر می‌رسد." }, { en: "We ordered dessert after dinner.", fa: "بعد از شام دسر سفارش دادیم." }] },
+      { word: "chocolate", meaning: "شکلات", en: "She loves dark chocolate.", fa: "او شکلات تلخ را دوست دارد.", icon: "🍫", examples: [{ en: "She loves dark chocolate.", fa: "او شکلات تلخ را دوست دارد." }, { en: "This chocolate is from Switzerland.", fa: "این شکلات از سوئیس است." }, { en: "He gave her a box of chocolate.", fa: "او به او یک جعبه شکلات داد." }] },
+      { word: "cookie", meaning: "کوکی", en: "My mom bakes cookies.", fa: "مامانم کوکی می‌پزد.", icon: "🍪", examples: [{ en: "My mom bakes cookies.", fa: "مامانم کوکی می‌پزد." }, { en: "The cookie is still warm.", fa: "کوکی هنوز گرم است." }, { en: "She ate two cookies with milk.", fa: "او دو کوکی با شیر خورد." }] },
+      { word: "honey", meaning: "عسل", en: "Honey is very sweet.", fa: "عسل خیلی شیرین است.", icon: "🍯", examples: [{ en: "Honey is very sweet.", fa: "عسل خیلی شیرین است." }, { en: "I put honey in my tea.", fa: "من در چای‌ام عسل می‌ریزم." }, { en: "This honey is from the mountains.", fa: "این عسل از کوهستان است." }] },
+      { word: "jam", meaning: "مربا", en: "I put jam on my bread.", fa: "من مربا روی نانم می‌گذارم.", icon: "🍊", examples: [{ en: "I put jam on my bread.", fa: "من مربا روی نانم می‌گذارم." }, { en: "The jam is homemade.", fa: "مربا خانگی است." }, { en: "She made strawberry jam.", fa: "او مربای توت‌فرنگی درست کرد." }] },
+      { word: "yogurt", meaning: "ماست", en: "I eat yogurt for breakfast.", fa: "من صبحانه ماست می‌خورم.", icon: "🥛", examples: [{ en: "I eat yogurt for breakfast.", fa: "من صبحانه ماست می‌خورم." }, { en: "The yogurt is cold and fresh.", fa: "ماست سرد و تازه است." }, { en: "She adds fruit to her yogurt.", fa: "او به ماستش میوه اضافه می‌کند." }] },
+      { word: "lemon", meaning: "لیمو", en: "The lemon is very sour.", fa: "لیمو خیلی ترش است.", icon: "🍋", examples: [{ en: "The lemon is very sour.", fa: "لیمو خیلی ترش است." }, { en: "Add a little lemon to the tea.", fa: "کمی لیمو به چای اضافه کن." }, { en: "She squeezed the lemon.", fa: "او لیمو را آب گرفت." }] },
+      { word: "onion", meaning: "پیاز", en: "He cuts the onion.", fa: "او پیاز را برش می‌کند.", icon: "🧅", examples: [{ en: "He cuts the onion.", fa: "او پیاز را برش می‌کند." }, { en: "The onion made me cry.", fa: "پیاز مرا به گریه انداخت." }, { en: "Fry the onion first.", fa: "اول پیاز را سرخ کن." }] },
+      { word: "tomato", meaning: "گوجه‌فرنگی", en: "Tomatoes are red.", fa: "گوجه‌فرنگی قرمز است.", icon: "🍅", examples: [{ en: "Tomatoes are red.", fa: "گوجه‌فرنگی قرمز است." }, { en: "This tomato is from our garden.", fa: "این گوجه‌فرنگی از باغچه ماست." }, { en: "She sliced the tomato for the salad.", fa: "او گوجه‌فرنگی را برای سالاد ورقه کرد." }] },
+      { word: "potato", meaning: "سیب‌زمینی", en: "I like fried potatoes.", fa: "من سیب‌زمینی سرخ‌کرده دوست دارم.", icon: "🥔", examples: [{ en: "I like fried potatoes.", fa: "من سیب‌زمینی سرخ‌کرده دوست دارم." }, { en: "The potato is still hot.", fa: "سیب‌زمینی هنوز داغ است." }, { en: "We planted potatoes this year.", fa: "امسال سیب‌زمینی کاشتیم." }] },
+      { word: "carrot", meaning: "هویج", en: "Rabbits eat carrots.", fa: "خرگوش‌ها هویج می‌خورند.", icon: "🥕", examples: [{ en: "Rabbits eat carrots.", fa: "خرگوش‌ها هویج می‌خورند." }, { en: "The carrot is good for your eyes.", fa: "هویج برای چشم‌هایت خوب است." }, { en: "She grated the carrot.", fa: "او هویج را رنده کرد." }] },
+      { word: "pepper", meaning: "فلفل", en: "Add some pepper to the soup.", fa: "کمی فلفل به سوپ اضافه کن.", icon: "🌶️", examples: [{ en: "Add some pepper to the soup.", fa: "کمی فلفل به سوپ اضافه کن." }, { en: "This pepper is very hot.", fa: "این فلفل خیلی تند است." }, { en: "The soup needs more pepper.", fa: "سوپ فلفل بیشتری نیاز دارد." }] },
+      { word: "corn", meaning: "ذرت", en: "Corn is yellow and sweet.", fa: "ذرت زرد و شیرین است.", icon: "🌽", examples: [{ en: "Corn is yellow and sweet.", fa: "ذرت زرد و شیرین است." }, { en: "The corn is ready to eat.", fa: "ذرت آماده خوردن است." }, { en: "We bought corn at the market.", fa: "ما از بازار ذرت خریدیم." }] },
+      { word: "flour", meaning: "آرد", en: "We need flour to make bread.", fa: "ما برای نان پختن آرد نیاز داریم.", icon: "🌾", examples: [{ en: "We need flour to make bread.", fa: "ما برای نان پختن آرد نیاز داریم." }, { en: "The flour is in the big jar.", fa: "آرد در شیشه بزرگ است." }, { en: "She bought a bag of flour.", fa: "او یک کیسه آرد خرید." }] },
+      { word: "noodle", meaning: "رشته", en: "I eat noodle soup when I'm sick.", fa: "وقتی مریضم سوپ رشته می‌خورم.", icon: "🍜", examples: [{ en: "I eat noodle soup when I'm sick.", fa: "وقتی مریضم سوپ رشته می‌خورم." }, { en: "The noodles are ready in five minutes.", fa: "رشته‌ها پنج دقیقه دیگر آماده است." }, { en: "Add the noodles to the soup.", fa: "رشته‌ها را به سوپ اضافه کن." }] },
+      { word: "pancake", meaning: "پنکیک", en: "She makes pancakes on Sundays.", fa: "او یکشنبه‌ها پنکیک درست می‌کند.", icon: "🥞", examples: [{ en: "She makes pancakes on Sundays.", fa: "او یکشنبه‌ها پنکیک درست می‌کند." }, { en: "I put honey on my pancake.", fa: "روی پنکیکم عسل می‌ریزم." }, { en: "The pancakes smell wonderful.", fa: "پنکیک‌ها بوی فوق‌العاده‌ای می‌دهند." }] },
+      { word: "pie", meaning: "پای", en: "My favorite pie is apple pie.", fa: "پای مورد علاقه‌ام پای سیب است.", icon: "🥧", examples: [{ en: "My favorite pie is apple pie.", fa: "پای مورد علاقه‌ام پای سیب است." }, { en: "The pie is in the oven.", fa: "پای در فر است." }, { en: "We ate pie with tea.", fa: "ما پای را با چای خوردیم." }] },
+      { word: "biscuit", meaning: "بیسکویت", en: "I dip my biscuit in tea.", fa: "من بیسکویتم را در چای فرو می‌کنم.", icon: "🍘", examples: [{ en: "I dip my biscuit in tea.", fa: "من بیسکویتم را در چای فرو می‌کنم." }, { en: "The biscuits are in the tin.", fa: "بیسکویت‌ها در قوطی هستند." }, { en: "She gave me a biscuit.", fa: "او به من یک بیسکویت داد." }] },
+      { word: "candy", meaning: "آبنبات", en: "The kids love candy.", fa: "بچه‌ها آبنبات دوست دارند.", icon: "🍬", examples: [{ en: "The kids love candy.", fa: "بچه‌ها آبنبات دوست دارند." }, { en: "Too much candy is bad for you.", fa: "آبنبات زیاد برایت بد است." }, { en: "She keeps candy in her bag.", fa: "او در کیفش آبنبات نگه می‌دارد." }] },
+      { word: "nut", meaning: "آجیل", en: "Nuts are healthy snacks.", fa: "آجیل میان‌وعده‌های سالمی است.", icon: "🥜", examples: [{ en: "Nuts are healthy snacks.", fa: "آجیل میان‌وعده‌های سالمی است." }, { en: "I eat nuts every morning.", fa: "من هر صبح آجیل می‌خورم." }, { en: "This cake has nuts in it.", fa: "این کیک آجیل دارد." }] },
+      { word: "grape", meaning: "انگور", en: "These grapes are very sweet.", fa: "این انگورها خیلی شیرین هستند.", icon: "🍇", examples: [{ en: "These grapes are very sweet.", fa: "این انگورها خیلی شیرین هستند." }, { en: "I washed the grapes.", fa: "من انگورها را شستم." }, { en: "She put grapes on the table.", fa: "او انگور را روی میز گذاشت." }] },
+      { word: "cherry", meaning: "گیلاس", en: "The cherries are ripe.", fa: "گیلاس‌ها رسیده‌اند.", icon: "🍒", examples: [{ en: "The cherries are ripe.", fa: "گیلاس‌ها رسیده‌اند." }, { en: "The cherry on the cake is red.", fa: "گیلاس روی کیک قرمز است." }, { en: "I ate a sweet cherry.", fa: "من یک گیلاس شیرین خوردم." }] },
+      { word: "strawberry", meaning: "توت‌فرنگی", en: "Strawberries are my favorite fruit.", fa: "توت‌فرنگی میوه‌ی مورد علاقه‌ام است.", icon: "🍓", examples: [{ en: "Strawberries are my favorite fruit.", fa: "توت‌فرنگی میوه‌ی مورد علاقه‌ام است." }, { en: "The strawberries smell sweet.", fa: "توت‌فرنگی‌ها بوی شیرینی می‌دهند." }, { en: "She put a strawberry on the cake.", fa: "او یک توت‌فرنگی روی کیک گذاشت." }] },
+      { word: "peach", meaning: "هلو", en: "The peach is soft and juicy.", fa: "هلو نرم و آبدار است.", icon: "🍑", examples: [{ en: "The peach is soft and juicy.", fa: "هلو نرم و آبدار است." }, { en: "I ate a peach after lunch.", fa: "بعد از ناهار یک هلو خوردم." }, { en: "The peaches are from our tree.", fa: "هلوها از درخت ماست." }] },
+      { word: "pear", meaning: "گلابی", en: "She eats a green pear.", fa: "او یک گلابی سبز می‌خورد.", icon: "🍐", examples: [{ en: "She eats a green pear.", fa: "او یک گلابی سبز می‌خورد." }, { en: "The pear is soft and sweet.", fa: "گلابی نرم و شیرین است." }, { en: "He picked a pear from the tree.", fa: "او یک گلابی از درخت چید." }] },
+      { word: "melon", meaning: "خربزه", en: "The melon is sweet inside.", fa: "خربزه از داخل شیرین است.", icon: "🍈", examples: [{ en: "The melon is sweet inside.", fa: "خربزه از داخل شیرین است." }, { en: "Cut the melon into pieces.", fa: "خربزه را تکه‌تکه کن." }, { en: "We ate melon in the afternoon.", fa: "بعدازظهر خربزه خوردیم." }] },
+      { word: "watermelon", meaning: "هندوانه", en: "Watermelon is good in summer.", fa: "هندوانه در تابستان خوب است.", icon: "🍉", examples: [{ en: "Watermelon is good in summer.", fa: "هندوانه در تابستان خوب است." }, { en: "The watermelon is very heavy.", fa: "هندوانه خیلی سنگین است." }, { en: "She cut the watermelon in half.", fa: "او هندوانه را نصف کرد." }] },
+      { word: "pineapple", meaning: "آناناس", en: "Pineapple grows in warm places.", fa: "آناناس در جاهای گرم رشد می‌کند.", icon: "🍍", examples: [{ en: "Pineapple grows in warm places.", fa: "آناناس در جاهای گرم رشد می‌کند." }, { en: "The pineapple juice is cold.", fa: "آب‌آناناس سرد است." }, { en: "I like pineapple on pizza.", fa: "من آناناس روی پیتزا دوست دارم." }] },
+      { word: "coconut", meaning: "نارگیل", en: "The coconut has water inside.", fa: "نارگیل از داخل آب دارد.", icon: "🥥", examples: [{ en: "The coconut has water inside.", fa: "نارگیل از داخل آب دارد." }, { en: "She opened the coconut carefully.", fa: "او نارگیل را با احتیاط باز کرد." }, { en: "Coconut milk is sweet.", fa: "شیر نارگیل شیرین است." }] },
+      { word: "kiwi", meaning: "کیوی", en: "Kiwi is a small green fruit.", fa: "کیوی یک میوه‌ی سبز کوچک است.", icon: "🥝", examples: [{ en: "Kiwi is a small green fruit.", fa: "کیوی یک میوه‌ی سبز کوچک است." }, { en: "The kiwi is soft and ready.", fa: "کیوی نرم و رسیده است." }, { en: "I eat kiwi with a spoon.", fa: "من کیوی را با قاشق می‌خورم." }] },
+      { word: "avocado", meaning: "آووکادو", en: "Avocado is good for you.", fa: "آووکادو برای شما خوب است.", icon: "🥑", examples: [{ en: "Avocado is good for you.", fa: "آووکادو برای شما خوب است." }, { en: "She made avocado toast.", fa: "او تست آووکادو درست کرد." }, { en: "The avocado is ripe today.", fa: "آووکادو امروز رسیده است." }] },
+      { word: "broccoli", meaning: "کلم بروکلی", en: "Broccoli is a green vegetable.", fa: "کلم بروکلی یک سبزی سبز است.", icon: "🥦", examples: [{ en: "Broccoli is a green vegetable.", fa: "کلم بروکلی یک سبزی سبز است." }, { en: "Steam the broccoli for five minutes.", fa: "کلم بروکلی را پنج دقیقه بخار بده." }, { en: "Kids often hate broccoli.", fa: "بچه‌ها اغلب از کلم بروکلی متنفرند." }] },
+      { word: "cucumber", meaning: "خیار", en: "I put cucumber in my salad.", fa: "من خیار در سالادم می‌گذارم.", icon: "🥒", examples: [{ en: "I put cucumber in my salad.", fa: "من خیار در سالادم می‌گذارم." }, { en: "The cucumber is cold and crisp.", fa: "خیار سرد و ترد است." }, { en: "She sliced the cucumber thin.", fa: "او خیار را نازک ورقه کرد." }] },
+      { word: "pumpkin", meaning: "کدو", en: "We made a pumpkin pie.", fa: "ما پای کدو درست کردیم.", icon: "🎃", examples: [{ en: "We made a pumpkin pie.", fa: "ما پای کدو درست کردیم." }, { en: "The pumpkin is orange and big.", fa: "کدو نارنجی و بزرگ است." }, { en: "We made soup from the pumpkin.", fa: "از کدو سوپ درست کردیم." }] },
+      { word: "mushroom", meaning: "قارچ", en: "I don't like mushrooms.", fa: "من قارچ دوست ندارم.", icon: "🍄", examples: [{ en: "I don't like mushrooms.", fa: "من قارچ دوست ندارم." }, { en: "The mushrooms are fresh today.", fa: "قارچ‌ها امروز تازه هستند." }, { en: "She put mushrooms on the pizza.", fa: "او روی پیتزا قارچ گذاشت." }] },
+      { word: "garlic", meaning: "سیر", en: "Garlic has a strong smell.", fa: "سیر بوی تندی دارد.", icon: "🧄", examples: [{ en: "Garlic has a strong smell.", fa: "سیر بوی تندی دارد." }, { en: "Add two cloves of garlic.", fa: "دو حبه سیر اضافه کن." }, { en: "The garlic is in the kitchen drawer.", fa: "سیر در کشوی آشپزخانه است." }] },
+      { word: "ginger", meaning: "زنجبیل", en: "Ginger tea is good for a cold.", fa: "چای زنجبیل برای سرماخوردگی خوب است.", icon: "🌱", examples: [{ en: "Ginger tea is good for a cold.", fa: "چای زنجبیل برای سرماخوردگی خوب است." }, { en: "Fresh ginger is very spicy.", fa: "زنجبیل تازه خیلی تند است." }, { en: "She put ginger in the soup.", fa: "او در سوپ زنجبیل گذاشت." }] },
+      { word: "cream", meaning: "خامه", en: "I want cream in my coffee.", fa: "من در قهوه‌ام خامه می‌خوام.", icon: "🍶", examples: [{ en: "I want cream in my coffee.", fa: "من در قهوه‌ام خامه می‌خوام." }, { en: "The cake has too much cream.", fa: "کیک خامه زیادی دارد." }, { en: "She whipped the cream herself.", fa: "او خامه را خودش زد." }] },
+      { word: "ice", meaning: "یخ", en: "Put ice in my drink.", fa: "در نوشیدنی‌ام یخ بگذار.", icon: "🧊", examples: [{ en: "Put ice in my drink.", fa: "در نوشیدنی‌ام یخ بگذار." }, { en: "The ice melted quickly.", fa: "یخ سریع آب شد." }, { en: "She put ice in the juice.", fa: "او در آب‌میوه یخ گذاشت." }] },
+      { word: "cold", meaning: "سرد", en: "The soup is not cold.", fa: "سوپ سرد نیست.", icon: "🌡️", examples: [{ en: "The soup is not cold.", fa: "سوپ سرد نیست." }, { en: "I like my milk cold.", fa: "من شیرم را سرد دوست دارم." }, { en: "The drink is cold enough.", fa: "نوشیدنی به اندازه کافی سرد است." }] },
+      { word: "hot", meaning: "داغ", en: "Be careful, the food is hot.", fa: "مراقب باش، غذا داغ است.", icon: "🔥", examples: [{ en: "Be careful, the food is hot.", fa: "مراقب باش، غذا داغ است." }, { en: "The tea is too hot to drink.", fa: "چای آن‌قدر داغ است که نمی‌شود نوشید." }, { en: "Serve the soup hot.", fa: "سوپ را داغ سرو کن." }] },
+      { word: "sweet", meaning: "شیرین", en: "This cake is very sweet.", fa: "این کیک خیلی شیرین است.", icon: "🍭", examples: [{ en: "This cake is very sweet.", fa: "این کیک خیلی شیرین است." }, { en: "The melon is sweet and soft.", fa: "خربزه شیرین و نرم است." }, { en: "I do not like sweet coffee.", fa: "من قهوه شیرین دوست ندارم." }] },
+      { word: "sour", meaning: "ترش", en: "The lemon tastes sour.", fa: "لیمو ترش مزه می‌دهد.", icon: "😖", examples: [{ en: "The lemon tastes sour.", fa: "لیمو ترش مزه می‌دهد." }, { en: "This yogurt is a little sour.", fa: "این ماست کمی ترش است." }, { en: "The cherries taste sour.", fa: "گیلاس‌ها ترش مزه می‌دهند." }] },
+      { word: "spicy", meaning: "تند", en: "I like spicy food.", fa: "من غذا تند دوست دارم.", icon: "😤", examples: [{ en: "I like spicy food.", fa: "من غذا تند دوست دارم." }, { en: "This sauce is very spicy.", fa: "این سس خیلی تند است." }, { en: "She made spicy chicken.", fa: "او مرغ تند درست کرد." }] },
+      { word: "bitter", meaning: "تلخ", en: "Black coffee is bitter.", fa: "قهوه‌ی تلخ سیاه است.", icon: "😷", examples: [{ en: "Black coffee is bitter.", fa: "قهوه‌ی تلخ سیاه است." }, { en: "The medicine tastes bitter.", fa: "دارو تلخ مزه می‌دهد." }, { en: "I do not like bitter tea.", fa: "من چای تلخ دوست ندارم." }] },
+      { word: "fresh", meaning: "تازه", en: "The bread is still fresh.", fa: "نان هنوز تازه است.", icon: "🌿", examples: [{ en: "The bread is still fresh.", fa: "نان هنوز تازه است." }, { en: "The vegetables are fresh from the farm.", fa: "سبزیجات تازه از مزرعه هستند." }, { en: "I want fresh orange juice.", fa: "آب‌پرتقال تازه می‌خواهم." }] },
+      { word: "raw", meaning: "خام", en: "You can't eat raw meat.", fa: "نمی‌توانی گوشت خام بخوری.", icon: "🥬", examples: [{ en: "You can't eat raw meat.", fa: "نمی‌توانی گوشت خام بخوری." }, { en: "She washed the raw vegetables.", fa: "او سبزیجات خام را شست." }, { en: "I prefer raw carrots.", fa: "من هویج خام ترجیح می‌دهم." }] },
+      { word: "boiled", meaning: "آب‌پز", en: "I like boiled eggs.", fa: "من تخم‌مرغ آب‌پز دوست دارم.", icon: "♨️", examples: [{ en: "I like boiled eggs.", fa: "من تخم‌مرغ آب‌پز دوست دارم." }, { en: "The boiled potatoes are soft.", fa: "سیب‌زمینی‌های آب‌پز نرم هستند." }, { en: "She made boiled rice.", fa: "او برنج آب‌پز درست کرد." }] },
+      { word: "fried", meaning: "سرخ‌کرده", en: "Fried chicken is delicious.", fa: "مرغ سرخ‌کرده خوشمزه است.", icon: "🍳", examples: [{ en: "Fried chicken is delicious.", fa: "مرغ سرخ‌کرده خوشمزه است." }, { en: "The fried potatoes are crispy.", fa: "سیب‌زمینی‌های سرخ‌کرده ترد هستند." }, { en: "I like fried eggs for breakfast.", fa: "من برای صبحانه تخم‌مرغ سرخ‌کرده دوست دارم." }] },
+      { word: "baked", meaning: "پخته", en: "She baked fresh bread.", fa: "او نان تازه پخت.", icon: "🥖", examples: [{ en: "She baked fresh bread.", fa: "او نان تازه پخت." }, { en: "The baked potatoes smell great.", fa: "سیب‌زمینی‌های پخته بوی عالی می‌دهند." }, { en: "She baked a cake yesterday.", fa: "او دیروز یک کیک پخت." }] },
+      { word: "grill", meaning: "کباب", en: "We grill meat outside.", fa: "ما بیرون کباب می‌کنیم.", icon: "🍢", examples: [{ en: "We grill meat outside.", fa: "ما بیرون کباب می‌کنیم." }, { en: "The grill is hot now.", fa: "گریل (منقل) الان داغ است." }, { en: "Dad grills chicken every Friday.", fa: "بابا هر جمعه مرغ کباب می‌کند." }] },
+      { word: "recipe", meaning: "دستور پخت", en: "This recipe is very easy.", fa: "این دستور پخت خیلی آسان است.", icon: "📖", examples: [{ en: "This recipe is very easy.", fa: "این دستور پخت خیلی آسان است." }, { en: "She follows the recipe exactly.", fa: "او دقیقاً از دستور پخت پیروی می‌کند." }, { en: "I found a recipe online.", fa: "من آنلاین یک دستور پخت پیدا کردم." }] },
+      { word: "ingredient", meaning: "مواد اولیه", en: "We need five ingredients.", fa: "ما به پنج ماده‌ی اولیه نیاز داریم.", icon: "🧺", examples: [{ en: "We need five ingredients.", fa: "ما به پنج ماده‌ی اولیه نیاز داریم." }, { en: "Salt is the main ingredient here.", fa: "نمک ماده اصلی اینجاست." }, { en: "Read the ingredients first.", fa: "اول مواد اولیه را بخوان." }] },
+      { word: "taste", meaning: "مزه", en: "The taste is amazing.", fa: "مزه‌اش شگفت‌انگیز است.", icon: "👅", examples: [{ en: "The taste is amazing.", fa: "مزه‌اش شگفت‌انگیز است." }, { en: "I love the taste of fresh bread.", fa: "من عاشق مزه نان تازه هستم." }, { en: "The soup has a strange taste.", fa: "سوپ مزه عجیبی دارد." }] },
+      { word: "smell", meaning: "بویایی", en: "The smell of coffee is nice.", fa: "بوی قهوه خوب است.", icon: "👃", examples: [{ en: "The smell of coffee is nice.", fa: "بوی قهوه خوب است." }, { en: "The smell of bread fills the kitchen.", fa: "بوی نان آشپزخانه را پر کرده است." }, { en: "This fish has a strong smell.", fa: "این ماهی بوی تندی دارد." }] },
+      { word: "bite", meaning: "گاز گرفتن", en: "Take a small bite first.", fa: "اول یک گاز کوچک بزن.", icon: "🦷", examples: [{ en: "Take a small bite first.", fa: "اول یک گاز کوچک بزن." }, { en: "He took a big bite of the burger.", fa: "او یک گاز بزرگ از برگر گرفت." }, { en: "Every bite tastes better.", fa: "هر گاز مزه بهتری دارد." }] },
+      { word: "chew", meaning: "جویدن", en: "Chew your food slowly.", fa: "غذایت را آرام بجو.", icon: "😬", examples: [{ en: "Chew your food slowly.", fa: "غذایت را آرام بجو." }, { en: "Chew well before you swallow.", fa: "قبل از قورت دادن خوب بجو." }, { en: "The meat is hard to chew.", fa: "گوشت سخت جویده می‌شود." }] },
+      { word: "swallow", meaning: "قورت دادن", en: "Swallow the pill with water.", fa: "قرص را با آب قورت بده.", icon: "💧", examples: [{ en: "Swallow the pill with water.", fa: "قرص را با آب قورت بده." }, { en: "Do not swallow too fast.", fa: "خیلی سریع قورت نده." }, { en: "He swallowed the water quickly.", fa: "او آب را سریع قورت داد." }] },
+      { word: "sip", meaning: "جرعه نوشیدن", en: "She sips her tea slowly.", fa: "او چایش را آرام جرعه می‌نوشد.", icon: "🥃", examples: [{ en: "She sips her tea slowly.", fa: "او چایش را آرام جرعه می‌نوشد." }, { en: "Take a small sip first.", fa: "اول یک جرعه کوچک بکش." }, { en: "He sipped his coffee quietly.", fa: "او قهوه‌اش را به‌آرامی جرعه کشید." }] },
+      { word: "cook", meaning: "آشپزی کردن", en: "I cook dinner every night.", fa: "من هر شب شام می‌پزم.", icon: "👨‍🍳", examples: [{ en: "I cook dinner every night.", fa: "من هر شب شام می‌پزم." }, { en: "She learned to cook from her mom.", fa: "او آشپزی را از مادرش یاد گرفت." }, { en: "We cook together on Fridays.", fa: "ما جمعه‌ها با هم آشپزی می‌کنیم." }] },
+      { word: "chef", meaning: "سرآشپز", en: "The chef makes great food.", fa: "سرآشپز غذای عالی درست می‌کند.", icon: "👩‍🍳", examples: [{ en: "The chef makes great food.", fa: "سرآشپز غذای عالی درست می‌کند." }, { en: "The chef worked in Paris.", fa: "سرآشپز در پاریس کار کرده است." }, { en: "Ask the chef for the recipe.", fa: "از سرآشپز دستور پخت را بخواه." }] },
+      { word: "bottle", meaning: "بطری", en: "The bottle is full of water.", fa: "بطری پر از آب است.", icon: "🍼", examples: [{ en: "The bottle is full of water.", fa: "بطری پر از آب است." }, { en: "She drank from the bottle.", fa: "او از بطری نوشید." }, { en: "Bring two bottles of water.", fa: "دو بطری آب بیاور." }] },
+      { word: "bowl", meaning: "کاسه", en: "Put the soup in a bowl.", fa: "سوپ را در کاسه بگذار.", icon: "🥣", examples: [{ en: "Put the soup in a bowl.", fa: "سوپ را در کاسه بگذار." }, { en: "She filled the bowl with salad.", fa: "او کاسه را با سالاد پر کرد." }, { en: "The bowl is too small for soup.", fa: "کاسه برای سوپ خیلی کوچک است." }] },
+      { word: "napkin", meaning: "دستمال سفره", en: "I need a napkin please.", fa: "من یک دستمال سفره لطفاً می‌خوام.", icon: "🧻", examples: [{ en: "I need a napkin please.", fa: "من یک دستمال سفره لطفاً می‌خوام." }, { en: "There are napkins on the table.", fa: "دستمال سفره روی میز هست." }, { en: "She folded the napkin nicely.", fa: "او دستمال سفره را قشنگ تا کرد." }] },
+      { word: "herb", meaning: "سبزی", en: "Fresh herbs make food better.", fa: "سبزی تازه غذا را بهتر می‌کند.", icon: "🍃", examples: [{ en: "Fresh herbs make food better.", fa: "سبزی تازه غذا را بهتر می‌کند." }, { en: "She grows herbs on the balcony.", fa: "او در بالکن سبزی پرورش می‌دهد." }, { en: "Add fresh herbs at the end.", fa: "در آخر سبزی تازه اضافه کن." }] },
+      { word: "bean", meaning: "لوبیا", en: "Beans are good for you.", fa: "لوبیا برای شما خوب است.", icon: "🥫", examples: [{ en: "Beans are good for you.", fa: "لوبیا برای شما خوب است." }, { en: "The beans need more time to cook.", fa: "لوبیا به زمان بیشتری برای پخت نیاز دارد." }, { en: "She made bean soup.", fa: "او سوپ لوبیا درست کرد." }] },
+      { word: "sausage", meaning: "سوسیس", en: "I had a sausage for breakfast.", fa: "من صبحانه سوسیس خوردم.", icon: "🌭", examples: [{ en: "I had a sausage for breakfast.", fa: "من صبحانه سوسیس خوردم." }, { en: "The sausages are on the grill.", fa: "سوسیس‌ها روی گریل هستند." }, { en: "He bought sausages from the store.", fa: "او از مغازه سوسیس خرید." }] },
+      { word: "bacon", meaning: "بیکن", en: "He likes bacon and eggs.", fa: "او بیکن و تخم‌مرغ دوست دارد.", icon: "🥓", examples: [{ en: "He likes bacon and eggs.", fa: "او بیکن و تخم‌مرغ دوست دارد." }, { en: "The bacon smells smoky.", fa: "بیکن بوی دودی می‌دهد." }, { en: "She cooked bacon for breakfast.", fa: "او برای صبحانه بیکن پخت." }] },
+      { word: "burger", meaning: "برگر", en: "The burger is very big.", fa: "برگر خیلی بزرگ است.", icon: "🍔", examples: [{ en: "The burger is very big.", fa: "برگر خیلی بزرگ است." }, { en: "She made burgers at home.", fa: "او در خانه برگر درست کرد." }, { en: "The burger comes with fries.", fa: "برگر با سیب‌زمینی سرخ‌کرده سرو می‌شود." }] },
+      { word: "fries", meaning: "سیب‌زمینی سرخ‌کرده", en: "I want fries with that.", fa: "من با آن سیب‌زمینی سرخ‌کرده می‌خوام.", icon: "🍟", examples: [{ en: "I want fries with that.", fa: "من با آن سیب‌زمینی سرخ‌کرده می‌خوام." }, { en: "The fries are still hot.", fa: "سیب‌زمینی‌های سرخ‌کرده هنوز داغ هستند." }, { en: "Kids always order fries.", fa: "بچه‌ها همیشه سیب‌زمینی سرخ‌کرده سفارش می‌دهند." }] },
+      { word: "taco", meaning: "تاکو", en: "Tacos are from Mexico.", fa: "تاکو از مکزیک است.", icon: "🌮", examples: [{ en: "Tacos are from Mexico.", fa: "تاکو از مکزیک است." }, { en: "I ate three tacos for lunch.", fa: "برای ناهار سه تاکو خوردم." }, { en: "The taco has beef and cheese.", fa: "تاکو گوشت گاو و پنیر دارد." }] },
+      { word: "burrito", meaning: "بوریتو", en: "The burrito has beans and rice.", fa: "بوریتو لوبیا و برنج دارد.", icon: "🌯", examples: [{ en: "The burrito has beans and rice.", fa: "بوریتو لوبیا و برنج دارد." }, { en: "She ordered a chicken burrito.", fa: "او یک بوریتوی مرغ سفارش داد." }, { en: "The burrito is very filling.", fa: "بوریتو خیلی سیرکننده است." }] },
+    ]
+  },
+  work: {
+    name: "کار و اداره",
+    words: [
+      { word: "office", meaning: "اداره", en: "I work in a big office.", fa: "من در یک اداره بزرگ کار می‌کنم.", icon: "🏢", examples: [{ en: "I work in a big office.", fa: "من در یک اداره بزرگ کار می‌کنم." }, { en: "The office opens at nine.", fa: "اداره ساعت نه باز می‌شود." }, { en: "Her office is on the second floor.", fa: "اداره‌اش در طبقه دوم است." }] },
+      { word: "job", meaning: "شغل", en: "She has a good job.", fa: "او شغل خوبی دارد.", icon: "💼", examples: [{ en: "She has a good job.", fa: "او شغل خوبی دارد." }, { en: "I love my new job.", fa: "من عاشق شغل جدیدم هستم." }, { en: "He found a job near home.", fa: "او یک شغل نزدیک خانه پیدا کرد." }] },
+      { word: "meeting", meaning: "جلسه", en: "We have a meeting at 10 AM.", fa: "ما ساعت ۱۰ صبح جلسه داریم.", icon: "🗣️", examples: [{ en: "We have a meeting at 10 AM.", fa: "ما ساعت ۱۰ صبح جلسه داریم." }, { en: "The meeting was very short.", fa: "جلسه خیلی کوتاه بود." }, { en: "Do not be late for the meeting.", fa: "برای جلسه دیر نکن." }] },
+      { word: "boss", meaning: "رئیس", en: "My boss is very kind.", fa: "رئیس من خیلی مهربان است.", icon: "🧑‍💼", examples: [{ en: "My boss is very kind.", fa: "رئیس من خیلی مهربان است." }, { en: "The boss called me this morning.", fa: "رئیس امروز صبح به من زنگ زد." }, { en: "Her boss travels a lot.", fa: "رئیسش زیاد سفر می‌کند." }] },
+      { word: "colleague", meaning: "همکار", en: "He is my colleague.", fa: "او همکار من است.", icon: "🧑‍🤝‍🧑", examples: [{ en: "He is my colleague.", fa: "او همکار من است." }, { en: "My colleagues helped me today.", fa: "همکارانم امروز به من کمک کردند." }, { en: "She had lunch with a colleague.", fa: "او با یک همکار ناهار خورد." }] },
+      { word: "email", meaning: "ایمیل", en: "Please send me an email.", fa: "لطفاً برای من ایمیل بفرست.", icon: "📧", examples: [{ en: "Please send me an email.", fa: "لطفاً برای من ایمیل بفرست." }, { en: "I check my email twice a day.", fa: "من روزی دو بار ایمیلم را چک می‌کنم." }, { en: "The email arrived an hour ago.", fa: "ایمیل یک ساعت پیش رسید." }] },
+      { word: "laptop", meaning: "لپ‌تاپ", en: "I use my laptop for work.", fa: "من از لپ‌تاپم برای کار استفاده می‌کنم.", icon: "💻", examples: [{ en: "I use my laptop for work.", fa: "من از لپ‌تاپم برای کار استفاده می‌کنم." }, { en: "My laptop is charging.", fa: "لپ‌تاپم در حال شارژ است." }, { en: "She carries her laptop everywhere.", fa: "او لپ‌تاپش را همه‌جا می‌برد." }] },
+      { word: "desk", meaning: "میز کار", en: "There is a lamp on my desk.", fa: "روی میز کارم یک چراغ هست.", icon: "🗂️", examples: [{ en: "There is a lamp on my desk.", fa: "روی میز کارم یک چراغ هست." }, { en: "My desk is next to the window.", fa: "میز کارم کنار پنجره است." }, { en: "Keep your desk clean.", fa: "میز کارت را تمیز نگه دار." }] },
+      { word: "printer", meaning: "پرینتر", en: "The printer is out of paper.", fa: "پرینتر کاغذ ندارد.", icon: "🖨️", examples: [{ en: "The printer is out of paper.", fa: "پرینتر کاغذ ندارد." }, { en: "The printer works again.", fa: "پرینتر دوباره کار می‌کند." }, { en: "She bought a new printer.", fa: "او یک پرینتر جدید خرید." }] },
+      { word: "call", meaning: "تماس", en: "I need to make a phone call.", fa: "من باید یک تماس تلفنی بگیرم.", icon: "📞", examples: [{ en: "I need to make a phone call.", fa: "من باید یک تماس تلفنی بگیرم." }, { en: "The call lasted ten minutes.", fa: "تماس ده دقیقه طول کشید." }, { en: "I missed your call, sorry.", fa: "تماست را از دست دادم، ببخشید." }] },
+      { word: "salary", meaning: "حقوق", en: "He gets his salary every month.", fa: "او هر ماه حقوقش را می‌گیرد.", icon: "💵", examples: [{ en: "He gets his salary every month.", fa: "او هر ماه حقوقش را می‌گیرد." }, { en: "The salary goes to my bank account.", fa: "حقوق به حساب بانکی‌ام می‌رود." }, { en: "She is happy with her salary.", fa: "او از حقوقش راضی است." }] },
+      { word: "schedule", meaning: "برنامه", en: "Check your schedule for tomorrow.", fa: "برنامه‌ی فردایت را بررسی کن.", icon: "🗓️", examples: [{ en: "Check your schedule for tomorrow.", fa: "برنامه‌ی فردایت را بررسی کن." }, { en: "My schedule is full this week.", fa: "برنامه‌ام این هفته پر است." }, { en: "The schedule changed today.", fa: "برنامه امروز عوض شد." }] },
+      { word: "deadline", meaning: "مهلت", en: "The deadline is next Friday.", fa: "مهلت تا جمعه آینده است.", icon: "⏳", examples: [{ en: "The deadline is next Friday.", fa: "مهلت تا جمعه آینده است." }, { en: "We must finish before the deadline.", fa: "ما باید قبل از مهلت تمام کنیم." }, { en: "The deadline makes me nervous.", fa: "مهلت من را نگران می‌کند." }] },
+      { word: "project", meaning: "پروژه", en: "We finished the project on time.", fa: "ما پروژه را به‌موقع تمام کردیم.", icon: "📊", examples: [{ en: "We finished the project on time.", fa: "ما پروژه را به‌موقع تمام کردیم." }, { en: "This project needs two more weeks.", fa: "این پروژه به دو هفته دیگر نیاز دارد." }, { en: "She leads the new project.", fa: "او پروژه جدید را رهبری می‌کند." }] },
+      { word: "document", meaning: "سند", en: "Please sign this document.", fa: "لطفاً این سند را امضا کن.", icon: "📄", examples: [{ en: "Please sign this document.", fa: "لطفاً این سند را امضا کن." }, { en: "The document is on your desk.", fa: "سند روی میزت است." }, { en: "Read the document carefully.", fa: "سند را با دقت بخوان." }] },
+      { word: "interview", meaning: "مصاحبه", en: "She has a job interview tomorrow.", fa: "او فردا مصاحبه‌ی شغلی دارد.", icon: "📝", examples: [{ en: "She has a job interview tomorrow.", fa: "او فردا مصاحبه‌ی شغلی دارد." }, { en: "The interview went very well.", fa: "مصاحبه خیلی خوب پیش رفت." }, { en: "He prepared for the interview all week.", fa: "او تمام هفته برای مصاحبه آماده شد." }] },
+      { word: "contract", meaning: "قرارداد", en: "They signed the contract yesterday.", fa: "آنها دیروز قرارداد را امضا کردند.", icon: "✍️", examples: [{ en: "They signed the contract yesterday.", fa: "آنها دیروز قرارداد را امضا کردند." }, { en: "The contract is for one year.", fa: "قرارداد برای یک سال است." }, { en: "Read the contract before you sign.", fa: "قبل از امضا قرارداد را بخوان." }] },
+      { word: "break", meaning: "استراحت", en: "Let's take a short break.", fa: "بیایید یک استراحت کوتاه بکنیم.", icon: "☕", examples: [{ en: "Let's take a short break.", fa: "بیایید یک استراحت کوتاه بکنیم." }, { en: "I drink tea on my break.", fa: "من در استراحت چای می‌نوشم." }, { en: "The break is only fifteen minutes.", fa: "استراحت فقط پانزده دقیقه است." }] },
+      { word: "team", meaning: "تیم", en: "Our team works very well together.", fa: "تیم ما خیلی خوب با هم کار می‌کند.", icon: "🤝", examples: [{ en: "Our team works very well together.", fa: "تیم ما خیلی خوب با هم کار می‌کند." }, { en: "Our team won the award.", fa: "تیم ما جایزه را برد." }, { en: "She joined the team last year.", fa: "او سال پیش به تیم پیوست." }] },
+      { word: "promotion", meaning: "ارتقا", en: "He got a promotion last month.", fa: "او ماه گذشته ترفیع گرفت.", icon: "📈", examples: [{ en: "He got a promotion last month.", fa: "او ماه گذشته ترفیع گرفت." }, { en: "The promotion made him happy.", fa: "ارتقا او را خوشحال کرد." }, { en: "She worked hard for the promotion.", fa: "او برای ارتقا سخت کار کرد." }] },
+      { word: "computer", meaning: "کامپیوتر", en: "I use a computer at work.", fa: "من در محل کار از کامپیوتر استفاده می‌کنم.", icon: "🖥️", examples: [{ en: "I use a computer at work.", fa: "من در محل کار از کامپیوتر استفاده می‌کنم." }, { en: "The computer needs an update.", fa: "کامپیوتر به به‌روزرسانی نیاز دارد." }, { en: "He works on the computer all day.", fa: "او تمام روز با کامپیوتر کار می‌کند." }] },
+      { word: "phone", meaning: "تلفن", en: "My phone is on the desk.", fa: "تلفن من روی میز است.", icon: "📱", examples: [{ en: "My phone is on the desk.", fa: "تلفن من روی میز است." }, { en: "The phone rang twice.", fa: "تلفن دو بار زنگ زد." }, { en: "Put your phone on silent in meetings.", fa: "در جلسه‌ها تلفنت را بی‌صدا کن." }] },
+      { word: "paper", meaning: "کاغذ", en: "I need more paper for the printer.", fa: "من برای پرینتر کاغذ بیشتری لازم دارم.", icon: "📃", examples: [{ en: "I need more paper for the printer.", fa: "من برای پرینتر کاغذ بیشتری لازم دارم." }, { en: "The paper is next to the printer.", fa: "کاغذ کنار پرینتر است." }, { en: "Write your name on the paper.", fa: "اسمت را روی کاغذ بنویس." }] },
+      { word: "pen", meaning: "خودکار", en: "Can I borrow your pen?", fa: "می‌توانم خودکارت را قرض بگیرم؟", icon: "🖊️", examples: [{ en: "Can I borrow your pen?", fa: "می‌توانم خودکارت را قرض بگیرم؟" }, { en: "The pen writes smoothly.", fa: "این خودکار روان می‌نویسد." }, { en: "She keeps a pen in her bag.", fa: "او در کیفش یک خودکار نگه می‌دارد." }] },
+      { word: "pencil", meaning: "مداد", en: "I write with a pencil.", fa: "من با مداد می‌نویسم.", icon: "✏️", examples: [{ en: "I write with a pencil.", fa: "من با مداد می‌نویسم." }, { en: "The pencil needs a sharpener.", fa: "مداد به تراش نیاز دارد." }, { en: "Draw it with a pencil first.", fa: "اول آن را با مداد بکش." }] },
+      { word: "folder", meaning: "پوشه", en: "Put the papers in the folder.", fa: "کاغذها را داخل پوشه بگذار.", icon: "📁", examples: [{ en: "Put the papers in the folder.", fa: "کاغذها را داخل پوشه بگذار." }, { en: "The blue folder has the contracts.", fa: "پوشه آبی قراردادها را دارد." }, { en: "She labeled the folder carefully.", fa: "او پوشه را با دقت برچسب زد." }] },
+      { word: "file", meaning: "پرونده", en: "She opened the file on her computer.", fa: "او پرونده را روی کامپیوترش باز کرد.", icon: "🗃️", examples: [{ en: "She opened the file on her computer.", fa: "او پرونده را روی کامپیوترش باز کرد." }, { en: "The file is too big to send.", fa: "پرونده (فایل) برای فرستادن خیلی بزرگ است." }, { en: "Save the file before closing.", fa: "قبل از بستن فایل را ذخیره کن." }] },
+      { word: "chair", meaning: "صندلی", en: "This chair is very comfortable.", fa: "این صندلی خیلی راحت است.", icon: "🪑", examples: [{ en: "This chair is very comfortable.", fa: "این صندلی خیلی راحت است." }, { en: "The office chair spins around.", fa: "صندلی اداره می‌چرخد." }, { en: "He sat on the chair all day.", fa: "او تمام روز روی صندلی نشست." }] },
+      { word: "table", meaning: "میز", en: "We sat around the table.", fa: "ما دور میز نشستیم.", icon: "🍽️", examples: [{ en: "We sat around the table.", fa: "ما دور میز نشستیم." }, { en: "The meeting table is round.", fa: "میز جلسه گرد است." }, { en: "Put the files on the table.", fa: "پرونده‌ها را روی میز بگذار." }] },
+      { word: "window", meaning: "پنجره", en: "Please open the window.", fa: "لطفاً پنجره را باز کن.", icon: "🪟", examples: [{ en: "Please open the window.", fa: "لطفاً پنجره را باز کن." }, { en: "The window faces the street.", fa: "پنجره رو به خیابان است." }, { en: "Rain hit the window all day.", fa: "باران تمام روز به پنجره زد." }] },
+      { word: "door", meaning: "در", en: "Close the door, please.", fa: "لطفاً در را ببند.", icon: "🚪", examples: [{ en: "Close the door, please.", fa: "لطفاً در را ببند." }, { en: "The door was locked.", fa: "در قفل بود." }, { en: "Knock on the door first.", fa: "اول در را بزن." }] },
+      { word: "building", meaning: "ساختمان", en: "Our office is in a tall building.", fa: "دفتر ما در یک ساختمان بلند است.", icon: "🏙️", examples: [{ en: "Our office is in a tall building.", fa: "دفتر ما در یک ساختمان بلند است." }, { en: "The building has twenty floors.", fa: "ساختمان بیست طبقه دارد." }, { en: "They work in the same building.", fa: "آن‌ها در یک ساختمان کار می‌کنند." }] },
+      { word: "company", meaning: "شرکت", en: "I work for a big company.", fa: "من برای یک شرکت بزرگ کار می‌کنم.", icon: "🏬", examples: [{ en: "I work for a big company.", fa: "من برای یک شرکت بزرگ کار می‌کنم." }, { en: "The company has fifty workers.", fa: "شرکت پنجاه کارگر دارد." }, { en: "She started her own company.", fa: "او شرکت خودش را راه انداخت." }] },
+      { word: "business", meaning: "کسب‌وکار", en: "She has her own business.", fa: "او کسب‌وکار خودش را دارد.", icon: "💰", examples: [{ en: "She has her own business.", fa: "او کسب‌وکار خودش را دارد." }, { en: "Business is slow this month.", fa: "کسب‌وکار این ماه کند است." }, { en: "He wants to grow his business.", fa: "او می‌خواهد کسب‌وکارش را بزرگ کند." }] },
+      { word: "manager", meaning: "مدیر", en: "The manager is in a meeting.", fa: "مدیر در جلسه است.", icon: "🧑‍💼", examples: [{ en: "The manager is in a meeting.", fa: "مدیر در جلسه است." }, { en: "The manager approved my vacation.", fa: "مدیر مرخصی‌ام را تأیید کرد." }, { en: "Talk to your manager first.", fa: "اول با مدیرت صحبت کن." }] },
+      { word: "employee", meaning: "کارمند", en: "Every employee has a badge.", fa: "هر کارمندی یک کارت شناسایی دارد.", icon: "👩‍💻", examples: [{ en: "Every employee has a badge.", fa: "هر کارمندی یک کارت شناسایی دارد." }, { en: "The new employee started today.", fa: "کارمند جدید امروز شروع کرد." }, { en: "Every employee gets a laptop.", fa: "هر کارمند یک لپ‌تاپ می‌گیرد." }] },
+      { word: "employer", meaning: "کارفرما", en: "My employer pays a good salary.", fa: "کارفرمای من حقوق خوبی می‌دهد.", icon: "🤵", examples: [{ en: "My employer pays a good salary.", fa: "کارفرمای من حقوق خوبی می‌دهد." }, { en: "The employer offers free lunch.", fa: "کارفرما ناهار رایگان می‌دهد." }, { en: "A good employer listens to workers.", fa: "یک کارفرمای خوب به کارگران گوش می‌دهد." }] },
+      { word: "customer", meaning: "مشتری", en: "The customer is waiting outside.", fa: "مشتری بیرون منتظر است.", icon: "🙋", examples: [{ en: "The customer is waiting outside.", fa: "مشتری بیرون منتظر است." }, { en: "The customer asked for a refund.", fa: "مشتری درخواست بازپرداخت کرد." }, { en: "Be polite to every customer.", fa: "به هر مشتری مؤدب باش." }] },
+      { word: "client", meaning: "مشتری", en: "We have a new client this week.", fa: "ما این هفته یک مشتری جدید داریم.", icon: "👤", examples: [{ en: "We have a new client this week.", fa: "ما این هفته یک مشتری جدید داریم." }, { en: "The client liked our presentation.", fa: "مشتری از ارائه ما خوشش آمد." }, { en: "We call our clients every week.", fa: "ما هر هفته به مشتریانمان زنگ می‌زنیم." }] },
+      { word: "staff", meaning: "کارکنان", en: "All staff must wear an ID card.", fa: "همه کارکنان باید کارت شناسایی داشته باشند.", icon: "👥", examples: [{ en: "All staff must wear an ID card.", fa: "همه کارکنان باید کارت شناسایی داشته باشند." }, { en: "The staff meets every Monday.", fa: "کارکنان هر دوشنبه جلسه دارند." }, { en: "Our staff is very friendly.", fa: "کارکنان ما خیلی صمیمی هستند." }] },
+      { word: "worker", meaning: "کارگر", en: "The workers start at 8 AM.", fa: "کارگران ساعت ۸ صبح شروع می‌کنند.", icon: "👷", examples: [{ en: "The workers start at 8 AM.", fa: "کارگران ساعت ۸ صبح شروع می‌کنند." }, { en: "Each worker has a desk.", fa: "هر کارگر یک میز دارد." }, { en: "The workers finished early today.", fa: "کارگران امروز زود تمام کردند." }] },
+      { word: "task", meaning: "وظیفه", en: "I have three tasks to finish today.", fa: "من امروز سه وظیفه دارم که باید تمام کنم.", icon: "✅", examples: [{ en: "I have three tasks to finish today.", fa: "من امروز سه وظیفه دارم که باید تمام کنم." }, { en: "Finish this task by noon.", fa: "این وظیفه را تا ظهر تمام کن." }, { en: "The task was easier than I thought.", fa: "وظیفه از آنچه فکر می‌کردم آسان‌تر بود." }] },
+      { word: "report", meaning: "گزارش", en: "Please write a report about the project.", fa: "لطفاً درباره پروژه یک گزارش بنویس.", icon: "📊", examples: [{ en: "Please write a report about the project.", fa: "لطفاً درباره پروژه یک گزارش بنویس." }, { en: "The report is ten pages long.", fa: "گزارش ده صفحه است." }, { en: "She sent the report yesterday.", fa: "او گزارش را دیروز فرستاد." }] },
+      { word: "plan", meaning: "برنامه", en: "We need a new plan for next month.", fa: "ما برای ماه آینده به یک برنامه جدید نیاز داریم.", icon: "🗺️", examples: [{ en: "We need a new plan for next month.", fa: "ما برای ماه آینده به یک برنامه جدید نیاز داریم." }, { en: "The plan worked perfectly.", fa: "برنامه کاملاً خوب جواب داد." }, { en: "Tell me about your plan.", fa: "درباره برنامه‌ات به من بگو." }] },
+      { word: "idea", meaning: "ایده", en: "That's a great idea!", fa: "این ایده عالی‌ای است!", icon: "💡", examples: [{ en: "That's a great idea!", fa: "این ایده عالی‌ای است!" }, { en: "She shared her idea with the team.", fa: "او ایده‌اش را با تیم در میان گذاشت." }, { en: "I like your idea a lot.", fa: "من ایده‌ات را خیلی دوست دارم." }] },
+      { word: "problem", meaning: "مشکل", en: "We found a problem with the schedule.", fa: "ما یک مشکل در برنامه پیدا کردیم.", icon: "❗", examples: [{ en: "We found a problem with the schedule.", fa: "ما یک مشکل در برنامه پیدا کردیم." }, { en: "We solved the problem together.", fa: "ما مشکل را با هم حل کردیم." }, { en: "Tell me about the problem.", fa: "درباره مشکل به من بگو." }] },
+      { word: "solution", meaning: "راه‌حل", en: "He found a good solution.", fa: "او یک راه‌حل خوب پیدا کرد.", icon: "🧩", examples: [{ en: "He found a good solution.", fa: "او یک راه‌حل خوب پیدا کرد." }, { en: "The solution was simple.", fa: "راه‌حل ساده بود." }, { en: "We need a solution by Friday.", fa: "ما تا جمعه به یک راه‌حل نیاز داریم." }] },
+      { word: "decision", meaning: "تصمیم", en: "The manager made a fast decision.", fa: "مدیر یک تصمیم سریع گرفت.", icon: "⚖️", examples: [{ en: "The manager made a fast decision.", fa: "مدیر یک تصمیم سریع گرفت." }, { en: "The decision was hard to make.", fa: "تصمیم گرفتن سخت بود." }, { en: "I agree with your decision.", fa: "من با تصمیم تو موافقم." }] },
+      { word: "answer", meaning: "پاسخ", en: "I don't know the answer.", fa: "من پاسخ را نمی‌دانم.", icon: "💬", examples: [{ en: "I don't know the answer.", fa: "من پاسخ را نمی‌دانم." }, { en: "Her answer was correct.", fa: "پاسخ او درست بود." }, { en: "Nobody knew the answer.", fa: "هیچ‌کس پاسخ را نمی‌دانست." }] },
+      { word: "question", meaning: "سؤال", en: "Do you have a question?", fa: "سؤالی داری؟", icon: "❓", examples: [{ en: "Do you have a question?", fa: "سؤالی داری؟" }, { en: "He asked a good question.", fa: "او یک سؤال خوب پرسید." }, { en: "The question was easy.", fa: "سؤال آسان بود." }] },
+      { word: "message", meaning: "پیام", en: "I got a message from my boss.", fa: "من از رئیسم پیامی دریافت کردم.", icon: "✉️", examples: [{ en: "I got a message from my boss.", fa: "من از رئیسم پیامی دریافت کردم." }, { en: "She sent me a short message.", fa: "او برایم یک پیام کوتاه فرستاد." }, { en: "Did you read my message?", fa: "پیامم را خواندی؟" }] },
+      { word: "letter", meaning: "نامه", en: "She wrote a letter to the manager.", fa: "او به مدیر نامه‌ای نوشت.", icon: "💌", examples: [{ en: "She wrote a letter to the manager.", fa: "او به مدیر نامه‌ای نوشت." }, { en: "The letter has good news.", fa: "نامه خبرهای خوبی دارد." }, { en: "He mailed the letter today.", fa: "او امروز نامه را پست کرد." }] },
+      { word: "envelope", meaning: "پاکت‌نامه", en: "Put the letter in the envelope.", fa: "نامه را داخل پاکت بگذار.", icon: "📩", examples: [{ en: "Put the letter in the envelope.", fa: "نامه را داخل پاکت بگذار." }, { en: "The envelope is white.", fa: "پاکت‌نامه سفید است." }, { en: "She wrote the address on the envelope.", fa: "او آدرس را روی پاکت‌نامه نوشت." }] },
+      { word: "address", meaning: "آدرس", en: "What is the office address?", fa: "آدرس دفتر چیست؟", icon: "🏠", examples: [{ en: "What is the office address?", fa: "آدرس دفتر چیست؟" }, { en: "Send it to my work address.", fa: "آن را به آدرس محل کارم بفرست." }, { en: "I wrote down his address.", fa: "من آدرس او را یادداشت کردم." }] },
+      { word: "copy", meaning: "کپی", en: "Can you make a copy of this?", fa: "می‌توانی از این یک کپی بگیری؟", icon: "📋", examples: [{ en: "Can you make a copy of this?", fa: "می‌توانی از این یک کپی بگیری؟" }, { en: "The copy is not clear.", fa: "کپی واضح نیست." }, { en: "She made three copies of the report.", fa: "او از گزارش سه کپی گرفت." }] },
+      { word: "scanner", meaning: "اسکنر", en: "The scanner is next to the printer.", fa: "اسکنر کنار پرینتر است.", icon: "🖨️", examples: [{ en: "The scanner is next to the printer.", fa: "اسکنر کنار پرینتر است." }, { en: "The scanner is broken today.", fa: "اسکنر امروز خراب است." }, { en: "Use the scanner for this document.", fa: "برای این سند از اسکنر استفاده کن." }] },
+      { word: "keyboard", meaning: "صفحه‌کلید", en: "My keyboard is not working.", fa: "صفحه‌کلید من کار نمی‌کند.", icon: "⌨️", examples: [{ en: "My keyboard is not working.", fa: "صفحه‌کلید من کار نمی‌کند." }, { en: "The keyboard is new and fast.", fa: "صفحه‌کلید نو و سریع است." }, { en: "She types fast on the keyboard.", fa: "او روی صفحه‌کلید سریع تایپ می‌کند." }] },
+      { word: "mouse", meaning: "ماوس", en: "The mouse is under the desk.", fa: "ماوس زیر میز است.", icon: "🖱️", examples: [{ en: "The mouse is under the desk.", fa: "ماوس زیر میز است." }, { en: "The mouse stopped working.", fa: "ماوس از کار افتاد." }, { en: "Click the mouse twice.", fa: "دو بار با ماوس کلیک کن." }] },
+      { word: "screen", meaning: "صفحه‌نمایش", en: "The screen is too small.", fa: "صفحه‌نمایش خیلی کوچک است.", icon: "🖥️", examples: [{ en: "The screen is too small.", fa: "صفحه‌نمایش خیلی کوچک است." }, { en: "The screen shows the report.", fa: "صفحه‌نمایش گزارش را نشان می‌دهد." }, { en: "Do not touch the screen.", fa: "به صفحه‌نمایش دست نزن." }] },
+      { word: "internet", meaning: "اینترنت", en: "The internet is very slow today.", fa: "اینترنت امروز خیلی کند است.", icon: "🌐", examples: [{ en: "The internet is very slow today.", fa: "اینترنت امروز خیلی کند است." }, { en: "We need internet for the meeting.", fa: "برای جلسه به اینترنت نیاز داریم." }, { en: "The internet is fast here.", fa: "اینترنت اینجا سریع است." }] },
+      { word: "password", meaning: "رمز عبور", en: "I forgot my password.", fa: "رمز عبورم را فراموش کردم.", icon: "🔑", examples: [{ en: "I forgot my password.", fa: "رمز عبورم را فراموش کردم." }, { en: "Change your password every month.", fa: "رمز عبورت را هر ماه عوض کن." }, { en: "The password is too short.", fa: "رمز عبور خیلی کوتاه است." }] },
+      { word: "cabinet", meaning: "کمد", en: "The files are in the cabinet.", fa: "پرونده‌ها داخل کمد هستند.", icon: "🗄️", examples: [{ en: "The files are in the cabinet.", fa: "پرونده‌ها داخل کمد هستند." }, { en: "The cabinet is locked.", fa: "کمد قفل است." }, { en: "Put the folders in the cabinet.", fa: "پوشه‌ها را در کمد بگذار." }] },
+      { word: "stapler", meaning: "منگنه", en: "Can I use your stapler?", fa: "می‌توانم از منگنه‌ات استفاده کنم؟", icon: "🗜️", examples: [{ en: "Can I use your stapler?", fa: "می‌توانم از منگنه‌ات استفاده کنم؟" }, { en: "The stapler is on my desk.", fa: "منگنه روی میزم است." }, { en: "She stapled the papers together.", fa: "او کاغذها را با منگنه به هم دوخت." }] },
+      { word: "clip", meaning: "گیره کاغذ", en: "Use a clip for these papers.", fa: "برای این کاغذها از یک گیره استفاده کن.", icon: "📎", examples: [{ en: "Use a clip for these papers.", fa: "برای این کاغذها از یک گیره استفاده کن." }, { en: "The clip holds the papers.", fa: "گیره کاغذها را نگه می‌دارد." }, { en: "I need a bigger clip.", fa: "به یک گیره بزرگ‌تر نیاز دارم." }] },
+      { word: "calendar", meaning: "تقویم", en: "Check the calendar for the meeting date.", fa: "برای تاریخ جلسه تقویم را چک کن.", icon: "📅", examples: [{ en: "Check the calendar for the meeting date.", fa: "برای تاریخ جلسه تقویم را چک کن." }, { en: "The calendar shows the holidays.", fa: "تقویم تعطیلات را نشان می‌دهد." }, { en: "Mark the date on the calendar.", fa: "تاریخ را روی تقویم علامت بزن." }] },
+      { word: "clock", meaning: "ساعت", en: "The clock on the wall is broken.", fa: "ساعت روی دیوار خراب است.", icon: "🕐", examples: [{ en: "The clock on the wall is broken.", fa: "ساعت روی دیوار خراب است." }, { en: "The clock says three fifteen.", fa: "ساعت سه و ربع را نشان می‌دهد." }, { en: "A new clock hangs in the office.", fa: "یک ساعت جدید در اداره آویزان است." }] },
+      { word: "time", meaning: "زمان", en: "We don't have much time.", fa: "ما زمان زیادی نداریم.", icon: "⏰", examples: [{ en: "We don't have much time.", fa: "ما زمان زیادی نداریم." }, { en: "Time flies at work.", fa: "زمان سر کار می‌گذرد." }, { en: "What time is the meeting?", fa: "جلسه چه ساعتی است؟" }] },
+      { word: "morning", meaning: "صبح", en: "I check my email every morning.", fa: "من هر روز صبح ایمیلم را چک می‌کنم.", icon: "🌅", examples: [{ en: "I check my email every morning.", fa: "من هر روز صبح ایمیلم را چک می‌کنم." }, { en: "The office is quiet in the morning.", fa: "اداره صبح‌ها ساکت است." }, { en: "I arrive early every morning.", fa: "من هر صبح زود می‌رسم." }] },
+      { word: "afternoon", meaning: "بعدازظهر", en: "The meeting is in the afternoon.", fa: "جلسه بعدازظهر است.", icon: "🌇", examples: [{ en: "The meeting is in the afternoon.", fa: "جلسه بعدازظهر است." }, { en: "We drink coffee in the afternoon.", fa: "بعدازظهر قهوه می‌نوشیم." }, { en: "The afternoon is very busy.", fa: "بعدازظهر خیلی شلوغ است." }] },
+      { word: "lunch", meaning: "ناهار", en: "Let's have lunch together.", fa: "بیایید با هم ناهار بخوریم.", icon: "🍱", examples: [{ en: "Let's have lunch together.", fa: "بیایید با هم ناهار بخوریم." }, { en: "Lunch is at twelve thirty.", fa: "ناهار ساعت دوازده و نیم است." }, { en: "She eats lunch at her desk.", fa: "او سر میزش ناهار می‌خورد." }] },
+      { word: "coffee", meaning: "قهوه", en: "I need a cup of coffee.", fa: "من به یک فنجان قهوه نیاز دارم.", icon: "☕", examples: [{ en: "I need a cup of coffee.", fa: "من به یک فنجان قهوه نیاز دارم." }, { en: "The office coffee is strong.", fa: "قهوه اداره قوی است." }, { en: "We talked over coffee.", fa: "ما سر قهوه صحبت کردیم." }] },
+      { word: "tea", meaning: "چای", en: "Would you like some tea?", fa: "چای میل داری؟", icon: "🍵", examples: [{ en: "Would you like some tea?", fa: "چای میل داری؟" }, { en: "She drinks green tea at work.", fa: "او سر کار چای سبز می‌نوشد." }, { en: "Make some tea for the guests.", fa: "برای مهمان‌ها چای درست کن." }] },
+      { word: "week", meaning: "هفته", en: "I work five days a week.", fa: "من پنج روز در هفته کار می‌کنم.", icon: "📆", examples: [{ en: "I work five days a week.", fa: "من پنج روز در هفته کار می‌کنم." }, { en: "The week starts on Saturday here.", fa: "هفته اینجا شنبه شروع می‌شود." }, { en: "Next week is very busy.", fa: "هفته بعد خیلی شلوغ است." }] },
+      { word: "month", meaning: "ماه", en: "The report is due next month.", fa: "گزارش باید ماه آینده تحویل داده شود.", icon: "🌙", examples: [{ en: "The report is due next month.", fa: "گزارش باید ماه آینده تحویل داده شود." }, { en: "This month has thirty days.", fa: "این ماه سی روز دارد." }, { en: "She gets paid every month.", fa: "او هر ماه حقوق می‌گیرد." }] },
+      { word: "year", meaning: "سال", en: "She has worked here for one year.", fa: "او یک سال است اینجا کار می‌کند.", icon: "📆", examples: [{ en: "She has worked here for one year.", fa: "او یک سال است اینجا کار می‌کند." }, { en: "The company is ten years old.", fa: "شرکت ده ساله است." }, { en: "Happy New Year to the team!", fa: "سال نو مبارک تیم!" }] },
+      { word: "holiday", meaning: "تعطیلات", en: "The office is closed on holidays.", fa: "دفتر در تعطیلات بسته است.", icon: "🏖️", examples: [{ en: "The office is closed on holidays.", fa: "دفتر در تعطیلات بسته است." }, { en: "We get two holidays this month.", fa: "این ماه دو روز تعطیل داریم." }, { en: "She plans a trip for the holiday.", fa: "او برای تعطیلات سفر برنامه‌ریزی می‌کند." }] },
+      { word: "vacation", meaning: "مرخصی", en: "I'm going on vacation next week.", fa: "من هفته آینده به مرخصی می‌روم.", icon: "✈️", examples: [{ en: "I'm going on vacation next week.", fa: "من هفته آینده به مرخصی می‌روم." }, { en: "My vacation is in August.", fa: "مرخصی من در اوت است." }, { en: "He needs a long vacation.", fa: "او به یک مرخصی طولانی نیاز دارد." }] },
+      { word: "overtime", meaning: "اضافه‌کاری", en: "He worked overtime yesterday.", fa: "او دیروز اضافه‌کاری کرد.", icon: "🕰️", examples: [{ en: "He worked overtime yesterday.", fa: "او دیروز اضافه‌کاری کرد." }, { en: "The overtime pays extra.", fa: "اضافه‌کاری اضافه پرداخت می‌شود." }, { en: "She does overtime on Fridays.", fa: "او جمعه‌ها اضافه‌کاری می‌کند." }] },
+      { word: "bonus", meaning: "پاداش", en: "We got a bonus this year.", fa: "ما امسال پاداش گرفتیم.", icon: "🎁", examples: [{ en: "We got a bonus this year.", fa: "ما امسال پاداش گرفتیم." }, { en: "The bonus was a nice surprise.", fa: "پاداش یک سورپرایز قشنگ بود." }, { en: "He saved his bonus.", fa: "او پاداشش را پس‌انداز کرد." }] },
+      { word: "raise", meaning: "افزایش حقوق", en: "She asked for a raise.", fa: "او درخواست افزایش حقوق کرد.", icon: "💲", examples: [{ en: "She asked for a raise.", fa: "او درخواست افزایش حقوق کرد." }, { en: "The raise starts next month.", fa: "افزایش حقوق از ماه بعد شروع می‌شود." }, { en: "He got a raise for his hard work.", fa: "او برای کار سختش افزایش حقوق گرفت." }] },
+      { word: "training", meaning: "آموزش", en: "New employees need training.", fa: "کارمندان جدید به آموزش نیاز دارند.", icon: "🎓", examples: [{ en: "New employees need training.", fa: "کارمندان جدید به آموزش نیاز دارند." }, { en: "The training lasts two weeks.", fa: "آموزش دو هفته طول می‌کشد." }, { en: "I learned a lot in training.", fa: "در آموزش چیزهای زیادی یاد گرفتم." }] },
+      { word: "skill", meaning: "مهارت", en: "Communication is an important skill.", fa: "ارتباط یک مهارت مهم است.", icon: "🛠️", examples: [{ en: "Communication is an important skill.", fa: "ارتباط یک مهارت مهم است." }, { en: "Typing is a useful skill.", fa: "تایپ کردن مهارت کاربردی است." }, { en: "She improves her skills every year.", fa: "او هر سال مهارت‌هایش را بهبود می‌دهد." }] },
+      { word: "experience", meaning: "تجربه", en: "He has five years of experience.", fa: "او پنج سال تجربه دارد.", icon: "⭐", examples: [{ en: "He has five years of experience.", fa: "او پنج سال تجربه دارد." }, { en: "This job needs no experience.", fa: "این شغل تجربه نیاز ندارد." }, { en: "Tell me about your experience.", fa: "درباره تجربه‌ات به من بگو." }] },
+      { word: "resume", meaning: "رزومه", en: "Send your resume by email.", fa: "رزومه‌ات را با ایمیل بفرست.", icon: "📜", examples: [{ en: "Send your resume by email.", fa: "رزومه‌ات را با ایمیل بفرست." }, { en: "Her resume looks professional.", fa: "رزومه‌اش حرفه‌ای به نظر می‌رسد." }, { en: "Update your resume regularly.", fa: "رزومه‌ات را مرتب به‌روز کن." }] },
+      { word: "application", meaning: "درخواست", en: "I sent my job application yesterday.", fa: "من دیروز درخواست شغلی‌ام را فرستادم.", icon: "📥", examples: [{ en: "I sent my job application yesterday.", fa: "من دیروز درخواست شغلی‌ام را فرستادم." }, { en: "The application was accepted.", fa: "درخواست پذیرفته شد." }, { en: "Fill out the application online.", fa: "درخواست را آنلاین پر کن." }] },
+      { word: "position", meaning: "سمت شغلی", en: "This position is open now.", fa: "این سمت شغلی الان خالی است.", icon: "🎯", examples: [{ en: "This position is open now.", fa: "این سمت شغلی الان خالی است." }, { en: "She got the manager position.", fa: "او سمت مدیر را گرفت." }, { en: "This position needs experience.", fa: "این سمت به تجربه نیاز دارد." }] },
+      { word: "department", meaning: "بخش", en: "She works in the sales department.", fa: "او در بخش فروش کار می‌کند.", icon: "🏷️", examples: [{ en: "She works in the sales department.", fa: "او در بخش فروش کار می‌کند." }, { en: "Our department has ten people.", fa: "بخش ما ده نفر دارد." }, { en: "Which department do you work in?", fa: "تو در کدام بخش کار می‌کنی؟" }] },
+      { word: "floor", meaning: "طبقه", en: "Our office is on the third floor.", fa: "دفتر ما در طبقه سوم است.", icon: "🏢", examples: [{ en: "Our office is on the third floor.", fa: "دفتر ما در طبقه سوم است." }, { en: "The meeting is on the fifth floor.", fa: "جلسه در طبقه پنجم است." }, { en: "This floor is very quiet.", fa: "این طبقه خیلی ساکت است." }] },
+      { word: "elevator", meaning: "آسانسور", en: "Let's take the elevator.", fa: "بیایید با آسانسور برویم.", icon: "🛗", examples: [{ en: "Let's take the elevator.", fa: "بیایید با آسانسور برویم." }, { en: "The elevator is fast.", fa: "آسانسور سریع است." }, { en: "She waits for the elevator.", fa: "او منتظر آسانسور است." }] },
+      { word: "lobby", meaning: "لابی", en: "Wait for me in the lobby.", fa: "در لابی منتظرم بمان.", icon: "🛎️", examples: [{ en: "Wait for me in the lobby.", fa: "در لابی منتظرم بمان." }, { en: "The lobby has new chairs.", fa: "لابی صندلی‌های جدید دارد." }, { en: "Meet me in the lobby at six.", fa: "ساعت شش در لابی بهت می‌رسم." }] },
+      { word: "receptionist", meaning: "منشی", en: "The receptionist answered the phone.", fa: "منشی به تلفن جواب داد.", icon: "👩‍💼", examples: [{ en: "The receptionist answered the phone.", fa: "منشی به تلفن جواب داد." }, { en: "The receptionist greets everyone.", fa: "منشی به همه خوش‌آمد می‌گوید." }, { en: "Ask the receptionist for the key.", fa: "از منشی کلید را بخواه." }] },
+      { word: "assistant", meaning: "دستیار", en: "I need an assistant for this project.", fa: "من برای این پروژه به یک دستیار نیاز دارم.", icon: "🙋‍♀️", examples: [{ en: "I need an assistant for this project.", fa: "من برای این پروژه به یک دستیار نیاز دارم." }, { en: "The assistant answers all emails.", fa: "دستیار به همه ایمیل‌ها جواب می‌دهد." }, { en: "Her assistant is very organized.", fa: "دستیارش خیلی منظم است." }] },
+      { word: "director", meaning: "مدیرعامل", en: "The director is out of the office today.", fa: "مدیرعامل امروز خارج از دفتر است.", icon: "👔", examples: [{ en: "The director is out of the office today.", fa: "مدیرعامل امروز خارج از دفتر است." }, { en: "The director gave a speech.", fa: "مدیرعامل سخنرانی کرد." }, { en: "She became a director last year.", fa: "او سال پیش مدیرعامل شد." }] },
+      { word: "presentation", meaning: "ارائه", en: "I have a presentation tomorrow.", fa: "من فردا یک ارائه دارم.", icon: "📽️", examples: [{ en: "I have a presentation tomorrow.", fa: "من فردا یک ارائه دارم." }, { en: "The presentation was clear.", fa: "ارائه واضح بود." }, { en: "Practice your presentation tonight.", fa: "امشب ارائه‌ات را تمرین کن." }] },
+      { word: "conference", meaning: "کنفرانس", en: "The conference starts at 9 AM.", fa: "کنفرانس ساعت ۹ صبح شروع می‌شود.", icon: "🎤", examples: [{ en: "The conference starts at 9 AM.", fa: "کنفرانس ساعت ۹ صبح شروع می‌شود." }, { en: "She spoke at the conference.", fa: "او در کنفرانس صحبت کرد." }, { en: "The conference room is big.", fa: "اتاق کنفرانس بزرگ است." }] },
+      { word: "whiteboard", meaning: "وایت‌برد", en: "Write the plan on the whiteboard.", fa: "برنامه را روی وایت‌برد بنویس.", icon: "🗒️", examples: [{ en: "Write the plan on the whiteboard.", fa: "برنامه را روی وایت‌برد بنویس." }, { en: "The whiteboard is full of notes.", fa: "وایت‌برد پر از یادداشت است." }, { en: "Clean the whiteboard after the meeting.", fa: "بعد از جلسه وایت‌برد را پاک کن." }] },
+      { word: "marker", meaning: "ماژیک", en: "Give me a marker, please.", fa: "لطفاً یک ماژیک به من بده.", icon: "🖍️", examples: [{ en: "Give me a marker, please.", fa: "لطفاً یک ماژیک به من بده." }, { en: "The marker is blue.", fa: "ماژیک آبی است." }, { en: "This marker does not write well.", fa: "این ماژیک خوب نمی‌نویسد." }] },
+      { word: "notebook", meaning: "دفترچه یادداشت", en: "I write ideas in my notebook.", fa: "من ایده‌ها را در دفترچه‌ام می‌نویسم.", icon: "📓", examples: [{ en: "I write ideas in my notebook.", fa: "من ایده‌ها را در دفترچه‌ام می‌نویسم." }, { en: "The notebook is full of ideas.", fa: "دفترچه پر از ایده است." }, { en: "She carries a notebook to meetings.", fa: "او به جلسه‌ها دفترچه می‌برد." }] },
+      { word: "list", meaning: "لیست", en: "Make a list of tasks for today.", fa: "برای امروز یک لیست از وظایف بساز.", icon: "📋", examples: [{ en: "Make a list of tasks for today.", fa: "برای امروز یک لیست از وظایف بساز." }, { en: "The list has five items.", fa: "لیست پنج مورد دارد." }, { en: "Check the list before you go.", fa: "قبل از رفتن لیست را چک کن." }] },
+      { word: "form", meaning: "فرم", en: "Please fill out this form.", fa: "لطفاً این فرم را پر کن.", icon: "🧾", examples: [{ en: "Please fill out this form.", fa: "لطفاً این فرم را پر کن." }, { en: "The form needs your signature.", fa: "فرم به امضای تو نیاز دارد." }, { en: "Hand in the form by Friday.", fa: "فرم را تا جمعه تحویل بده." }] }
+    ]
+  },
+  idiomEveryday: {
+    name: "اصطلاحات روزمره", words: [
+      { word: "a piece of cake", meaning: "مثل آب خوردن", en: "The test was a piece of cake.", fa: "امتحان مثل آب خوردن بود.", icon: "🍰", examples: [{ en: "The test was a piece of cake.", fa: "امتحان مثل آب خوردن بود." }, { en: "For her, cooking is a piece of cake.", fa: "آشپزی برای او مثل آب خوردن است." }, { en: "Do not worry, it is a piece of cake!", fa: "نگران نباش، خیلی راحته!" }] },
+      { word: "hit the hay", meaning: "زدن به رختخواب", en: "I hit the hay early on weekdays.", fa: "روزهای هفته زود می‌رم رختخواب.", icon: "😴", examples: [{ en: "I hit the hay early on weekdays.", fa: "روزهای هفته زود می‌رم رختخواب." }, { en: "I am so tired; time to hit the hay.", fa: "خیلی خسته‌ام؛ وقت رفتن به رختخوابه." }, { en: "He always hits the hay after dinner.", fa: "او همیشه بعد از شام می‌ره رختخواب." }] },
+      { word: "call it a day", meaning: "برای امروز کافیه", en: "Let us call it a day and go home.", fa: "بیا برای امروز تمومش کنیم و بریم خونه.", icon: "🌇", examples: [{ en: "Let us call it a day and go home.", fa: "بیا برای امروز تمومش کنیم و بریم خونه." }, { en: "We worked hard; let us call it a day.", fa: "سخت کار کردیم؛ برای امروز کافیه." }, { en: "After ten hours, I called it a day.", fa: "بعد از ده ساعت کار، گفتم برای امروز کافیه." }] },
+      { word: "under the weather", meaning: "حالش بد است", en: "I am feeling under the weather today.", fa: "امروز حالم خوب نیست.", icon: "🤒", examples: [{ en: "I am feeling under the weather today.", fa: "امروز حالم خوب نیست." }, { en: "She stayed home; she is under the weather.", fa: "خونه موند؛ حالش بد بود." }, { en: "You look under the weather; rest a little.", fa: "کم‌حال به نظر می‌رسی؛ کمی استراحت کن." }] },
+      { word: "break a leg", meaning: "موفق باشی!", en: "Break a leg in your show tonight!", fa: "امشب توی اجرات موفق باشی!", icon: "🍀", examples: [{ en: "Break a leg in your show tonight!", fa: "امشب توی اجرات موفق باشی!" }, { en: "Before my test, she said break a leg.", fa: "قبل از امتحانم بهم گفت موفق باشی." }, { en: "He said break a leg before my interview.", fa: "قبل از مصاحبه‌ام گفت موفق باشی." }] }
+    ]
+  },
+  idiomFeelings: {
+    name: "اصطلاحات احساسات", words: [
+      { word: "on cloud nine", meaning: "بی‌نهایت خوشحال", en: "She is on cloud nine today.", fa: "امروز سر از پا نمی‌شناسه.", icon: "☁️", examples: [{ en: "She is on cloud nine today.", fa: "امروز سر از پا نمی‌شناسه." }, { en: "I was on cloud nine when I got the job.", fa: "وقتی کار رو گرفتم سر از پا نمی‌شناختم." }, { en: "He is on cloud nine about the news.", fa: "از این خبر خیلی ذوق کرده." }] },
+      { word: "butterflies in my stomach", meaning: "دل‌شوره داشتن", en: "I get butterflies in my stomach before a speech.", fa: "قبل از سخنرانی دل‌شوره می‌گیرم.", icon: "🦋", examples: [{ en: "I get butterflies in my stomach before a speech.", fa: "قبل از سخنرانی دل‌شوره می‌گیرم." }, { en: "Thinking about it gives me butterflies in my stomach.", fa: "فکر کردن بهش بهم دل‌شوره می‌ده." }, { en: "I had butterflies in my stomach on the first day.", fa: "روز اولش دل‌شوره داشتم." }] },
+      { word: "over the moon", meaning: "سر از پا نمی‌شناختن", en: "He was over the moon when he heard the news.", fa: "وقتی خبر رو شنید سر از پا نمی‌شناخت.", icon: "🌙", examples: [{ en: "He was over the moon when he heard the news.", fa: "وقتی خبر رو شنید سر از پا نمی‌شناخت." }, { en: "She is over the moon about her new puppy.", fa: "برای توله‌سگ جدیدش خیلی ذوق کرده." }, { en: "We were over the moon after the win.", fa: "بعد از برد سر از پا نمی‌شناختیم." }] },
+      { word: "cold feet", meaning: "پا پس کشیدن", en: "She got cold feet before the big speech.", fa: "قبل از سخنرانی بزرگ پا پس کشید.", icon: "🥶", examples: [{ en: "She got cold feet before the big speech.", fa: "قبل از سخنرانی بزرگ پا پس کشید." }, { en: "Do not get cold feet now; you are ready!", fa: "الان پا پس نکش؛ آماده‌ای!" }, { en: "He got cold feet the night before the trip.", fa: "شب قبل از سفر پا پس کشید." }] },
+      { word: "down in the dumps", meaning: "دلگیر و غمگین", en: "He is down in the dumps today.", fa: "امروز دلگیره.", icon: "😞", examples: [{ en: "He is down in the dumps today.", fa: "امروز دلگیره." }, { en: "She was down in the dumps after the news.", fa: "بعد از اون خبر غمگین شد." }, { en: "When I feel down in the dumps, I call a friend.", fa: "وقتی دلگیرم، به یک دوست زنگ می‌زنم." }] }
+    ]
+  },
+  idiomEffort: {
+    name: "اصطلاحات کار و تلاش", words: [
+      { word: "burn the midnight oil", meaning: "تا دیروقت کار کردن", en: "I burn the midnight oil before exams.", fa: "قبل از امتحان‌ها تا دیروقت درس می‌خونم.", icon: "🕯️", examples: [{ en: "I burn the midnight oil before exams.", fa: "قبل از امتحان‌ها تا دیروقت درس می‌خونم." }, { en: "She burns the midnight oil for her project.", fa: "برای پروژه‌اش تا دیروقت کار می‌کنه." }, { en: "Do not burn the midnight oil too often.", fa: "زیاد تا دیروقت بیدار نمون." }] },
+      { word: "think outside the box", meaning: "خلاقانه فکر کردن", en: "We need to think outside the box.", fa: "باید خلاقانه فکر کنیم.", icon: "📦", examples: [{ en: "We need to think outside the box.", fa: "باید خلاقانه فکر کنیم." }, { en: "She always thinks outside the box at work.", fa: "او سر کار همیشه خلاقانه فکر می‌کنه." }, { en: "Think outside the box to solve this.", fa: "برای حلش، خارج از چارچوب فکر کن." }] },
+      { word: "get the ball rolling", meaning: "کار را شروع کردن", en: "Let us get the ball rolling with a quick game.", fa: "بیا با یک بازی سریع کار رو شروع کنیم.", icon: "⚽", examples: [{ en: "Let us get the ball rolling with a quick game.", fa: "بیا با یک بازی سریع کار رو شروع کنیم." }, { en: "He got the ball rolling on the new project.", fa: "او پروژه جدید رو شروع کرد." }, { en: "I will get the ball rolling tomorrow morning.", fa: "فردا صبح کار رو شروع می‌کنم." }] },
+      { word: "on the ball", meaning: "هوشیار و آماده", en: "The new assistant is really on the ball.", fa: "دستیار جدید واقعاً هوشیاره.", icon: "🎯", examples: [{ en: "The new assistant is really on the ball.", fa: "دستیار جدید واقعاً هوشیاره." }, { en: "You must stay on the ball in this job.", fa: "توی این کار باید هوشیار بمونی." }, { en: "She is always on the ball with deadlines.", fa: "توی مهلت‌ها همیشه سر وقت عمل می‌کنه." }] },
+      { word: "hit the nail on the head", meaning: "دقیقاً درست گفتن", en: "You hit the nail on the head with that answer.", fa: "با اون جواب دقیقاً زدی تو خال.", icon: "🔨", examples: [{ en: "You hit the nail on the head with that answer.", fa: "با اون جواب دقیقاً زدی تو خال." }, { en: "She hit the nail on the head about the problem.", fa: "درباره مشکل کاملاً درست گفت." }, { en: "His comment hit the nail on the head.", fa: "حرفش دقیقاً درست بود." }] }
+    ]
+  },
+  idiomBehavior: {
+    name: "اصطلاحات رفتار و آداب", words: [
+      { word: "spill the beans", meaning: "راز را لو دادن", en: "Do not spill the beans about the party!", fa: "راز مهمونی رو لو نده!", icon: "🤫", examples: [{ en: "Do not spill the beans about the party!", fa: "راز مهمونی رو لو نده!" }, { en: "He spilled the beans about the gift.", fa: "راز هدیه رو لو داد." }, { en: "Who spilled the beans to her?", fa: "کی بهش راز رو لو داد؟" }] },
+      { word: "let the cat out of the bag", meaning: "راز را ناخواسته لو دادن", en: "He let the cat out of the bag about the surprise.", fa: "راز سورپرایز رو ناخواسته لو داد.", icon: "🐈", examples: [{ en: "He let the cat out of the bag about the surprise.", fa: "راز سورپرایز رو ناخواسته لو داد." }, { en: "Do not let the cat out of the bag yet!", fa: "هنوز راز رو فاش نکن!" }, { en: "She let the cat out of the bag by mistake.", fa: "اشتباهاً راز رو فاش کرد." }] },
+      { word: "beat around the bush", meaning: "طفره رفتن", en: "Do not beat around the bush; tell me the truth.", fa: "طفره نرو؛ حقیقت رو بگو.", icon: "🌳", examples: [{ en: "Do not beat around the bush; tell me the truth.", fa: "طفره نرو؛ حقیقت رو بگو." }, { en: "He always beats around the bush in meetings.", fa: "تو جلسه‌ها همیشه طفره می‌ره." }, { en: "I beat around the bush too much.", fa: "من زیادی طفره می‌رم." }] },
+      { word: "a blessing in disguise", meaning: "توفیق اجباری", en: "Losing that job was a blessing in disguise.", fa: "اون بیکار شدن یه توفیق اجباری بود.", icon: "🙏", examples: [{ en: "Losing that job was a blessing in disguise.", fa: "اون بیکار شدن یه توفیق اجباری بود." }, { en: "The delay was a blessing in disguise.", fa: "اون تاخیر به نفعمون تموم شد." }, { en: "Sometimes rain is a blessing in disguise.", fa: "بعضی وقتا بارون به نفعه، فقط نمی‌دونی." }] },
+      { word: "a couch potato", meaning: "آدم تنبل (لم‌ده)", en: "My brother is a couch potato on weekends.", fa: "برادرم آخر هفته‌ها فقط لم می‌ده.", icon: "🛋️", examples: [{ en: "My brother is a couch potato on weekends.", fa: "برادرم آخر هفته‌ها فقط لم می‌ده." }, { en: "Do not be a couch potato; come with us!", fa: "تنبلی نکن؛ بیا با ما!" }, { en: "He became a couch potato after the holidays.", fa: "بعد از تعطیلات تنبل شده." }] }
+    ]
+  }
+};
+
+CATEGORIES.a2everyday = {
+  name: "روزمره (A2)", words: [
+    { word: "appointment", meaning: "قرار ملاقات، نوبت", en: "I have a doctor's appointment today.", fa: "امروز یک قرار ملاقات با پزشک دارم.", icon: "📅", examples: [{ en: "I have a doctor's appointment today.", fa: "امروز یک قرار ملاقات با پزشک دارم." }, { en: "Can we make an appointment for Monday?", fa: "می‌شود برای دوشنبه قرار بگذاریم؟" }, { en: "She canceled her appointment.", fa: "او قرار ملاقاتش را لغو کرد." }] },
+    { word: "borrow", meaning: "قرض گرفتن", en: "Can I borrow your pen?", fa: "می‌شود خودکارت را قرض بگیرم؟", icon: "✏️", examples: [{ en: "Can I borrow your pen?", fa: "می‌شود خودکارت را قرض بگیرم؟" }, { en: "I borrowed a book from the library.", fa: "یک کتاب از کتابخانه قرض گرفتم." }, { en: "You can borrow my umbrella.", fa: "می‌توانی چترم را قرض بگیری." }] },
+    { word: "decide", meaning: "تصمیم گرفتن", en: "We decided to stay home.", fa: "تصمیم گرفتیم در خانه بمانیم.", icon: "🤔", examples: [{ en: "We decided to stay home.", fa: "تصمیم گرفتیم در خانه بمانیم." }, { en: "I cannot decide what to wear.", fa: "نمی‌توانم تصمیم بگیرم چه بپوشم." }, { en: "She decides quickly.", fa: "او سریع تصمیم می‌گیرد." }] },
+    { word: "neighborhood", meaning: "محله", en: "Our neighborhood is very quiet.", fa: "محله‌ی ما خیلی ساکت است.", icon: "🏘️", examples: [{ en: "Our neighborhood is very quiet.", fa: "محله‌ی ما خیلی ساکت است." }, { en: "There is a nice park in our neighborhood.", fa: "در محله‌ی ما یک پارک قشنگ هست." }, { en: "Everyone knows everyone in this neighborhood.", fa: "در این محله همه همدیگر را می‌شناسند." }] },
+    { word: "purse", meaning: "کیف دستی زنانه", en: "She keeps her keys in her purse.", fa: "او کلیدهایش را در کیف دستی‌اش نگه می‌دارد.", icon: "👛", examples: [{ en: "She keeps her keys in her purse.", fa: "او کلیدهایش را در کیف دستی‌اش نگه می‌دارد." }, { en: "My purse is in the bag.", fa: "کیف دستی‌ام داخل کیفم است." }, { en: "She opened her purse and paid.", fa: "او کیف دستی‌اش را باز کرد و پرداخت کرد." }] },
+    { word: "routine", meaning: "روتین، رویه روزانه", en: "My morning routine is simple.", fa: "روتین صبحگاهی من ساده است.", icon: "🔁", examples: [{ en: "My morning routine is simple.", fa: "روتین صبحگاهی من ساده است." }, { en: "Exercise is part of my daily routine.", fa: "ورزش بخشی از روتین روزانه‌ی من است." }, { en: "She follows the same routine every day.", fa: "او هر روز همان روتین را دنبال می‌کند." }] },
+    { word: "chore", meaning: "کار خانه", en: "I do the chores on Fridays.", fa: "جمعه‌ها کارهای خانه را انجام می‌دهم.", icon: "🧹", examples: [{ en: "I do the chores on Fridays.", fa: "جمعه‌ها کارهای خانه را انجام می‌دهم." }, { en: "Washing dishes is my least favorite chore.", fa: "ظرف شستن کم‌علاقه‌ترین کار خانه‌ی من است." }, { en: "The kids help with small chores.", fa: "بچه‌ها در کارهای کوچک خانه کمک می‌کنند." }] },
+    { word: "alarm", meaning: "زنگ ساعت", en: "My alarm rings at six.", fa: "ساعت زنگدارم ساعت شش زنگ می‌زند.", icon: "⏰", examples: [{ en: "My alarm rings at six.", fa: "ساعت زنگدارم ساعت شش زنگ می‌زند." }, { en: "I set two alarms for tomorrow.", fa: "برای فردا دو زنگ تنظیم کردم." }, { en: "Did you hear the alarm this morning?", fa: "امروز صبح صدای زنگ را شنیدی؟" }] },
+    { word: "errand", meaning: "کار بیرون", en: "I have a few errands to run.", fa: "چند کار بیرون باید انجام بدهم.", icon: "🏃", examples: [{ en: "I have a few errands to run.", fa: "چند کار بیرون باید انجام بدهم." }, { en: "She ran errands all afternoon.", fa: "او تمام بعدازظهر کارهای بیرون را انجام داد." }, { en: "Can you do this errand for me?", fa: "می‌شود این کار را برایم انجام بدهی؟" }] },
+    { word: "habit", meaning: "عادت", en: "Reading is a good habit.", fa: "کتاب خواندن عادت خوبی است.", icon: "🌀", examples: [{ en: "Reading is a good habit.", fa: "کتاب خواندن عادت خوبی است." }, { en: "He has a habit of waking up early.", fa: "او عادت دارد زود بیدار شود." }, { en: "Good habits make life easier.", fa: "عادت‌های خوب زندگی را آسان‌تر می‌کنند." }] }
+  ]
+};
+CATEGORIES.a2travel = {
+  name: "سفر (A2)", words: [
+    { word: "flight", meaning: "پرواز", en: "Our flight leaves at eight.", fa: "پرواز ما ساعت هشت حرکت می‌کند.", icon: "✈️", examples: [{ en: "Our flight leaves at eight.", fa: "پرواز ما ساعت هشت حرکت می‌کند." }, { en: "The flight was short and smooth.", fa: "پرواز کوتاه و آرام بود." }, { en: "I read a book during the flight.", fa: "در طول پرواز کتاب خواندم." }] },
+    { word: "luggage", meaning: "چمدان، بار مسافر", en: "My luggage is heavy.", fa: "چمدانم سنگین است.", icon: "🧳", examples: [{ en: "My luggage is heavy.", fa: "چمدانم سنگین است." }, { en: "We collected our luggage at the airport.", fa: "بارمان را در فرودگاه تحویل گرفتیم." }, { en: "Do not forget your luggage in the taxi.", fa: "چمدانت را در تاکسی جا نگذار." }] },
+    { word: "souvenir", meaning: "سوغاتی، یادگاری", en: "I bought a souvenir for my mother.", fa: "برای مادرم یک سوغاتی خریدم.", icon: "🎁", examples: [{ en: "I bought a souvenir for my mother.", fa: "برای مادرم یک سوغاتی خریدم." }, { en: "This shop sells nice souvenirs.", fa: "این مغازه سوغاتی‌های قشنگ می‌فروشد." }, { en: "Keep this as a souvenir of our trip.", fa: "این را به یادگار سفرمان نگه دار." }] },
+    { word: "passenger", meaning: "مسافر", en: "The passengers are waiting at the gate.", fa: "مسافرها پشت گیت منتظرند.", icon: "💺", examples: [{ en: "The passengers are waiting at the gate.", fa: "مسافرها پشت گیت منتظرند." }, { en: "Every passenger needs a ticket.", fa: "هر مسافر به بلیط نیاز دارد." }, { en: "The passenger next to me slept all the way.", fa: "مسافر کنار من تمام مسیر خوابید." }] },
+    { word: "abroad", meaning: "خارج از کشور", en: "She wants to study abroad.", fa: "او می‌خواهد در خارج از کشور درس بخواند.", icon: "🌍", examples: [{ en: "She wants to study abroad.", fa: "او می‌خواهد در خارج از کشور درس بخواند." }, { en: "He travels abroad every year.", fa: "او هر سال به خارج از کشور سفر می‌کند." }, { en: "Living abroad is a new experience.", fa: "زندگی در خارج از کشور یک تجربه‌ی جدید است." }] },
+    { word: "itinerary", meaning: "برنامه سفر", en: "Our itinerary is very full.", fa: "برنامه سفر ما خیلی پر است.", icon: "🗓️", examples: [{ en: "Our itinerary is very full.", fa: "برنامه سفر ما خیلی پر است." }, { en: "The itinerary includes two museums.", fa: "برنامه سفر شامل دو موزه است." }, { en: "I changed the itinerary a little.", fa: "برنامه سفر را کمی عوض کردم." }] },
+    { word: "customs", meaning: "گمرک", en: "We passed customs quickly.", fa: "به‌سرعت از گمرک رد شدیم.", icon: "🛃", examples: [{ en: "We passed customs quickly.", fa: "به‌سرعت از گمرک رد شدیم." }, { en: "Customs checked our bags.", fa: "گمرک کیف‌هایمان را بررسی کرد." }, { en: "Declare these items at customs.", fa: "این وسایل را در گمرک اظهار کن." }] },
+    { word: "hostel", meaning: "مهمان‌پذیر", en: "The hostel is cheap and clean.", fa: "مهمان‌پذیر ارزان و تمیز است.", icon: "🛏️", examples: [{ en: "The hostel is cheap and clean.", fa: "مهمان‌پذیر ارزان و تمیز است." }, { en: "We stayed in a hostel for two nights.", fa: "دو شب در یک مهمان‌پذیر ماندیم." }, { en: "The hostel has a shared kitchen.", fa: "مهمان‌پذیر آشپزخانه مشترک دارد." }] },
+    { word: "sightseeing", meaning: "گشت‌وگذار", en: "We went sightseeing yesterday.", fa: "دیروز به گشت‌وگذار رفتیم.", icon: "📸", examples: [{ en: "We went sightseeing yesterday.", fa: "دیروز به گشت‌وگذار رفتیم." }, { en: "Sightseeing is the best part of the trip.", fa: "گشت‌وگذار بهترین بخش سفر است." }, { en: "They did some sightseeing in the old town.", fa: "آن‌ها در شهر قدیمی گشت‌وگذار کردند." }] },
+    { word: "platform", meaning: "سکو", en: "The train leaves from platform two.", fa: "قطار از سکوی دو حرکت می‌کند.", icon: "🚉", examples: [{ en: "The train leaves from platform two.", fa: "قطار از سکوی دو حرکت می‌کند." }, { en: "Wait for me on the platform.", fa: "روی سکو منتظرم بمان." }, { en: "The platform is crowded today.", fa: "سکو امروز شلوغ است." }] }
+  ]
+};
+CATEGORIES.a2food = {
+  name: "غذا و رستوران (A2)", words: [
+    { word: "recipe", meaning: "دستور پخت", en: "This recipe is my grandmother's.", fa: "این دستور پخت متعلق به مادربزرگم است.", icon: "📖", examples: [{ en: "This recipe is my grandmother's.", fa: "این دستور پخت متعلق به مادربزرگم است." }, { en: "The recipe is very easy to follow.", fa: "این دستور پخت خیلی ساده است." }, { en: "I found a great recipe online.", fa: "یک دستور پخت عالی آنلاین پیدا کردم." }] },
+    { word: "dessert", meaning: "دسر", en: "Ice cream is my favorite dessert.", fa: "بستنی دسر مورد علاقه‌ی من است.", icon: "🍨", examples: [{ en: "Ice cream is my favorite dessert.", fa: "بستنی دسر مورد علاقه‌ی من است." }, { en: "We ordered dessert after dinner.", fa: "بعد از شام دسر سفارش دادیم." }, { en: "This dessert is not too sweet.", fa: "این دسر خیلی شیرین نیست." }] },
+    { word: "bill", meaning: "صورتحساب", en: "Can we have the bill, please?", fa: "می‌شود صورت‌حساب را بیاورید؟", icon: "🧾", examples: [{ en: "Can we have the bill, please?", fa: "می‌شود صورت‌حساب را بیاورید؟" }, { en: "The bill is on the table.", fa: "صورت‌حساب روی میز است." }, { en: "Let me pay the bill tonight.", fa: "امشب بگذار من صورت‌حساب را پرداخت کنم." }] },
+    { word: "taste", meaning: "مزه، چشیدن", en: "This soup tastes great.", fa: "این سوپ مزه‌ی فوق‌العاده‌ای دارد.", icon: "👅", examples: [{ en: "This soup tastes great.", fa: "این سوپ مزه‌ی فوق‌العاده‌ای دارد." }, { en: "The cake has a strange taste.", fa: "کیک مزه‌ی عجیبی دارد." }, { en: "Taste the sauce before adding salt.", fa: "قبل از اضافه‌کردن نمک، سس را بچش." }] },
+    { word: "fresh", meaning: "تازه", en: "I buy fresh bread every morning.", fa: "هر روز صبح نان تازه می‌خرم.", icon: "🥬", examples: [{ en: "I buy fresh bread every morning.", fa: "هر روز صبح نان تازه می‌خرم." }, { en: "The vegetables are fresh and crispy.", fa: "سبزیجات تازه و ترد هستند." }, { en: "Open the window for some fresh air.", fa: "پنجره را باز کن تا هوای تازه بیاید." }] },
+    { word: "appetizer", meaning: "پیش‌غذا", en: "We ordered an appetizer.", fa: "یک پیش‌غذا سفارش دادیم.", icon: "🥗", examples: [{ en: "We ordered an appetizer.", fa: "یک پیش‌غذا سفارش دادیم." }, { en: "The appetizer was delicious.", fa: "پیش‌غذا خوشمزه بود." }, { en: "Soup is a nice appetizer.", fa: "سوپ پیش‌غذای خوبی است." }] },
+    { word: "beverage", meaning: "نوشیدنی", en: "The meal comes with a beverage.", fa: "این وعده با یک نوشیدنی است.", icon: "🥤", examples: [{ en: "The meal comes with a beverage.", fa: "این وعده با یک نوشیدنی است." }, { en: "Choose your favorite beverage.", fa: "نوشیدنی مورد علاقه‌ات را انتخاب کن." }, { en: "Cold beverages are on the menu.", fa: "نوشیدنی‌های سرد در منو هستند." }] },
+    { word: "portion", meaning: "پرس، مقدار غذا", en: "The portions here are big.", fa: "پرس‌های اینجا بزرگ است.", icon: "🍽️", examples: [{ en: "The portions here are big.", fa: "پرس‌های اینجا بزرگ است." }, { en: "I ordered a small portion.", fa: "یک پرس کوچک سفارش دادم." }, { en: "Share a portion with me.", fa: "یک پرس را با من تقسیم کن." }] },
+    { word: "takeaway", meaning: "غذای بیرون‌بر", en: "Let's get takeaway tonight.", fa: "امشب غذای بیرون‌بر بگیریم.", icon: "🥡", examples: [{ en: "Let's get takeaway tonight.", fa: "امشب غذای بیرون‌بر بگیریم." }, { en: "The takeaway arrives in twenty minutes.", fa: "غذای بیرون‌بر بیست دقیقه دیگر می‌رسد." }, { en: "She ordered takeaway for the family.", fa: "او برای خانواده غذای بیرون‌بر سفارش داد." }] },
+    { word: "ripe", meaning: "رسیده", en: "The bananas are ripe.", fa: "موزها رسیده‌اند.", icon: "🍌", examples: [{ en: "The bananas are ripe.", fa: "موزها رسیده‌اند." }, { en: "This mango is not ripe yet.", fa: "این انبه هنوز نرسیده است." }, { en: "Eat the ripe apples first.", fa: "اول سیب‌های رسیده را بخور." }] }
+  ]
+};
+CATEGORIES.a2work = {
+  name: "کار و اداره (A2)", words: [
+    { word: "salary", meaning: "حقوق، دستمزد", en: "He gets his salary every month.", fa: "او هر ماه حقوقش را می‌گیرد.", icon: "💵", examples: [{ en: "He gets his salary every month.", fa: "او هر ماه حقوقش را می‌گیرد." }, { en: "The salary is paid on the first of the month.", fa: "حقوق اول ماه پرداخت می‌شود." }, { en: "She saved part of her salary.", fa: "او بخشی از حقوقش را پس‌انداز کرد." }] },
+    { word: "meeting", meaning: "جلسه", en: "The meeting starts at ten.", fa: "جلسه ساعت ده شروع می‌شود.", icon: "🗣️", examples: [{ en: "The meeting starts at ten.", fa: "جلسه ساعت ده شروع می‌شود." }, { en: "We have a team meeting on Monday.", fa: "دوشنبه جلسه‌ی تیمی داریم." }, { en: "The meeting was shorter than expected.", fa: "جلسه کوتاه‌تر از انتظار بود." }] },
+    { word: "manager", meaning: "مدیر", en: "She is the new manager.", fa: "او مدیر جدید است.", icon: "🧑‍", examples: [{ en: "She is the new manager.", fa: "او مدیر جدید است." }, { en: "The manager approved my request.", fa: "مدیر درخواستم را تأیید کرد." }, { en: "Our manager listens to everyone.", fa: "مدیر ما به همه گوش می‌دهد." }] },
+    { word: "interview", meaning: "مصاحبه", en: "I have a job interview tomorrow.", fa: "فردا مصاحبه‌ی شغلی دارم.", icon: "📝", examples: [{ en: "I have a job interview tomorrow.", fa: "فردا مصاحبه‌ی شغلی دارم." }, { en: "The interview took about an hour.", fa: "مصاحبه حدود یک ساعت طول کشید." }, { en: "She prepared for the interview all week.", fa: "او تمام هفته برای مصاحبه آماده شد." }] },
+    { word: "deadline", meaning: "ضرب‌الاجل، مهلت", en: "We must finish before the deadline.", fa: "باید قبل از ضرب‌الاجل تمام کنیم.", icon: "⏳", examples: [{ en: "We must finish before the deadline.", fa: "باید قبل از ضرب‌الاجل تمام کنیم." }, { en: "The deadline for this project is close.", fa: "مهلت این پروژه نزدیک است." }, { en: "I worked late to meet the deadline.", fa: "برای رسیدن به مهلت، تا دیروقت کار کردم." }] },
+    { word: "coworker", meaning: "همکار", en: "My coworkers are friendly.", fa: "همکارانم صمیمی هستند.", icon: "🧑‍", examples: [{ en: "My coworkers are friendly.", fa: "همکارانم صمیمی هستند." }, { en: "I had lunch with a coworker.", fa: "با یک همکار ناهار خوردم." }, { en: "She asked a coworker for help.", fa: "او از یک همکار کمک خواست." }] },
+    { word: "workload", meaning: "حجم کار", en: "My workload is heavy this week.", fa: "حجم کارم این هفته زیاد است.", icon: "📚", examples: [{ en: "My workload is heavy this week.", fa: "حجم کارم این هفته زیاد است." }, { en: "The workload is lighter on Fridays.", fa: "جمعه‌ها حجم کار کمتر است." }, { en: "We shared the workload fairly.", fa: "حجم کار را منصفانه تقسیم کردیم." }] },
+    { word: "shift", meaning: "شیفت کاری", en: "I work the night shift.", fa: "شیفت شب کار می‌کنم.", icon: "🕘", examples: [{ en: "I work the night shift.", fa: "شیفت شب کار می‌کنم." }, { en: "Her shift starts at eight.", fa: "شیفت او ساعت هشت شروع می‌شود." }, { en: "Can we swap shifts tomorrow?", fa: "می‌شود فردا شیفت‌ها را عوض کنیم؟" }] },
+    { word: "hire", meaning: "استخدام کردن", en: "They hired a new designer.", fa: "یک طراح جدید استخدام کردند.", icon: "🤝", examples: [{ en: "They hired a new designer.", fa: "یک طراح جدید استخدام کردند." }, { en: "The company plans to hire ten people.", fa: "شرکت قصد دارد ده نفر استخدام کند." }, { en: "She was hired last month.", fa: "او ماه پیش استخدام شد." }] },
+    { word: "resign", meaning: "استعفا دادن", en: "He resigned from his job.", fa: "او از کارش استعفا داد.", icon: "🚪", examples: [{ en: "He resigned from his job.", fa: "او از کارش استعفا داد." }, { en: "She plans to resign next month.", fa: "او قصد دارد ماه بعد استعفا بدهد." }, { en: "Why did you resign?", fa: "چرا استعفا دادی؟" }] }
+  ]
+};
+var currentCategoryKey = "everyday";
+var WORDS = CATEGORIES[currentCategoryKey].words;
+var PROGRESS_KEY = "lughatyar_progress_v1";
+var progress = { words: {}, days: {}, pos: {} };
+try {
+  var rawProgress = localStorage.getItem(PROGRESS_KEY);
+  if (rawProgress) { var parsedProgress = JSON.parse(rawProgress); if (parsedProgress && parsedProgress.words) progress = parsedProgress; }
+} catch (e) { }
+if (!progress.settings) progress.settings = { reminder: false, reminderTime: "20:00" };
+var reminderSwitch = document.getElementById("reminderSwitch");
+var reminderTime = document.getElementById("reminderTime");
+var reminderSub = document.getElementById("reminderSub");
+function syncReminderUI() {
+  if (!reminderSwitch) return;
+  reminderSwitch.checked = !!progress.settings.reminder;
+  reminderTime.value = progress.settings.reminderTime;
+  reminderTime.disabled = !progress.settings.reminder;
+  reminderSub.textContent = progress.settings.reminder ? ("فعال • ساعت " + toPersianDigits(progress.settings.reminderTime)) : "غیرفعال";
+}
+if (reminderSwitch) {
+  reminderSwitch.addEventListener("change", function () {
+    progress.settings.reminder = this.checked;
+    saveProgress();
+    syncReminderUI();
+  });
+  reminderTime.addEventListener("change", function () {
+    progress.settings.reminderTime = this.value || "20:00";
+    saveProgress();
+    syncReminderUI();
+  });
+  syncReminderUI();
+}
+var resetBtn = document.getElementById("resetProgressBtn");
+var resetConfirm = document.getElementById("resetConfirm");
+if (resetBtn) {
+  resetBtn.addEventListener("click", function () {
+    resetBtn.style.display = "none";
+    resetConfirm.style.display = "flex";
+  });
+  document.getElementById("resetCancel").addEventListener("click", function () {
+    resetConfirm.style.display = "none";
+    resetBtn.style.display = "";
+  });
+  document.getElementById("resetYes").addEventListener("click", function () {
+    try { localStorage.removeItem(PROGRESS_KEY); } catch (e) { }
+    location.reload();
+  });
+}
+function todayStr() {
+  var d = new Date();
+  var m = String(d.getMonth() + 1).padStart(2, "0");
+  var day = String(d.getDate()).padStart(2, "0");
+  return d.getFullYear() + "-" + m + "-" + day;
+}
+function saveProgress() { try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); } catch (e) { } }
+function currentWordKey() { return (WORDS[idx].__cat || currentCategoryKey) + "|" + WORDS[idx].word; }
+var SRS_LADDER = [2, 4, 7, 15, 30];
+function daysBetween(a, b) {
+  return Math.round((new Date(b + "T00:00:00") - new Date(a + "T00:00:00")) / 86400000);
+}
+function dueWords() {
+  var out = [];
+  var today = todayStr();
+  for (var cat in CATEGORIES) {
+    if (cat.indexOf("__") === 0) continue;
+    var ws = CATEGORIES[cat].words;
+    for (var i = 0; i < ws.length; i++) {
+      var w = ws[i];
+      var rec = progress.words[cat + "|" + w.word];
+      if (!rec || !rec.s) continue;
+      if (rec.s === "u") { out.push({ w: w, cat: cat }); continue; }
+      if (rec.s === "k" && rec.d) {
+        var nextN = (rec.n || 1) + 1;
+        var interval = SRS_LADDER[Math.min(nextN - 2, SRS_LADDER.length - 1)];
+        if (daysBetween(rec.d, today) >= interval) out.push({ w: w, cat: cat });
+      }
+    }
+  }
+  return out;
+}
+function markWord(state) {
+  var k = currentWordKey();
+  var rec = progress.words[k] || { s: "", n: 0 };
+  rec.s = state; rec.n = (rec.n || 0) + 1; rec.d = todayStr();
+  progress.words[k] = rec;
+  saveProgress();
+  updateMarkUI();
+  updateTileProgress();
+}
+function knownCount(catKey) {
+  var c = 0, ws = CATEGORIES[catKey].words;
+  for (var i = 0; i < ws.length; i++) {
+    var r = progress.words[catKey + "|" + ws[i].word];
+    if (r && r.s === "k") c++;
+  }
+  return c;
+}
+function totalKnown() {
+  var t = 0;
+  for (var k in CATEGORIES) {
+    if (k.indexOf("__") === 0) continue;
+    t += knownCount(k);
+  }
+  return t;
+}
+function studyDays() { var n = 0; for (var d in progress.days) n++; return n; }
+function updateMarkUI() {
+  var rec = progress.words[currentWordKey()];
+  var knownBtn = document.getElementById("knownBtn");
+  var unknownBtn = document.getElementById("unknownBtn");
+  knownBtn.classList.toggle("active", !!(rec && rec.s === "k"));
+  unknownBtn.classList.toggle("active", !!(rec && rec.s === "u"));
+}
+function updateTileProgress() {
+  var homeMap = { everyday: "categoryMetaEveryday", travel: "categoryMetaTravel", food: "categoryMetaFood", work: "categoryMetaWork" };
+  for (var key in homeMap) {
+    var el = document.getElementById(homeMap[key]);
+    if (el && CATEGORIES[key]) {
+      var total = CATEGORIES[key].words.length;
+      var pct = Math.round(knownCount(key) / total * 100);
+      el.textContent = toPersianDigits(total) + " لغت • " + toPersianDigits(pct) + "٪ بلد";
+    }
+  }
+  var a2Map = { a2everyday: "a2MetaEveryday", a2travel: "a2MetaTravel", a2food: "a2MetaFood", a2work: "a2MetaWork" };
+  for (var akey in a2Map) {
+    var ael = document.getElementById(a2Map[akey]);
+    if (ael && CATEGORIES[akey]) {
+      var atotal = CATEGORIES[akey].words.length;
+      var apct = Math.round(knownCount(akey) / atotal * 100);
+      ael.textContent = toPersianDigits(atotal) + " لغت • " + toPersianDigits(apct) + "٪ بلد";
+    }
+  }
+  var subMap = { idiomEveryday: "idiomMetaEveryday", idiomFeelings: "idiomMetaFeelings", idiomEffort: "idiomMetaEffort", idiomBehavior: "idiomMetaBehavior" };
+  for (var skey in subMap) {
+    var sel = document.getElementById(subMap[skey]);
+    if (sel && CATEGORIES[skey]) {
+      var stotal = CATEGORIES[skey].words.length;
+      var spct = Math.round(knownCount(skey) / stotal * 100);
+      sel.textContent = toPersianDigits(stotal) + " اصطلاح • " + toPersianDigits(spct) + "٪";
+    }
+  }
+}
+var CATEGORY = CATEGORIES[currentCategoryKey].name;
+
+var idx = 0;
+var chipColors = ["#FFE1E7", "#E1F0FF", "#FFF3D6", "#E3F9E5", "#F0E5FF", "#FFE8D6"];
+
+var card = document.getElementById("card");
+var iconChip = document.getElementById("iconChip");
+var iconFront = document.getElementById("iconFront");
+var wordFront = document.getElementById("wordFront");
+var meaningBack = document.getElementById("meaningBack");
+var infoBtn = document.getElementById("infoBtn");
+var screenExamples = document.getElementById("screenExamples");
+var screenIdioms = document.getElementById("screenIdioms");
+var examplesWordTitle = document.getElementById("examplesWordTitle");
+var examplesList = document.getElementById("examplesList");
+var backFromExamplesBtn = document.getElementById("backFromExamplesBtn");
+var counter = document.getElementById("counter");
+var progressFill = document.getElementById("progressFill");
+var prevBtn = document.getElementById("prevBtn");
+var nextBtn = document.getElementById("nextBtn");
+var speakBtn = document.getElementById("speakBtn");
+var levelBadge = document.getElementById("levelBadge");
+var categoryBadge = document.getElementById("categoryBadge");
+var streakCount = document.getElementById("streakCount");
+var celebrateOverlay = document.getElementById("celebrateOverlay");
+var restartBtn = document.getElementById("restartBtn");
+
+var confettiColors = ["#7C83FD", "#5B62D6", "#FFB86B", "#E8973E", "#FFF1DE", "#EEEDFF", "#FFFFFF"];
+
+function clearConfetti() {
+  var old = celebrateOverlay.querySelector(".confetti-container");
+  if (old && old.parentNode) old.parentNode.removeChild(old);
+}
+
+function launchConfetti() {
+  clearConfetti();
+  var container = document.createElement("div");
+  container.className = "confetti-container";
+  var pieceCount = 32;
+  for (var i = 0; i < pieceCount; i++) {
+    var piece = document.createElement("span");
+    piece.className = "confetti-piece";
+    var left = Math.random() * 100;
+    var delay = Math.random() * 0.35;
+    var duration = 1.5 + Math.random() * 1;
+    var drift = Math.round(Math.random() * 100 - 50) + "px";
+    var rot = Math.round(320 + Math.random() * 440) + "deg";
+    piece.style.left = left + "%";
+    piece.style.background = confettiColors[i % confettiColors.length];
+    piece.style.animationDelay = delay + "s";
+    piece.style.animationDuration = duration + "s";
+    piece.style.setProperty("--drift", drift);
+    piece.style.setProperty("--rot", rot);
+    if (i % 3 === 0) {
+      piece.style.width = "10px";
+      piece.style.height = "10px";
+      piece.style.borderRadius = "50%";
+    }
+    container.appendChild(piece);
+  }
+  celebrateOverlay.appendChild(container);
+  setTimeout(function () { clearConfetti(); }, 2700);
+}
+
+function levelOfCategory(key) {
+  return (key.indexOf("a2") === 0) ? "A2" : "A1";
+}
+function updateLevelBadge() {
+  var w = WORDS[idx];
+  var key = (w && w.__cat) ? w.__cat : currentCategoryKey;
+  levelBadge.textContent = levelOfCategory(key);
+}
+updateLevelBadge();
+categoryBadge.textContent = CATEGORY;
+
+function updateStreak() {
+  try {
+    var today = new Date();
+    var todayStr = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    var lastDate = localStorage.getItem("lughatyar_lastDate");
+    var streak = parseInt(localStorage.getItem("lughatyar_streak") || "0", 10);
+    if (lastDate !== todayStr) {
+      var yesterday = new Date(today);
+      yesterday.setDate(today.getDate() - 1);
+      var yesterdayStr = yesterday.getFullYear() + "-" + (yesterday.getMonth() + 1) + "-" + yesterday.getDate();
+      streak = (lastDate === yesterdayStr) ? streak + 1 : 1;
+      localStorage.setItem("lughatyar_streak", String(streak));
+      localStorage.setItem("lughatyar_lastDate", todayStr);
+    }
+    streakCount.textContent = toPersianDigits(streak || 1);
+    var profileStreakEl = document.getElementById("profileStreak");
+    if (profileStreakEl) profileStreakEl.textContent = toPersianDigits(streak || 1);
+  } catch (err) {
+    streakCount.textContent = "۱";
+  }
+}
+updateStreak();
+
+function render() {
+  var w = WORDS[idx];
+  card.classList.add("no-anim");
+  card.classList.remove("flipped");
+  void card.offsetWidth;
+  iconChip.style.background = chipColors[idx % chipColors.length];
+  iconFront.textContent = w.icon || "📘";
+  wordFront.textContent = w.word;
+  wordFront.classList.toggle("phrase", w.word.length > 12);
+  wordFront.classList.toggle("phrase-xl", w.word.length > 22);
+  meaningBack.textContent = w.meaning;
+  updateLevelBadge();
+  updateMarkUI();
+  if (document.getElementById("screenApp").classList.contains("active")) {
+    progress.pos[currentCategoryKey] = idx;
+  }
+  progress.days[todayStr()] = 1;
+  saveProgress();
+  if (w.examples && w.examples.length) {
+    infoBtn.classList.remove("hidden");
+  } else {
+    infoBtn.classList.add("hidden");
+  }
+  counter.textContent = toPersianDigits(idx + 1) + " / " + toPersianDigits(WORDS.length);
+  progressFill.style.width = (((idx + 1) / WORDS.length) * 100) + "%";
+  prevBtn.disabled = idx === 0;
+  nextBtn.textContent = (idx === WORDS.length - 1) ? "دوره تمام شد" : "بعدی";
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      card.classList.remove("no-anim");
+    });
+  });
+}
+
+card.addEventListener("click", function (e) {
+  if (e.target === speakBtn || e.target === infoBtn) return;
+  if (e.target.closest && e.target.closest(".mark-btn")) return;
+  card.classList.toggle("flipped");
+});
+
+function escapeHtml(str) {
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function underlineWord(sentence, word) {
+  var safeSentence = escapeHtml(sentence);
+  var re = new RegExp("(\\b" + word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\w*\\b)", "gi");
+  return safeSentence.replace(re, "<u>$1</u>");
+}
+
+infoBtn.addEventListener("click", function (e) {
+  e.stopPropagation();
+  var w = WORDS[idx];
+  if (!w.examples || !w.examples.length) return;
+  examplesWordTitle.textContent = w.word;
+  document.getElementById("examplesSubTitle").textContent = (currentCategoryKey.indexOf("idiom") === 0) ? "چند مثال واقعی از کاربرد این اصطلاح" : "چند مثال واقعی از کاربرد این کلمه";
+  var html = "";
+  for (var i = 0; i < w.examples.length; i++) {
+    var ex = w.examples[i];
+    html += '<div class="example-card"><div class="en">' + underlineWord(ex.en, w.word) + '</div><div class="fa">' + escapeHtml(ex.fa) + '</div></div>';
+  }
+  examplesList.innerHTML = html;
+  showScreen("examples");
+});
+
+backFromExamplesBtn.addEventListener("click", function () {
+  showScreen("app");
+});
+
+speakBtn.addEventListener("click", function (e) {
+  e.stopPropagation();
+  try {
+    var u = new SpeechSynthesisUtterance(WORDS[idx].word);
+    u.lang = "en-US";
+    u.rate = 0.5;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  } catch (err) { }
+});
+
+prevBtn.addEventListener("click", function () {
+  if (idx > 0) { idx--; render(); }
+});
+document.getElementById("knownBtn").addEventListener("click", function (e) { e.stopPropagation(); markWord("k"); });
+document.getElementById("unknownBtn").addEventListener("click", function (e) { e.stopPropagation(); markWord("u"); });
+
+nextBtn.addEventListener("click", function () {
+  if (idx < WORDS.length - 1) { idx++; render(); }
+  else {
+    document.getElementById("celebrateWordCount").textContent = toPersianDigits(WORDS.length);
+    document.getElementById("celebrateCategoryName").textContent = CATEGORY;
+    celebrateOverlay.classList.add("show");
+    launchConfetti();
+  }
+});
+
+restartBtn.addEventListener("click", function () {
+  celebrateOverlay.classList.remove("show");
+  clearConfetti();
+  idx = 0;
+  render();
+});
+
+var touchStartX = null;
+card.addEventListener("touchstart", function (e) { touchStartX = e.changedTouches[0].clientX; });
+card.addEventListener("touchend", function (e) {
+  if (touchStartX === null) return;
+  var dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) {
+    if (dx < 0 && idx < WORDS.length - 1) { idx++; render(); }
+    else if (dx > 0 && idx > 0) { idx--; render(); }
+  }
+  touchStartX = null;
+});
+
+var tg = (window.Telegram && window.Telegram.WebApp) ? window.Telegram.WebApp : null;
+
+function setAppHeight() {
+  var h = 0;
+  if (tg && tg.viewportStableHeight) h = tg.viewportStableHeight;
+  else if (tg && tg.viewportHeight) h = tg.viewportHeight;
+  if (!h) h = window.innerHeight;
+  if (h) document.documentElement.style.setProperty("--app-height", h + "px");
+}
+
+if (tg) {
+  tg.ready();
+  tg.expand();
+  setAppHeight();
+  if (tg.onEvent) {
+    tg.onEvent("viewportChanged", setAppHeight);
+  }
+} else {
+  setAppHeight();
+}
+
+window.addEventListener("resize", setAppHeight);
+window.addEventListener("orientationchange", function () {
+  setTimeout(setAppHeight, 200);
+});
+
+render();
+
+var screenLoading = document.getElementById("screenLoading");
+var screenCategory = document.getElementById("screenCategory");
+var screenApp = document.getElementById("screenApp");
+var screenProfile = document.getElementById("screenProfile");
+var screenSettings = document.getElementById("screenSettings");
+var screenQuiz = document.getElementById("screenQuiz");
+var screenA2 = document.getElementById("screenA2");
+var loadingPercent = document.getElementById("loadingPercent");
+var categoryEverydayBtn = document.getElementById("categoryEveryday");
+var categoryTravelBtn = document.getElementById("categoryTravel");
+var categoryFoodBtn = document.getElementById("categoryFood");
+var categoryWorkBtn = document.getElementById("categoryWork");
+var backToCategoryBtn = document.getElementById("backToCategoryBtn");
+
+updateTileProgress();
+(function () {
+  try {
+    if (!progress.settings || !progress.settings.reminder) return;
+    var now = new Date();
+    var hm = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
+    if (hm < (progress.settings.reminderTime || "20:00")) return;
+    var due = dueWords().length;
+    if (due === 0) return;
+    var t = document.getElementById("reminderToast");
+    t.innerHTML = "🔔 وقت مروره! " + toPersianDigits(due) + " لغت موعد مروره";
+    t.classList.add("show");
+    t.addEventListener("click", function () { t.classList.remove("show"); });
+    setTimeout(function () { t.classList.remove("show"); }, 6000);
+  } catch (e) { }
+})();
+updateReviewCard();
+updateQuizMeta();
+
+
+// === UI ENHANCEMENT FUNCTIONS ===
+
+// Convert number to Persian digits
+function toEnglishDigits(s) { return String(s).replace(/[۰-۹]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹".indexOf(d); }); }
+function toPersianDigits(n) {
+  var p = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+  return String(n).replace(/[0-9]/g, function (d) { return p[+d]; });
+}
+
+// Count-up animation
+function countUp(el, target, duration) {
+  if (!el) return;
+  var startTime = null;
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    var p = Math.min(1, (ts - startTime) / duration);
+    var v = Math.floor(p * target);
+    el.textContent = toPersianDigits(v);
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = toPersianDigits(target);
+  }
+  requestAnimationFrame(step);
+}
+
+// Profile animation targets
+var profileStreakTarget = 1;
+var profileWordsTarget = totalKnown();
+var profileDaysTarget = studyDays();
+var profileTargetsRead = false;
+
+function faDayLetter(jsDay) { return ["ی", "د", "س", "چ", "پ", "ج", "ش"][jsDay]; }
+function renderWeekChart() {
+  var box = document.getElementById("weekChart");
+  if (!box) return;
+  box.classList.remove("grown");
+  box.innerHTML = "";
+  var counts = [];
+  var max = 1;
+  var today = new Date();
+  for (var i = 6; i >= 0; i--) {
+    var d = new Date(today.getFullYear(), today.getMonth(), today.getDate() - i);
+    var key = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    var c = (progress.days && progress.days[key]) || 0;
+    counts.push({ letter: faDayLetter(d.getDay()), count: c, isToday: i === 0 });
+    if (c > max) max = c;
+  }
+  for (var k = 0; k < counts.length; k++) {
+    var item = counts[k];
+    var pct = item.count > 0 ? Math.max(8, Math.round(item.count / max * 100)) : 0;
+    var bar = document.createElement("div");
+    bar.className = "week-bar" + (item.isToday ? " today" : "");
+    var track = document.createElement("div");
+    track.className = "bar-track";
+    var fill = document.createElement("div");
+    fill.className = "bar-fill";
+    fill.style.height = pct + "%";
+    track.appendChild(fill);
+    if (item.count > 0) {
+      var val = document.createElement("span");
+      val.className = "bar-value";
+      val.style.bottom = "calc(" + pct + "% + 3px)";
+      val.textContent = toPersianDigits(item.count);
+      track.appendChild(val);
+    }
+    if (item.isToday && item.count > 0) {
+      var dot = document.createElement("span");
+      dot.className = "today-dot";
+      dot.style.bottom = "calc(" + pct + "% + 1px)";
+      track.appendChild(dot);
+    }
+    bar.appendChild(track);
+    var lab = document.createElement("span");
+    lab.textContent = item.letter;
+    bar.appendChild(lab);
+    box.appendChild(bar);
+  }
+  setTimeout(function () { box.classList.add("grown"); }, 60);
+}
+function triggerProfileAnimations() {
+  if (!profileTargetsRead) {
+    var se = document.getElementById('profileStreak');
+    if (se) {
+      var s = parseInt(toEnglishDigits(se.textContent), 10);
+      if (!isNaN(s) && s > 0) profileStreakTarget = s;
+    }
+    profileTargetsRead = true;
+  }
+  countUp(document.getElementById('profileStreak'), profileStreakTarget, 800);
+  countUp(document.getElementById('profileWords'), profileWordsTarget, 1000);
+  countUp(document.getElementById('profileDays'), profileDaysTarget, 900);
+  renderWeekChart();
+}
+
+function showScreen(name) {
+  screenLoading.classList.remove("active");
+  screenCategory.classList.remove("active");
+  screenApp.classList.remove("active");
+  screenProfile.classList.remove("active");
+  screenSettings.classList.remove("active");
+  screenExamples.classList.remove("active");
+  screenIdioms.classList.remove("active");
+  screenQuiz.classList.remove("active");
+  screenA2.classList.remove("active");
+  if (name === "loading") screenLoading.classList.add("active");
+  if (name === "category") screenCategory.classList.add("active");
+  if (name === "app") screenApp.classList.add("active");
+  if (name === "profile") screenProfile.classList.add("active");
+  if (name === "settings") screenSettings.classList.add("active");
+  if (name === "examples") screenExamples.classList.add("active");
+  if (name === "idioms") screenIdioms.classList.add("active");
+  if (name === "quiz") screenQuiz.classList.add("active");
+  if (name === "a2") screenA2.classList.add("active");
+  if (name === "profile") triggerProfileAnimations();
+  if (name === "category") { updateTileProgress(); updateReviewCard(); }
+  if (name === "a2") { updateTileProgress(); }
+  document.body.setAttribute("data-active", (name === "a2") ? "category" : name);
+  var navT = (name === "idioms" || name === "a2") ? "category" : name;
+  var allNavBtns = document.querySelectorAll("#sharedNav .nav-item");
+  for (var nb = 0; nb < allNavBtns.length; nb++) {
+    allNavBtns[nb].classList.toggle("active", allNavBtns[nb].getAttribute("data-target") === navT);
+  }
+}
+
+(function runLoading() {
+  var start = Date.now();
+  var minDuration = 2200;
+  var fontsDone = false;
+  var pct = 0;
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { fontsDone = true; });
+  } else {
+    fontsDone = true;
+  }
+
+  function tick() {
+    var elapsed = Date.now() - start;
+    var timeRatio = Math.min(1, elapsed / minDuration);
+    var target = Math.round(timeRatio * (fontsDone ? 100 : 92));
+    if (target > pct) pct = target;
+    loadingPercent.textContent = toPersianDigits(pct) + "٪";
+    if (pct >= 100) {
+      loadingPercent.textContent = "۱۰۰٪";
+      setTimeout(function () { showScreen("category"); maybeShowOnboarding(); }, 250);
+      return;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+function selectCategory(key) {
+  currentCategoryKey = key;
+  WORDS = CATEGORIES[key].words;
+  CATEGORY = CATEGORIES[key].name;
+  categoryBadge.textContent = CATEGORY;
+  idx = progress.pos[key] || 0;
+  if (idx >= WORDS.length) idx = 0;
+  render();
+  showScreen("app");
+}
+
+categoryEverydayBtn.addEventListener("click", function () { selectCategory("everyday"); });
+categoryTravelBtn.addEventListener("click", function () { selectCategory("travel"); });
+categoryFoodBtn.addEventListener("click", function () { selectCategory("food"); });
+categoryWorkBtn.addEventListener("click", function () { selectCategory("work"); });
+document.getElementById("categoryA2Everyday").addEventListener("click", function () { selectCategory("a2everyday"); });
+document.getElementById("categoryA2Travel").addEventListener("click", function () { selectCategory("a2travel"); });
+document.getElementById("categoryA2Food").addEventListener("click", function () { selectCategory("a2food"); });
+document.getElementById("categoryA2Work").addEventListener("click", function () { selectCategory("a2work"); });
+document.getElementById("categoryIdioms").addEventListener("click", function () { showScreen("idioms"); });
+document.getElementById("categoryReview").addEventListener("click", function () {
+  var due = dueWords();
+  if (!due.length) {
+    var rm = document.getElementById("reviewMeta");
+    if (rm) rm.textContent = "امروز همه‌چیز مرور شده 🎉";
+    return;
+  }
+  CATEGORIES.__review = { name: "مرور امروز", words: due.map(function (x) { x.w.__cat = x.cat; return x.w; }) };
+  selectCategory("__review");
+});
+function updateReviewCard() {
+  var el = document.getElementById("reviewMeta");
+  if (!el) return;
+  var due = dueWords().length;
+  el.textContent = due === 0 ? "امروز همه‌چیز مرور شده 🎉" : (toPersianDigits(due) + " لغت موعد مروره");
+}
+function shuffleArr(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+var QUIZ_LEN = 10;
+var quiz = { qs: [], i: 0, correct: 0 };
+if (!progress.quiz) progress.quiz = { plays: 0, best: 0 };
+if (progress.settings.sound === undefined) progress.settings.sound = true;
+function speakWord(text) {
+  if (!progress.settings || progress.settings.sound === false) return;
+  try {
+    if (!("speechSynthesis" in window)) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US";
+    u.rate = 0.9;
+    speechSynthesis.speak(u);
+  } catch (e) { }
+}
+var soundSwitch = document.getElementById("soundSwitch");
+var soundSub = document.getElementById("soundSub");
+function syncSoundUI() {
+  if (!soundSwitch) return;
+  soundSwitch.checked = progress.settings.sound !== false;
+  soundSub.textContent = progress.settings.sound !== false ? "فعال" : "غیرفعال";
+}
+if (soundSwitch) {
+  soundSwitch.addEventListener("change", function () {
+    progress.settings.sound = this.checked;
+    saveProgress();
+    syncSoundUI();
+    if (!this.checked) { try { speechSynthesis.cancel(); } catch (e) { } }
+  });
+  syncSoundUI();
+}
+var speakBtnEl = document.getElementById("speakBtn");
+if (speakBtnEl) speakBtnEl.addEventListener("click", function () { speakWord(WORDS[idx].word); });
+function buildQuiz() {
+  var all = [];
+  for (var cat in CATEGORIES) {
+    if (cat.indexOf("__") === 0) continue;
+    if (cat.indexOf("a2") === 0) continue;
+    var ws = CATEGORIES[cat].words;
+    for (var i = 0; i < ws.length; i++) all.push({ w: ws[i], cat: cat });
+  }
+  shuffleArr(all);
+  var picked = all.slice(0, QUIZ_LEN);
+  quiz.qs = [];
+  for (var p = 0; p < picked.length; p++) {
+    var pool = CATEGORIES[picked[p].cat].words.filter(function (x) { return x.word !== picked[p].w.word; });
+    shuffleArr(pool);
+    var opts = [];
+    for (var d = 0; d < 3 && d < pool.length; d++) opts.push(pool[d].fa);
+    opts.push(picked[p].w.fa);
+    shuffleArr(opts);
+    quiz.qs.push({ word: picked[p].w.word, answer: picked[p].w.fa, options: opts, cat: picked[p].cat });
+  }
+  quiz.i = 0;
+  quiz.correct = 0;
+}
+function renderQuiz() {
+  var q = quiz.qs[quiz.i];
+  document.getElementById("quizWord").textContent = q.word;
+  document.getElementById("quizCount").textContent = toPersianDigits(quiz.i + 1) + " / " + toPersianDigits(quiz.qs.length);
+  document.getElementById("quizProgressFill").style.width = ((quiz.i) / quiz.qs.length * 100) + "%";
+  var box = document.getElementById("quizOptions");
+  box.innerHTML = "";
+  for (var o = 0; o < q.options.length; o++) {
+    (function (optText) {
+      var b = document.createElement("button");
+      b.className = "quiz-option";
+      b.textContent = optText;
+      b.addEventListener("click", function () { answerQuiz(optText, b, q); });
+      box.appendChild(b);
+    })(q.options[o]);
+  }
+}
+function answerQuiz(picked, btn, q) {
+  var opts = document.querySelectorAll("#quizOptions .quiz-option");
+  for (var k = 0; k < opts.length; k++) {
+    opts[k].classList.add("locked");
+    if (opts[k].textContent === q.answer) opts[k].classList.add("correct");
+  }
+  if (picked === q.answer) {
+    quiz.correct++;
+  } else {
+    btn.classList.add("wrong");
+    var key = q.cat + "|" + q.word;
+    var rec = progress.words[key];
+    if (rec && rec.s === "k") { rec.s = "u"; rec.n = 0; rec.d = todayStr(); saveProgress(); }
+  }
+  setTimeout(function () {
+    quiz.i++;
+    if (quiz.i >= quiz.qs.length) showQuizResults();
+    else renderQuiz();
+  }, 900);
+}
+function showQuizResults() {
+  if (!progress.quiz) progress.quiz = { plays: 0, best: 0 };
+  progress.quiz.plays++;
+  if (quiz.correct > progress.quiz.best) progress.quiz.best = quiz.correct;
+  saveProgress();
+  var emoji = quiz.correct >= 9 ? "🏆" : quiz.correct >= 7 ? "🎉" : quiz.correct >= 5 ? "💪" : "📚";
+  document.getElementById("quizResultEmoji").textContent = emoji;
+  document.getElementById("quizResultText").textContent = toPersianDigits(quiz.correct) + " از " + toPersianDigits(quiz.qs.length) + " درست!";
+  document.getElementById("quizResultBest").textContent = "بهترین رکورد: " + toPersianDigits(progress.quiz.best) + " از " + toPersianDigits(QUIZ_LEN);
+  document.getElementById("quizPlayArea").style.display = "none";
+  document.getElementById("quizResults").style.display = "flex";
+  updateQuizMeta();
+}
+function startQuiz() {
+  buildQuiz();
+  document.getElementById("quizResults").style.display = "none";
+  document.getElementById("quizPlayArea").style.display = "";
+  renderQuiz();
+  showScreen("quiz");
+}
+function updateQuizMeta() {
+  var el = document.getElementById("quizMeta");
+  if (!el) return;
+  if (!progress.quiz) progress.quiz = { plays: 0, best: 0 };
+  el.textContent = progress.quiz.plays > 0 ? ("بهترین رکورد: " + toPersianDigits(progress.quiz.best) + " از " + toPersianDigits(QUIZ_LEN)) : "۱۰ سؤال • معنی درست رو پیدا کن";
+}
+document.getElementById("categoryQuiz").addEventListener("click", startQuiz);
+document.getElementById("categoryA2").addEventListener("click", function () { showScreen("a2"); });
+document.getElementById("quizBackBtn").addEventListener("click", function () { showScreen("category"); });
+document.getElementById("quizAgainBtn").addEventListener("click", startQuiz);
+document.getElementById("quizHomeBtn").addEventListener("click", function () { showScreen("category"); });
+document.getElementById("quizSpeak").addEventListener("click", function () { speakWord(quiz.qs[quiz.i].word); });
+document.getElementById("idiomSubEveryday").addEventListener("click", function () { selectCategory("idiomEveryday"); });
+document.getElementById("idiomSubFeelings").addEventListener("click", function () { selectCategory("idiomFeelings"); });
+document.getElementById("idiomSubEffort").addEventListener("click", function () { selectCategory("idiomEffort"); });
+document.getElementById("idiomSubBehavior").addEventListener("click", function () { selectCategory("idiomBehavior"); });
+document.getElementById("backToHomeFromIdioms").addEventListener("click", function () { showScreen("category"); });
+var backA2Btn = document.getElementById("backToHomeFromA2");
+if (backA2Btn) backA2Btn.addEventListener("click", function () { showScreen("category"); });
+
+backToCategoryBtn.addEventListener("click", function () {
+  var t = "category";
+  if (currentCategoryKey.indexOf("idiom") === 0) t = "idioms";
+  else if (currentCategoryKey.indexOf("a2") === 0) t = "a2";
+  showScreen(t);
+});
+var ONBOARD_KEY = "lughatyar_onboard_v1";
+var onboardSlides = [
+  { e: "👋", t: "به لغت‌یار خوش اومدی!", x: "اینجا با فلش‌کارت، لغت‌های انگلیسی رو سریع یاد می‌گیری و با مرور هوشمند، هیچ‌وقت فراموششون نمی‌کنی." },
+  { e: "🃏", t: "فلش‌کارت هوشمند", x: "روی کارت بزن تا معنی فارسیش رو ببینی؛ با ℹ️ مثال‌های واقعی رو ببین و با 🔊 تلفظش رو بشنو." },
+  { e: "🧠", t: "مرور هوشمند (SRS)", x: "با دکمه‌های «بلدم» و «هنوز نه»، زمان مرور هر لغت خودش تنظیم می‌شه؛ هر روز بنر «مرور امروز» رو چک کن." },
+  { e: "🏆", t: "پروفایل، کوئیز و سطح A2", x: "استریک روزانه و نمودار هفتگی رو در پروفایل ببین، با کوئیز ۱۰ سؤالی خودت رو بسنج و از بنر «سطح A2» وارد درس‌های جدید شو." }
+];
+var onboardIdx = 0;
+function onboardRender(animate) {
+  var s = onboardSlides[onboardIdx];
+  var cardEl = document.getElementById("onboardCard");
+  document.getElementById("onboardEmoji").textContent = s.e;
+  document.getElementById("onboardTitle").textContent = s.t;
+  document.getElementById("onboardText").textContent = s.x;
+  var dots = document.getElementById("onboardDots");
+  dots.innerHTML = "";
+  for (var i = 0; i < onboardSlides.length; i++) {
+    var d = document.createElement("span");
+    if (i === onboardIdx) d.className = "on";
+    dots.appendChild(d);
+  }
+  document.getElementById("onboardNextBtn").textContent = (onboardIdx === onboardSlides.length - 1) ? "بزن بریم! 🚀" : "بزن بریم بعدی";
+  if (animate) {
+    cardEl.classList.remove("onboard-slide-anim");
+    void cardEl.offsetWidth;
+    cardEl.classList.add("onboard-slide-anim");
+  }
+}
+function onboardClose() {
+  document.getElementById("onboardOverlay").classList.remove("show");
+  try { localStorage.setItem(ONBOARD_KEY, "1"); } catch (e) { }
+}
+function maybeShowOnboarding() {
+  var done = null;
+  try { done = localStorage.getItem(ONBOARD_KEY); } catch (e) { }
+  if (done) return;
+  onboardIdx = 0;
+  onboardRender(false);
+  document.getElementById("onboardOverlay").classList.add("show");
+}
+document.getElementById("onboardNextBtn").addEventListener("click", function () {
+  if (onboardIdx < onboardSlides.length - 1) { onboardIdx++; onboardRender(true); }
+  else onboardClose();
+});
+document.getElementById("onboardSkipBtn").addEventListener("click", onboardClose);
+var navItems = document.querySelectorAll(".nav-item");
+for (var ni = 0; ni < navItems.length; ni++) {
+  navItems[ni].addEventListener("click", function () {
+    showScreen(this.getAttribute("data-target"));
+  });
+}
