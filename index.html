@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+  <title>لغت‌یار</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-blob bg-blob-1"></div>
+  <div class="bg-blob bg-blob-2"></div>
+  <div class="bg-blob bg-blob-3"></div>
+  <div class="viewport-stage">
+    <div class="screen screen-loading active" id="screenLoading">
+      <div class="jelly-loader">
+        <div class="jelly jelly-pink">
+          <span></span>
+        </div>
+        <div class="jelly jelly-yellow">
+          <span></span>
+        </div>
+        <div class="jelly jelly-orange">
+          <span></span>
+        </div>
+      </div>
+
+      <div class="loading-title">
+        لغت‌یار
+      </div>
+
+      <div class="loading-subtitle">
+        در حال آماده‌سازی مسیر یادگیری...
+      </div>
+
+      <div class="loading-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="screen screen-category" id="screenCategory">
+      <button aria-label="باز کردن دسته‌ها" class="menu-toggle-btn" id="categoryMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="version-badge">v2.35.0</div>
+      <details class="version-notes">
+        <summary>تازه‌های v2.35.0</summary>
+        <div>بازطراحی کامل بخش دیالوگ کوتاه در قالب جریان پیوسته ۴ مرحله‌ای (خواندن، واکنش هدفمند، جمله‌سازی با کلمات مزاحم، و چرخش موقعیت) به همراه سیستم اهداف کلامی و کارت آمار پیشرفته.</div>
+        <div style="margin-top:6px;font-size:10px;opacity:.75;direction:ltr;text-align:left;font-family:monospace;">Build: __BUILD_TIMESTAMP__</div>
+      </details>
+      <div class="screen-body">
+        <div class="category-header">
+          <div class="category-emoji">🧠</div>
+          <div class="category-title">امروز چی یاد بگیریم؟</div>
+          <div class="category-sub">مسیرت رو انتخاب کن؛ از واژه، اصطلاح، داستان یا تمرین‌ها شروع کن.</div>
+        </div>
+        <div class="continue-learning-mini" id="continueLearningCard">
+          <div class="continue-learning-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H20v16H7.5A2.5 2.5 0 0 0 5 21V5.5Z"></path>
+              <path d="M5 5.5A2.5 2.5 0 0 1 7.5 8H20"></path>
+              <path d="M9 12h7"></path>
+              <path d="M9 15h5"></path>
+            </svg>
+          </div>
+
+          <div class="continue-learning-copy">
+            <div class="continue-label">ادامه مسیر</div>
+            <div class="continue-title" id="continueTitle">شروع اولین مسیر</div>
+            <div class="continue-meta" id="continueMeta">از واژه‌آموزی شروع کن</div>
+          </div>
+
+          <div class="continue-learning-action">
+            ادامه
+          </div>
+        </div>
+        <div class="home-learning-hub" id="homeLearningHub">
+          <div class="dashboard-section home-main-paths">
+            <div class="dashboard-title">مسیرهای یادگیری</div>
+            <div class="home-section-sub">یکی از مسیرهای اصلی رو انتخاب کن.</div>
+            <div class="home-path-grid">
+              <button class="home-path-card path-vocab" id="homeRouteVocabulary" type="button">
+                <span class="home-path-svg">
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H20v16H7.5A2.5 2.5 0 0 0 5 21V5.5Z"></path>
+                    <path d="M5 5.5A2.5 2.5 0 0 1 7.5 8H20"></path>
+                    <path d="M9 12h7"></path>
+                    <path d="M9 15h5"></path>
+                  </svg>
+                </span>
+                <span class="home-path-copy">
+                  <strong>واژه‌آموزی</strong>
+                  <small>A1 تا B2، مرحله‌به‌مرحله</small>
+                </span>
+              </button>
+              <button class="home-path-card path-idioms" id="homeRouteIdioms" type="button">
+                <span class="home-path-svg">
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M5 6.5A3.5 3.5 0 0 1 8.5 3h7A3.5 3.5 0 0 1 19 6.5v4A3.5 3.5 0 0 1 15.5 14H12l-4.5 4v-4A3.5 3.5 0 0 1 4 10.5v-4Z"></path>
+                    <path d="M8 7h8"></path>
+                    <path d="M8 10h5"></path>
+                  </svg>
+                </span>
+                <span class="home-path-copy">
+                  <strong>اصطلاحات</strong>
+                  <small>عبارت‌های کاربردی و واقعی</small>
+                </span>
+              </button>
+              <button class="home-path-card path-phrasal" id="homeRoutePhrasal" type="button">
+                <span class="home-path-svg">
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                  </svg>
+                </span>
+                <span class="home-path-copy">
+                  <strong>افعال ترکیبی</strong>
+                  <small>افعال روزمره و کاربردی</small>
+                </span>
+              </button>
+              <button class="home-path-card path-stories" id="homeRouteStories" type="button">
+                <span class="home-path-svg">
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M6 4h9a3 3 0 0 1 3 3v13H8a2 2 0 0 0-2 2V4Z"></path>
+                    <path d="M8 8h7"></path>
+                    <path d="M8 11h6"></path>
+                    <path d="M8 14h4"></path>
+                  </svg>
+                </span>
+                <span class="home-path-copy">
+                  <strong>داستان‌ها</strong>
+                  <small>داستان کوتاه و هم‌سطح</small>
+                </span>
+              </button>
+              <button class="home-path-card path-podcast" id="homeRoutePodcast" type="button">
+                <span class="home-path-svg">
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M12 4a4 4 0 0 0-4 4v4a4 4 0 0 0 8 0V8a4 4 0 0 0-4-4Z"></path>
+                    <path d="M6 11v1a6 6 0 0 0 12 0v-1"></path>
+                    <path d="M12 18v3"></path>
+                    <path d="M9 21h6"></path>
+                  </svg>
+                </span>
+                <span class="home-path-copy">
+                  <strong>پادکست</strong>
+                  <small>به‌زودی: شنیداری کوتاه و هم‌سطح</small>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- بخش جدید تمرین‌ها و مهارت‌آموزی در صفحه اصلی -->
+          <div class="dashboard-section home-exercises-section" id="homeExercisesSection">
+            <div class="dashboard-title">تمرین و مهارت‌آموزی</div>
+            <div class="home-section-sub">مهارت‌هات رو با آزمون، مرور و مکالمه تثبیت کن.</div>
+            <div class="home-category-list">
+              <button class="home-category-row tile-review" id="homeBannerReview" type="button">
+                <span class="home-category-emoji">🔁</span>
+                <span>
+                  <strong>مرور امروز</strong>
+                  <small id="homeBannerReviewSub">لغت‌های رسیده به موعد مرور</small>
+                </span>
+              </button>
+              <button class="home-category-row tile-quiz" id="homeBannerQuiz" type="button">
+                <span class="home-category-emoji">🎮</span>
+                <span>
+                  <strong>چالش واژگان</strong>
+                  <small id="homeBannerQuizSub">۱۰ سؤال چندگزینه‌ای • انتخاب سطح A1 یا A2</small>
+                </span>
+              </button>
+              <button class="home-category-row tile-cloze" id="homeBannerCloze" type="button">
+                <span class="home-category-emoji">✍️</span>
+                <span>
+                  <strong>جای خالی در جمله</strong>
+                  <small id="homeBannerClozeSub">تکمیل جمله با لغت مناسب</small>
+                </span>
+              </button>
+              <button class="home-category-row tile-dialogue" id="homeBannerDialogue" type="button">
+                <span class="home-category-emoji">💬</span>
+                <span>
+                  <strong>دیالوگ کوتاه</strong>
+                  <small id="homeBannerDialogueSub">مکالمه و نقش‌آفرینی روزمره</small>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-vocabulary-levels" id="screenVocabularyLevels">
+      <div class="screen-body">
+        <div class="vocab-screen-header">
+          <button class="back-btn" id="backToHomeFromVocabularyLevels" title="بازگشت به خانه">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="vocab-screen-kicker">واژه‌آموزی</div>
+          <div class="vocab-screen-title">سطحت رو انتخاب کن</div>
+          <div class="vocab-screen-sub">از A1 شروع کن و مرحله‌به‌مرحله جلو برو.</div>
+        </div>
+        <div class="vocab-level-stack">
+          <button type="button" class="vocab-level-lane active" id="vocabLevelA1Btn">
+            <span class="vocab-level-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3L14.8 8.5L21 9.3L16.5 13.6L17.6 20L12 17L6.4 20L7.5 13.6L3 9.3L9.2 8.5L12 3Z" />
+              </svg>
+            </span>
+            <span class="vocab-level-info">
+              <strong>A1</strong>
+              <small>شروع مسیر • لغت‌های پایه و روزمره</small>
+            </span>
+            <span class="vocab-level-status">شروع</span>
+          </button>
+
+          <button type="button" class="vocab-level-lane" id="vocabLevelA2Btn">
+            <span class="vocab-level-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2L15 8L21 9L16.5 13L17.5 20L12 17L6.5 20L7.5 13L3 9L9 8L12 2Z" />
+              </svg>
+            </span>
+            <span class="vocab-level-info">
+              <strong>A2</strong>
+              <small>واژه‌های بیشتر • مکالمه کاربردی‌تر</small>
+            </span>
+            <span class="vocab-level-status">باز</span>
+          </button>
+
+          <button type="button" class="vocab-level-lane locked" data-coming-soon="B1">
+            <span class="vocab-level-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="5" y="10" width="14" height="11" rx="2" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              </svg>
+            </span>
+            <span class="vocab-level-info">
+              <strong>B1</strong>
+              <small>متوسط • متن و مکالمه بیشتر</small>
+            </span>
+            <span class="vocab-level-status">به‌زودی</span>
+          </button>
+
+          <button type="button" class="vocab-level-lane locked" data-coming-soon="B2">
+            <span class="vocab-level-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3L19 7V17L12 21L5 17V7L12 3Z" />
+              </svg>
+            </span>
+            <span class="vocab-level-info">
+              <strong>B2</strong>
+              <small>پیشرفته • محتوای عمیق‌تر</small>
+            </span>
+            <span class="vocab-level-status">به‌زودی</span>
+          </button>
+        </div>
+
+        <div class="build-stamp-footer" id="buildStampFooter">
+          <span>Lumi v2.35.0</span> • <span class="stamp-time">Build: __BUILD_TIMESTAMP__</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-idioms screen-vocabulary-a1" id="screenVocabularyA1">
+      <div class="screen-body">
+        <div class="idioms-header">
+          <button class="back-btn" id="backToVocabularyLevelsFromA1" title="بازگشت به سطح‌ها">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="idioms-title">سطح A1</div>
+          <div class="idioms-sub">واژه‌های پایه در ۸ دسته‌بندی</div>
+        </div>
+        <div class="idioms-grid">
+          <!-- ۱. روزمره -->
+          <button class="idiom-tile tile-sub-everyday" data-vocab-category="everyday" id="categoryA1Everyday" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </div>
+            <div class="idiom-name">روزمره</div>
+            <div class="idiom-meta" id="a1MetaEveryday">۰٪ بلد</div>
+          </button>
+
+          <!-- ۲. سفر -->
+          <button class="idiom-tile tile-sub-feelings" data-vocab-category="travel" id="categoryA1Travel" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 11l18-7-7 18-3-8-8-3Z"></path>
+                <path d="M11 14l4-5"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">سفر</div>
+            <div class="idiom-meta" id="a1MetaTravel">۰٪ بلد</div>
+          </button>
+
+          <!-- ۳. غذا -->
+          <button class="idiom-tile tile-sub-effort" data-vocab-category="food" id="categoryA1Food" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 2v20"></path>
+                <path d="M18 8a3 3 0 0 0 3-3V2h-6v3a3 3 0 0 0 3 3z"></path>
+                <path d="M6 2v20"></path>
+                <path d="M3 2v6a3 3 0 0 0 6 0V2"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">غذا و رستوران</div>
+            <div class="idiom-meta" id="a1MetaFood">۰٪ بلد</div>
+          </button>
+
+          <!-- ۴. کار و اداره -->
+          <button class="idiom-tile tile-sub-behavior" data-vocab-category="work" id="categoryA1Work" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">کار و اداره</div>
+            <div class="idiom-meta" id="a1MetaWork">۰٪ بلد</div>
+          </button>
+
+          <!-- ۵. آشپزخانه -->
+          <button class="idiom-tile tile-sub-kitchen" data-vocab-category="kitchen" id="categoryA1Kitchen" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 2v20"></path>
+                <path d="M18 8a3 3 0 0 0 3-3V2h-6v3a3 3 0 0 0 3 3z"></path>
+                <path d="M6 2v20"></path>
+                <path d="M3 2v6a3 3 0 0 0 6 0V2"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">آشپزخانه</div>
+            <div class="idiom-meta" id="a1MetaKitchen">۰٪ بلد</div>
+          </button>
+
+          <!-- ۶. حمام و سرویس -->
+          <button class="idiom-tile tile-sub-cleaning" data-vocab-category="bathroom" id="categoryA1Bathroom" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z"></path>
+                <path d="m5 2 5 5"></path>
+                <path d="M2 22h20"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">حمام و سرویس</div>
+            <div class="idiom-meta" id="a1MetaBathroom">۰٪ بلد</div>
+          </button>
+
+          <!-- ۷. خودرو و رانندگی -->
+          <button class="idiom-tile tile-sub-car" data-vocab-category="car" id="categoryA1Car" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.9 2 11.2 2 11.5V16c0 .6.4 1 1 1h2"></path>
+                <circle cx="7" cy="17" r="2"></circle>
+                <path d="M9 17h6"></path>
+                <circle cx="17" cy="17" r="2"></circle>
+              </svg>
+            </div>
+            <div class="idiom-name">خودرو و رانندگی</div>
+            <div class="idiom-meta" id="a1MetaCar">۰٪ بلد</div>
+          </button>
+
+          <!-- ۸. حال و هوای من -->
+          <button class="idiom-tile tile-sub-mood" data-vocab-category="teenLife" id="categoryA1Mood" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z"></path>
+              </svg>
+            </div>
+            <div class="idiom-text-wrap">
+              <div class="idiom-name">حال‌وهوای من</div>
+              <div class="idiom-meta" id="a1MetaTeenLife">۰٪ بلد</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-stories" id="screenStories">
+      <div class="screen-body">
+        <div class="stories-header">
+          <button class="back-btn" id="backToHomeFromStories" title="بازگشت به خانه">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="stories-kicker">داستان‌ها</div>
+          <div class="stories-title">داستان کوتاه هم‌سطح</div>
+          <div class="stories-sub">با داستان‌های ساده، لغت‌ها رو توی جمله و موقعیت واقعی یاد بگیر.</div>
+        </div>
+
+        <div class="story-card story-card-ready" id="storyA1First">
+          <div class="story-level">A1</div>
+          <div class="story-main">
+            <div class="story-title">A New Friend</div>
+            <div class="story-desc">یک داستان کوتاه درباره آشنایی با یک دوست جدید.</div>
+          </div>
+          <div class="story-action">شروع</div>
+        </div>
+
+        <div class="story-card story-card-locked">
+          <div class="story-level">A1</div>
+          <div class="story-main">
+            <div class="story-title">At the Café</div>
+            <div class="story-desc">به‌زودی: سفارش دادن و مکالمه ساده در کافه.</div>
+          </div>
+          <div class="story-action locked">به‌زودی</div>
+        </div>
+
+        <div class="story-card story-card-locked">
+          <div class="story-level">A2</div>
+          <div class="story-main">
+            <div class="story-title">A Short Trip</div>
+            <div class="story-desc">به‌زودی: یک سفر کوتاه با واژه‌های کاربردی.</div>
+          </div>
+          <div class="story-action locked">به‌زودی</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-dialogue" id="screenDialogue">
+      <div class="screen-body">
+        <div class="dialogue-header">
+          <button class="back-btn" id="backToHomeFromDialogue" title="بازگشت به خانه">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="dialogue-title">دیالوگ کوتاه</div>
+          <div class="dialogue-sub">مکالمه‌های واقعی روزمره را در ۴ مرحله تمرین کن</div>
+        </div>
+
+        <!-- STAGE 1: READ -->
+        <div class="dialogue-card" id="dialogueCard">
+          <div class="dialogue-card-header">
+            <span class="dialogue-stage-badge">مرحله ۱ · خواندن</span>
+            <div class="dialogue-scene" id="dialogueScene">مدرسه</div>
+          </div>
+          <div class="dialogue-lines" id="dialogueLines"></div>
+        </div>
+
+        <!-- STAGE 2: REACT -->
+        <div class="dialogue-card dialogue-stage-card" id="dialogueReactCard">
+          <div class="dialogue-stage-badge">مرحله ۲ · واکنش مناسب</div>
+          <div class="dialogue-stage-title">تو چی می‌گی؟ (واکنش کلامی)</div>
+          <div class="dialogue-scenario" id="roleplayQuestion"></div>
+          <div class="roleplay-options dialogue-options" id="roleplayOptions"></div>
+          <div class="roleplay-feedback dialogue-feedback" id="roleplayFeedback"></div>
+        </div>
+
+        <!-- STAGE 3: BUILD -->
+        <div class="dialogue-card dialogue-stage-card sentence-builder-card" id="dialogueBuildCard">
+          <div class="dialogue-stage-badge">مرحله ۳ · جمله‌سازی هدفمند</div>
+          <div class="dialogue-stage-title">جمله خودت رو بساز ✨</div>
+          <div class="sentence-builder-sub" id="sentencePrompt">کلمه‌های مرتبط رو انتخاب کن و جمله رو بساز (مراقب کلمات اضافه باش).</div>
+          <div class="sentence-words" id="sentenceWords"></div>
+          <div class="sentence-result-container">
+            <div class="sentence-result-label">جمله ساخته‌شده شما:</div>
+            <div class="sentence-result" id="sentenceResult">هنوز کلمه‌ای انتخاب نکرده‌ای.</div>
+          </div>
+          <div class="sentence-builder-actions">
+            <button class="sentence-clear-btn" id="sentenceClearBtn" type="button">پاک کردن</button>
+            <button class="sentence-check-btn" id="sentenceCheckBtn" type="button">بررسی جمله</button>
+          </div>
+          <div class="sentence-feedback dialogue-feedback" id="sentenceFeedback"></div>
+        </div>
+
+        <!-- STAGE 4: TWIST -->
+        <div class="dialogue-card dialogue-stage-card" id="dialogueTwistCard">
+          <div class="dialogue-stage-badge">مرحله ۴ · چرخش موقعیت (انتقال یادگیری)</div>
+          <div class="dialogue-stage-title">چرخش موقعیت (Twist)</div>
+          <div class="dialogue-scenario" id="twistQuestion"></div>
+          <div class="dialogue-options" id="twistOptions"></div>
+          <div class="dialogue-feedback" id="twistFeedback"></div>
+        </div>
+
+        <!-- SUMMARY CARD -->
+        <div class="dialogue-card dialogue-summary-card" id="dialogueSummaryCard">
+          <div class="dialogue-summary-header">
+            <div class="dialogue-summary-title">نتیجه تمرین مکالمه</div>
+            <div class="dialogue-summary-status" id="dialogueSummaryStatus">در حال تکمیل مراحل</div>
+          </div>
+          <div class="dialogue-stats-grid">
+            <div class="dialogue-stat-item">
+              <span class="stat-label">واکنش</span>
+              <span class="stat-val" id="statReactScore">0/30</span>
+            </div>
+            <div class="dialogue-stat-item">
+              <span class="stat-label">جمله‌سازی</span>
+              <span class="stat-val" id="statBuildScore">0/30</span>
+            </div>
+            <div class="dialogue-stat-item">
+              <span class="stat-label">انتقال</span>
+              <span class="stat-val" id="statTwistScore">0/30</span>
+            </div>
+            <div class="dialogue-stat-item stat-total">
+              <span class="stat-label">مجموع</span>
+              <span class="stat-val" id="statTotalScore">0 XP</span>
+            </div>
+          </div>
+          <div class="dialogue-summary-feedback" id="dialogueSummaryFeedback"></div>
+        </div>
+
+        <!-- ACTIONS FOOTER -->
+        <div class="dialogue-actions">
+          <button class="dialogue-secondary-btn" id="dialogueLearnWordsBtn" type="button">تمرین لغت‌های مرتبط</button>
+          <button class="dialogue-next-btn" id="dialogueNextBtn" type="button">دیالوگ بعدی</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-idioms" id="screenIdioms">
+      <div class="screen-body">
+        <div class="idioms-header">
+          <button class="back-btn" id="backToHomeFromIdioms" title="بازگشت به خانه">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="idioms-title">دنیای اصطلاحات</div>
+          <div class="idioms-sub">یک زیردسته رو انتخاب کن</div>
+        </div>
+        <div class="idioms-grid">
+          <button class="idiom-tile tile-sub-everyday" id="idiomSubEveryday">
+            <div class="idiom-icon">
+              <img class="idiom-img" src="assets/icons/idiom-everyday.png" alt="روزمره" />
+            </div>
+            <div class="idiom-name">روزمره</div>
+            <div class="idiom-meta" id="idiomMetaEveryday">۵ اصطلاح</div>
+          </button>
+          <button class="idiom-tile tile-sub-feelings" id="idiomSubFeelings">
+            <div class="idiom-icon">
+              <img class="idiom-img" src="assets/icons/idiom-feelings.png" alt="احساسات" />
+            </div>
+            <div class="idiom-name">احساسات</div>
+            <div class="idiom-meta" id="idiomMetaFeelings">۵ اصطلاح</div>
+          </button>
+          <button class="idiom-tile tile-sub-effort" id="idiomSubEffort">
+            <div class="idiom-icon">
+              <img class="idiom-img" src="assets/icons/idiom-effort.png" alt="کار و تلاش" />
+            </div>
+            <div class="idiom-name">کار و تلاش</div>
+            <div class="idiom-meta" id="idiomMetaEffort">۵ اصطلاح</div>
+          </button>
+          <button class="idiom-tile tile-sub-behavior" id="idiomSubBehavior">
+            <div class="idiom-icon">
+              <img class="idiom-img" src="assets/icons/idiom-behavior.png" alt="رفتار و آداب" />
+            </div>
+            <div class="idiom-name">رفتار و آداب</div>
+            <div class="idiom-meta" id="idiomMetaBehavior">۵ اصطلاح</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- صفحه انتخاب سطح افعال ترکیبی -->
+    <div class="screen screen-vocabulary-levels screen-phrasal-levels" id="screenPhrasalLevels">
+      <div class="screen-body">
+        <div class="vocab-screen-header">
+          <button class="back-btn" id="backToHomeFromPhrasalLevels" title="بازگشت به خانه">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="vocab-screen-kicker">افعال ترکیبی</div>
+          <div class="vocab-screen-title">سطحت رو انتخاب کن</div>
+          <div class="vocab-screen-sub">از سطح پایه A1 تا عبارات پیشرفته B2 به ترتیب سطح یاد بگیر.</div>
+        </div>
+        <div class="vocab-level-stack">
+          <!-- A1 -->
+          <button type="button" class="vocab-level-lane active" id="phrasalLevelA1Btn">
+            <span class="vocab-level-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3L14.8 8.5L21 9.3L16.5 13.6L17.6 20L12 17L6.4 20L7.5 13.6L3 9.3L9.2 8.5L12 3Z" />
+              </svg>
+            </span>
+            <span class="vocab-level-info">
+              <strong>A1</strong>
+              <small>۱۰ فعل پایه • کاربردی‌ترین افعال روزمره</small>
+            </span>
+            <span class="vocab-level-status" id="phrasalLevelA1Status">شروع</span>
+          </button>
+
+          <!-- A2 -->
+          <button type="button" class="vocab-level-lane" id="phrasalLevelA2Btn">
+            <span class="vocab-level-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2L15 8L21 9L16.5 13L17.5 20L12 17L6.5 20L7.5 13L3 9L9 8L12 2Z" />
+              </svg>
+            </span>
+            <span class="vocab-level-info">
+              <strong>A2</strong>
+              <small>۴۶ فعل کاربردی • ۵ دسته‌بندی موضوعی</small>
+            </span>
+            <span class="vocab-level-status" id="phrasalLevelA2Status">باز</span>
+          </button>
+
+          <!-- B1 -->
+          <button type="button" class="vocab-level-lane" id="phrasalLevelB1Btn">
+            <span class="vocab-level-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+                <path d="M6 6h10" />
+                <path d="M6 10h10" />
+              </svg>
+            </span>
+            <span class="vocab-level-info">
+              <strong>B1</strong>
+              <small>۷۶ فعل متوسط • ۹ دسته‌بندی موضوعی</small>
+            </span>
+            <span class="vocab-level-status" id="phrasalLevelB1Status">باز</span>
+          </button>
+
+          <!-- B2 -->
+          <button type="button" class="vocab-level-lane" id="phrasalLevelB2Btn">
+            <span class="vocab-level-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="7" />
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+              </svg>
+            </span>
+            <span class="vocab-level-info">
+              <strong>B2</strong>
+              <small>۶۶ فعل فوق‌متوسط • ۶ دسته‌بندی موضوعی</small>
+            </span>
+            <span class="vocab-level-status" id="phrasalLevelB2Status">باز</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- سطح A1 افعال ترکیبی -->
+    <div class="screen screen-idioms screen-phrasal-a1" id="screenPhrasalA1">
+      <div class="screen-body">
+        <div class="idioms-header">
+          <button class="back-btn" id="backToPhrasalLevelsFromA1" title="بازگشت به سطح‌ها">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="idioms-title">افعال ترکیبی — سطح A1</div>
+          <div class="idioms-sub">افعال پایه و کلیدی در ۱ دسته‌بندی جامع</div>
+        </div>
+        <div class="idioms-grid">
+          <!-- افعال پایه روزمره -->
+          <button class="idiom-tile tile-sub-appliances" id="categoryPvA1" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </div>
+            <div class="idiom-name">افعال پایه روزمره</div>
+            <div class="idiom-meta" id="pvMetaA1">۱۰ فعل • ۰٪</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- سطح A2 افعال ترکیبی -->
+    <div class="screen screen-idioms screen-phrasal-a2" id="screenPhrasalA2">
+      <div class="screen-body">
+        <div class="idioms-header">
+          <button class="back-btn" id="backToPhrasalLevelsFromA2" title="بازگشت به سطح‌ها">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="idioms-title">افعال ترکیبی — سطح A2</div>
+          <div class="idioms-sub">افعال کاربردی در ۵ دسته‌بندی موضوعی</div>
+        </div>
+        <div class="idioms-grid">
+          <!-- ۱. خانه و وسایل -->
+          <button class="idiom-tile tile-sub-kitchen" id="categoryPvA2Home" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <div class="idiom-name">خانه و وسایل</div>
+            <div class="idiom-meta" id="pvMetaA2Home">۹ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۲. پوشش و ارتباطات -->
+          <button class="idiom-tile tile-sub-clothes" id="categoryPvA2Social" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">پوشش و ارتباطات</div>
+            <div class="idiom-meta" id="pvMetaA2Social">۶ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۳. حمل‌ونقل و سفر -->
+          <button class="idiom-tile tile-sub-car" id="categoryPvA2Transport" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.7 2 10.8 2 11v5c0 .6.4 1 1 1h2"></path>
+                <circle cx="7" cy="17" r="2"></circle>
+                <path d="M9 17h6"></path>
+                <circle cx="17" cy="17" r="2"></circle>
+              </svg>
+            </div>
+            <div class="idiom-name">حمل‌ونقل و سفر</div>
+            <div class="idiom-meta" id="pvMetaA2Transport">۹ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۴. حرکات و جابه‌جایی -->
+          <button class="idiom-tile tile-sub-routine" id="categoryPvA2Movement" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="13 17 18 12 13 7"></polyline>
+                <polyline points="6 17 11 12 6 7"></polyline>
+              </svg>
+            </div>
+            <div class="idiom-name">حرکات و جابه‌جایی</div>
+            <div class="idiom-meta" id="pvMetaA2Movement">۱۲ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۵. برداشتن و چیدمان -->
+          <button class="idiom-tile tile-sub-cleaning" id="categoryPvA2Objects" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <div class="idiom-name">برداشتن و چیدمان</div>
+            <div class="idiom-meta" id="pvMetaA2Objects">۱۰ فعل • ۰٪</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- سطح B1 افعال ترکیبی -->
+    <div class="screen screen-idioms screen-phrasal-b1" id="screenPhrasalB1">
+      <div class="screen-body">
+        <div class="idioms-header">
+          <button class="back-btn" id="backToPhrasalLevelsFromB1" title="بازگشت به سطح‌ها">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="idioms-title">افعال ترکیبی — سطح B1</div>
+          <div class="idioms-sub">افعال متوسط پرکاربرد در ۹ دسته‌بندی موضوعی</div>
+        </div>
+        <div class="idioms-grid">
+          <!-- ۱. پوشش و لباس -->
+          <button class="idiom-tile tile-sub-clothes" id="categoryPvB1Clothes" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">پوشش و لباس</div>
+            <div class="idiom-meta" id="pvMetaB1Clothes">۵ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۲. آشپزخانه و نظافت -->
+          <button class="idiom-tile tile-sub-kitchen" id="categoryPvB1Home" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 2v20"></path>
+                <path d="M18 8a3 3 0 0 0 3-3V2h-6v3a3 3 0 0 0 3 3z"></path>
+                <path d="M6 2v20"></path>
+                <path d="M3 2v6a3 3 0 0 0 6 0V2"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">آشپزخانه و نظافت</div>
+            <div class="idiom-meta" id="pvMetaB1Home">۸ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۳. روتین و وسایل -->
+          <button class="idiom-tile tile-sub-routine" id="categoryPvB1Routine" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="idiom-name">روتین و وسایل</div>
+            <div class="idiom-meta" id="pvMetaB1Routine">۸ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۴. کار و یادگیری -->
+          <button class="idiom-tile tile-sub-work" id="categoryPvB1Work" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">کار و یادگیری</div>
+            <div class="idiom-meta" id="pvMetaB1Work">۶ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۵. روابط و گفتگو -->
+          <button class="idiom-tile tile-sub-social" id="categoryPvB1Social" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">روابط و گفتگو</div>
+            <div class="idiom-meta" id="pvMetaB1Social">۱۱ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۶. تغذیه و نوشیدنی -->
+          <button class="idiom-tile tile-sub-feelings" id="categoryPvB1Food" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </div>
+            <div class="idiom-name">تغذیه و نوشیدنی</div>
+            <div class="idiom-meta" id="pvMetaB1Food">۶ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۷. بحث و تبادل نظر -->
+          <button class="idiom-tile tile-sub-communication" id="categoryPvB1Communication" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">بحث و تبادل نظر</div>
+            <div class="idiom-meta" id="pvMetaB1Communication">۱۳ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۸. پیشرفت و اهداف -->
+          <button class="idiom-tile tile-sub-effort" id="categoryPvB1Progress" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                <polyline points="17 6 23 6 23 12"></polyline>
+              </svg>
+            </div>
+            <div class="idiom-name">پیشرفت و اهداف</div>
+            <div class="idiom-meta" id="pvMetaB1Progress">۱۰ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۹. تغییرات و رویدادها -->
+          <button class="idiom-tile tile-sub-challenges" id="categoryPvB1Changes" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">تغییرات و رویدادها</div>
+            <div class="idiom-meta" id="pvMetaB1Changes">۹ فعل • ۰٪</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- سطح B2 افعال ترکیبی -->
+    <div class="screen screen-idioms screen-phrasal-b2" id="screenPhrasalB2">
+      <div class="screen-body">
+        <div class="idioms-header">
+          <button class="back-btn" id="backToPhrasalLevelsFromB2" title="بازگشت به سطح‌ها">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="idioms-title">افعال ترکیبی — سطح B2</div>
+          <div class="idioms-sub">افعال پیشرفته و خاص در ۶ دسته‌بندی موضوعی</div>
+        </div>
+        <div class="idioms-grid">
+          <!-- ۱. روابط و سبک زندگی -->
+          <button class="idiom-tile tile-sub-social" id="categoryPvB2Social" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">روابط و سبک زندگی</div>
+            <div class="idiom-meta" id="pvMetaB2Social">۸ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۲. مسائل و چالش‌ها -->
+          <button class="idiom-tile tile-sub-challenges" id="categoryPvB2Challenges" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">مسائل و چالش‌ها</div>
+            <div class="idiom-meta" id="pvMetaB2Challenges">۱۱ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۳. رفتار و لحن کلام -->
+          <button class="idiom-tile tile-sub-behavior" id="categoryPvB2Discourse" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">رفتار و لحن کلام</div>
+            <div class="idiom-meta" id="pvMetaB2Discourse">۱۱ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۴. سلامت و بازیابی -->
+          <button class="idiom-tile tile-sub-feelings" id="categoryPvB2Wellbeing" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">سلامت و بازیابی</div>
+            <div class="idiom-meta" id="pvMetaB2Wellbeing">۱۰ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۵. تلاش و ابتکار -->
+          <button class="idiom-tile tile-sub-effort" id="categoryPvB2Endeavor" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <div class="idiom-name">تلاش و ابتکار</div>
+            <div class="idiom-meta" id="pvMetaB2Endeavor">۱۳ فعل • ۰٪</div>
+          </button>
+
+          <!-- ۶. شرایط و پیشامدها -->
+          <button class="idiom-tile tile-sub-routine" id="categoryPvB2Situations" type="button">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <div class="idiom-name">شرایط و پیشامدها</div>
+            <div class="idiom-meta" id="pvMetaB2Situations">۱۳ فعل • ۰٪</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-app" id="screenApp">
+      <div class="app">
+        <div class="hero">
+          <div class="hero-top">
+            <div class="hero-top-left">
+              <button class="back-btn" id="backToCategoryBtn" title="بازگشت به دسته‌ها">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+                  <path d="M9 6l6 6-6 6"></path>
+                </svg>
+              </button>
+              <span class="app-title">🧠 لغت‌یار</span>
+              <span id="appVersionTag" style="font-size:11px;opacity:.6;margin-inline-start:6px;">v2.25.0</span>
+            </div>
+            <span class="streak-pill">
+              <svg class="flame-icon" viewBox="0 0 24 24">
+                <defs>
+                  <linearGradient id="flameGrad" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#FFE3BE"></stop>
+                    <stop offset="55%" stop-color="#FFB86B"></stop>
+                    <stop offset="100%" stop-color="#E8973E"></stop>
+                  </linearGradient>
+                </defs>
+                <path clip-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.176 7.547 7.547 0 01-1.705-1.715.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" fill="url(#flameGrad)" fill-rule="evenodd"></path>
+              </svg>
+              <span id="streakCount">1</span>
+            </span>
+          </div>
+          <div class="hero-badges">
+            <div class="badge-group">
+              <span class="badge" id="levelBadge">A1</span>
+              <span class="badge" id="categoryBadge">روزمره</span>
+            </div>
+            <span class="counter-pill" dir="ltr" id="counter">1 / 20</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill" style="width:5%"></div>
+          </div>
+          <div class="flip-tip">برای دیدن معنی، روی کارت بزن • برای مثال، روی ℹ️ بزن</div>
+        </div>
+        <div class="content">
+          <div class="stage">
+            <div class="card" id="card">
+              <div class="card-inner">
+                <div class="face front">
+                  <span class="card-level-badge hidden" id="cardLevelBadge">B1</span>
+                  <button class="info-btn" id="infoBtn" title="مثال‌های بیشتر">ℹ️</button>
+                  <div class="icon-chip" id="iconChip">
+                    <div class="icon" id="iconFront">💧</div>
+                  </div>
+                  <div class="word-en" id="wordFront">water</div>
+                  <div class="card-theme-tag hidden" id="cardThemeTag">از دسته‌ی نظافت</div>
+                  <button class="speak-btn" id="speakBtn" title="شنیدن تلفظ">🔊</button>
+                </div>
+                <div class="face back">
+                  <div class="meaning-fa" id="meaningBack">آب</div>
+                  <div class="mark-row" id="markRow">
+                    <button class="mark-btn mark-known" id="knownBtn" title="بلدم">✅ بلدم</button>
+                    <button class="mark-btn mark-unknown" id="unknownBtn" title="هنوز نه">🔁 هنوز نه</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="controls">
+            <button class="nav-btn" id="prevBtn">قبلی</button>
+            <button class="nav-btn primary" id="nextBtn">بعدی</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-examples" id="screenExamples">
+      <div class="screen-body">
+        <div class="hero-top-left" style="margin-bottom:18px;">
+          <button class="back-btn" id="backFromExamplesBtn" title="بازگشت">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <span class="app-title">مثال‌ها</span>
+        </div>
+        <div class="examples-title" id="examplesWordTitle">water</div>
+        <div class="examples-sub" id="examplesSubTitle">چند مثال واقعی از کاربرد این کلمه</div>
+        <div id="examplesList"></div>
+      </div>
+    </div>
+
+    <div class="screen screen-profile" id="screenProfile">
+      <div class="screen-body">
+        <div class="profile-header">
+          <div class="profile-avatar" id="profileAvatar">🧑‍🎓</div>
+          <div class="profile-name" id="profileName">یادگیرنده‌ی لغت‌یار</div>
+          <div class="profile-companion-note" id="profileCompanionNote">مسیر یادگیریت آماده است.</div>
+          <div class="profile-level">سطح فعلی: <span id="profileLevel">A1</span></div>
+        </div>
+        <div class="profile-stats">
+          <div class="stat-card stat-streak">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-value" id="profileStreak">1</div>
+            <div class="stat-label">گل‌های پیوستگی</div>
+          </div>
+          <div class="stat-card stat-words">
+            <div class="stat-icon">📚</div>
+            <div class="stat-value" id="profileWords">۴۵</div>
+            <div class="stat-label">لغت آموخته‌شده</div>
+          </div>
+          <div class="stat-card stat-level">
+            <div class="stat-icon">📅</div>
+            <div class="stat-value" id="profileDays">۰</div>
+            <div class="stat-label">روز مطالعه</div>
+          </div>
+        </div>
+        <div class="profile-section">
+          <div class="section-title">برنامه امروز</div>
+          <div class="daily-missions" id="dailyMissions"></div>
+          <div class="missions-done-note" id="missionsDoneNote">✨ همه مأموریت‌های امروز کامل شد!</div>
+        </div>
+        <div class="profile-section">
+          <div class="section-title">فعالیت هفتگی</div>
+          <div class="week-chart" id="weekChart"></div>
+        </div>
+        <div class="profile-section">
+          <div class="section-title">نشان‌های دستاورد</div>
+          <div class="badge-row" id="achievementBadges"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-settings" id="screenSettings">
+      <div class="screen-body">
+        <div class="settings-title">تنظیمات</div>
+        <div class="settings-section">
+          <div class="settings-group-title">صدا و تلفظ</div>
+          <div class="settings-list">
+            <div class="settings-row">
+              <div class="settings-row-icon chip-orange">🔊</div>
+              <div class="settings-row-info">
+                <div class="settings-row-title">صدای تلفظ کلمات</div>
+                <div class="settings-row-sub" id="soundSub">فعال</div>
+              </div>
+              <label class="switch">
+                <input checked="" id="soundSwitch" type="checkbox" />
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-group-title">اعلان‌ها</div>
+          <div class="settings-list">
+            <div class="settings-row">
+              <div class="settings-row-icon chip-purple">🔔</div>
+              <div class="settings-row-info">
+                <div class="settings-row-title">یادآوری روزانه</div>
+                <div class="settings-row-sub" id="reminderSub">غیرفعال</div>
+              </div>
+              <label class="switch">
+                <input id="reminderSwitch" type="checkbox" />
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+            <div class="settings-row reminder-time-row">
+              <div class="settings-row-info">
+                <div class="settings-row-title">ساعت یادآوری</div>
+              </div>
+              <input disabled="" id="reminderTime" type="time" value="20:00" />
+            </div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-group-title">ظاهر و سبک یادگیری</div>
+          <div class="settings-list">
+            <div class="settings-row settings-row-stack">
+              <div class="settings-row-info">
+                <div class="settings-row-title">سبک یادگیری</div>
+                <div class="settings-row-sub" id="avatarSub">یادگیرنده‌ی لغت‌یار</div>
+              </div>
+              <div class="choice-row avatar-choice-row">
+                <button class="choice-chip avatar-choice active" data-avatar="student" type="button">🧑‍🎓</button>
+                <button class="choice-chip avatar-choice" data-avatar="flower" type="button">✨</button>
+                <button class="choice-chip avatar-choice" data-avatar="star" type="button">🌍</button>
+                <button class="choice-chip avatar-choice" data-avatar="cat" type="button">🌿</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <div class="settings-group-title">داده‌ها</div>
+          <div class="settings-list">
+            <div class="settings-row">
+              <div class="settings-row-icon chip-red">🗑️</div>
+              <div class="settings-row-info">
+                <div class="settings-row-title">پاک‌کردن پیشرفت</div>
+                <div class="settings-row-sub">همه لغت‌های علامت‌گذاری‌شده و آمار پاک می‌شه</div>
+              </div>
+            </div>
+            <button class="settings-danger" id="resetProgressBtn">پاک‌کردن پیشرفت</button>
+            <div class="confirm-strip" id="resetConfirm">
+              <button id="resetYes">بله، پاک کن</button>
+              <button id="resetCancel">انصراف</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-quiz" id="screenQuiz">
+      <div class="screen-body">
+        <div class="quiz-top">
+          <button class="back-btn quiz-back" id="quizBackBtn" title="بازگشت به خانه" aria-label="بازگشت به خانه">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="quiz-progress-wrap" title="پیشرفت سؤالات">
+            <div class="quiz-stepped-bar" id="quizSteppedBar">
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+              <div class="quiz-step-pip"></div>
+            </div>
+          </div>
+          <div class="quiz-combo-badge" id="quizComboBadge" title="زنجیره پاسخ‌های درست">
+            <span class="quiz-combo-icon">🔥</span>
+            <span class="quiz-combo-num" id="quizComboNum">۰</span>
+          </div>
+          <div class="quiz-count" id="quizCount">۱ / ۱۰</div>
+        </div>
+        <div class="quiz-level-panel" id="quizLevelPanel">
+          <div>
+            <div class="quiz-level-title">سطح چالش رو انتخاب کن</div>
+            <div class="quiz-level-sub">برای هر سطح، سؤال‌ها فقط از همان لغت‌ها ساخته می‌شن.</div>
+          </div>
+          <div class="quiz-level-actions">
+            <button class="quiz-level-btn active" data-quiz-level="A1">A1<span>لغت‌های پایه</span></button>
+            <button class="quiz-level-btn" data-quiz-level="A2">A2<span>لغت‌های جدید</span></button>
+            <button class="quiz-level-btn" data-quiz-level="B1">B1<span>متوسط</span></button>
+            <button class="quiz-level-btn" data-quiz-level="B2">B2<span>پیشرفته</span></button>
+          </div>
+
+          <!-- Additive Game Modes & Risk Multipliers -->
+          <div class="quiz-modes-strip" id="quizModesStrip">
+            <div class="quiz-strip-label">حالت چالش:</div>
+            <div class="quiz-modes-tabs">
+              <button type="button" class="quiz-mode-pill active" id="quizModeClassic" data-mode="classic">🌟 کلاسیک</button>
+              <button type="button" class="quiz-mode-pill" id="quizModeStreak" data-mode="streak">🧳 زنجیره موضوعی</button>
+              <button type="button" class="quiz-mode-pill" id="quizModeBoss" data-mode="boss">⚡ راند رئیس <span class="boss-lock-badge" id="bossLockBadge">۰/۳</span></button>
+            </div>
+          </div>
+
+          <div class="quiz-risk-strip" id="quizRiskStrip">
+            <div class="quiz-strip-label">ضریب ریسک:</div>
+            <div class="quiz-risk-actions">
+              <button type="button" class="quiz-risk-btn active" data-risk="1">×۱ امن</button>
+              <button type="button" class="quiz-risk-btn" data-risk="2">×۲ ریسک</button>
+              <button type="button" class="quiz-risk-btn" data-risk="3">×۳ چالش</button>
+            </div>
+          </div>
+        </div>
+        <div id="quizPlayArea">
+          <div class="quiz-active-banner" id="quizActiveBanner" style="display:none;"></div>
+          <div class="quiz-ghost-indicator" id="quizGhostIndicator" style="display:none;"></div>
+
+          <div class="quiz-card" id="quizCard">
+            <div class="quiz-hint" id="quizHint"></div>
+            <div class="quiz-content-wrap">
+              <div class="quiz-word" id="quizWord">airport</div>
+              <button class="quiz-speak" id="quizSpeak" title="شنیدن تلفظ">🔊</button>
+            </div>
+          </div>
+          <div class="quiz-predict-notice" id="quizPredictNotice" style="display:none;"></div>
+          <div class="quiz-options quiz-options-grid" id="quizOptions"></div>
+        </div>
+        <div class="quiz-results" id="quizResults">
+          <div class="quiz-result-card" id="quizResultCard">
+            <div class="quiz-result-title" id="quizResultTitle">عالی رفتی!</div>
+            <div class="quiz-result-score-highlight" id="quizResultText"></div>
+            <div class="quiz-result-sub" id="quizResultSub">لغت‌ها در ذهنت تثبیت شدند.</div>
+
+            <div class="quiz-result-stats-row">
+              <div class="quiz-stat-box">
+                <span class="quiz-stat-label">بهترین رکورد سطح</span>
+                <span class="quiz-stat-val" id="quizStatBest">-</span>
+              </div>
+              <div class="quiz-stat-box">
+                <span class="quiz-stat-label">بیشترین زنجیره (کمبو)</span>
+                <span class="quiz-stat-val" id="quizStatCombo">-</span>
+              </div>
+              <div class="quiz-stat-box" id="quizStatRiskBox" style="display:none;">
+                <span class="quiz-stat-label">امتیاز ریسک</span>
+                <span class="quiz-stat-val" id="quizStatRisk">-</span>
+              </div>
+              <div class="quiz-stat-box" id="quizStatGhostBox" style="display:none;">
+                <span class="quiz-stat-label">مقایسه با رکورد</span>
+                <span class="quiz-stat-val" id="quizStatGhost">-</span>
+              </div>
+            </div>
+
+            <div class="quiz-badges-container" id="quizBadgesContainer">
+              <!-- Dynamically populated badges like دقت بالا, سرعت خوب -->
+            </div>
+
+            <div class="missions-hint" id="missionsHint">از خانه «شروع امروز» بزن؛ هم تمرینه هم مأموریت.</div>
+            <div class="missions-done-note" id="quizMissionsDoneNote">✨ همه مأموریت‌های امروز کامل شد!</div>
+            <button class="quiz-again-btn" id="quizAgainBtn">شروع دور جدید</button>
+            <button class="quiz-home-btn" id="quizHomeBtn">برگشت به خانه</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen screen-idioms" id="screenA2">
+      <div class="screen-body">
+        <div class="idioms-header">
+          <button class="back-btn" id="backToHomeFromA2" title="بازگشت به سطح‌ها">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"></path>
+            </svg>
+          </button>
+          <div class="idioms-title">سطح A2</div>
+          <div class="idioms-sub">لغت‌های جدید در ۷ دسته — قدم بعدی یادگیری</div>
+        </div>
+        <div class="idioms-grid">
+          <button class="idiom-tile tile-sub-everyday" id="categoryA2Everyday">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </div>
+            <div class="idiom-name">روزمره</div>
+            <div class="idiom-meta" id="a2MetaEveryday">۰٪ بلد</div>
+          </button>
+          <button class="idiom-tile tile-sub-feelings" id="categoryA2Travel">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 11l18-7-7 18-3-8-8-3Z"></path>
+                <path d="M11 14l4-5"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">سفر</div>
+            <div class="idiom-meta" id="a2MetaTravel">۰٪ بلد</div>
+          </button>
+          <button class="idiom-tile tile-sub-effort" id="categoryA2Food">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 2v20"></path>
+                <path d="M18 8a3 3 0 0 0 3-3V2h-6v3a3 3 0 0 0 3 3z"></path>
+                <path d="M6 2v20"></path>
+                <path d="M3 2v6a3 3 0 0 0 6 0V2"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">غذا و رستوران</div>
+            <div class="idiom-meta" id="a2MetaFood">۰٪ بلد</div>
+          </button>
+          <button class="idiom-tile tile-sub-behavior" id="categoryA2Work">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">کار و اداره</div>
+            <div class="idiom-meta" id="a2MetaWork">۰٪ بلد</div>
+          </button>
+          <button class="idiom-tile tile-sub-kitchen" id="categoryA2Kitchen">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 2v20"></path>
+                <path d="M18 8a3 3 0 0 0 3-3V2h-6v3a3 3 0 0 0 3 3z"></path>
+                <path d="M6 2v20"></path>
+                <path d="M3 2v6a3 3 0 0 0 6 0V2"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">آشپزخانه</div>
+            <div class="idiom-meta" id="a2MetaKitchen">۰٪ بلد</div>
+          </button>
+          <button class="idiom-tile tile-sub-cleaning" id="categoryA2Bathroom">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z"></path>
+                <path d="m5 2 5 5"></path>
+                <path d="M2 22h20"></path>
+              </svg>
+            </div>
+            <div class="idiom-name">حمام و سرویس</div>
+            <div class="idiom-meta" id="a2MetaBathroom">۰٪ بلد</div>
+          </button>
+          <button class="idiom-tile tile-sub-car" id="categoryA2Car">
+            <div class="idiom-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.9 2 11.2 2 11.5V16c0 .6.4 1 1 1h2"></path>
+                <circle cx="7" cy="17" r="2"></circle>
+                <path d="M9 17h6"></path>
+                <circle cx="17" cy="17" r="2"></circle>
+              </svg>
+            </div>
+            <div class="idiom-name">خودرو و رانندگی</div>
+            <div class="idiom-meta" id="a2MetaCar">۰٪ بلد</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="celebrate-overlay" id="celebrateOverlay">
+      <div class="celebrate-card">
+        <div class="celebrate-badge">🏆</div>
+        <div class="celebrate-title">آفرین! دوره رو تموم کردی 🎉</div>
+        <div class="celebrate-text" id="celebrateText">
+          <span id="celebrateWordCount">۲۰</span> لغت رو با موفقیت مرور کردی.
+        </div>
+        <button class="celebrate-btn" id="restartBtn">شروع دوباره</button>
+      </div>
+    </div>
+
+    <div class="reminder-toast" id="reminderToast"></div>
+    <div class="onboard-overlay" id="onboardOverlay">
+      <div class="onboard-card" id="onboardCard">
+        <div class="onboard-emoji" id="onboardEmoji">👋</div>
+        <div class="onboard-title" id="onboardTitle">به لغت‌یار خوش اومدی!</div>
+        <div class="onboard-text" id="onboardText"></div>
+        <div class="onboard-dots" id="onboardDots"></div>
+        <div class="onboard-actions">
+          <button class="onboard-next" id="onboardNextBtn">بزن بریم بعدی</button>
+          <button class="onboard-skip" id="onboardSkipBtn">بیخیالش</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-drawer-overlay" id="categoryDrawerOverlay"></div>
+    <aside aria-hidden="true" class="category-drawer" id="categoryDrawer">
+      <div class="drawer-header">
+        <div>
+          <div class="drawer-title">دسترسی سریع</div>
+          <div class="drawer-subtitle">تمامی بخش‌ها از صفحه اصلی در دسترس هستند</div>
+        </div>
+        <button aria-label="بستن منوی دسته‌ها" class="drawer-close-btn" id="closeCategoryDrawer" type="button">×</button>
+      </div>
+      <div class="drawer-empty-state">
+        <div class="drawer-empty-icon">✨</div>
+        <div class="drawer-empty-title">همه گزینه‌ها در صفحه اصلی فعال هستند</div>
+        <div class="drawer-empty-desc">برای دسترسی آسان‌تر، تمامی بخش‌های یادگیری و تمرین‌ها در صفحه اصلی چیده شده‌اند.</div>
+      </div>
+    </aside>
+
+    <div class="bottom-nav" id="sharedNav">
+      <div class="nav-bar"></div>
+      <div class="nav-puck" id="navPuck">
+        <span class="puck-icon pi-home">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+            <path d="M3 11l9-8 9 8"></path>
+            <path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"></path>
+          </svg>
+        </span>
+        <span class="puck-icon pi-profile">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"></path>
+          </svg>
+        </span>
+        <span class="puck-icon pi-settings">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <circle cx="9" cy="6" fill="currentColor" r="2" stroke="none"></circle>
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <circle cx="15" cy="12" fill="currentColor" r="2" stroke="none"></circle>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+            <circle cx="7" cy="18" fill="currentColor" r="2" stroke="none"></circle>
+          </svg>
+        </span>
+      </div>
+      <button class="nav-item nav-home active" data-target="category">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+          <path d="M3 11l9-8 9 8"></path>
+          <path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"></path>
+        </svg>
+        <span>خانه</span>
+      </button>
+      <button class="nav-item nav-profile" data-target="profile">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"></path>
+        </svg>
+        <span>پروفایل</span>
+      </button>
+      <button class="nav-item nav-settings" data-target="settings">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <circle cx="9" cy="6" fill="currentColor" r="2" stroke="none"></circle>
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <circle cx="15" cy="12" fill="currentColor" r="2" stroke="none"></circle>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+          <circle cx="7" cy="18" fill="currentColor" r="2" stroke="none"></circle>
+        </svg>
+        <span>تنظیمات</span>
+      </button>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
