@@ -1,4 +1,4 @@
-var APP_VERSION = "v2.35.0";
+var APP_VERSION = "v2.36.0";
 var BUILD_TIMESTAMP = "__BUILD_TIMESTAMP__";
 var LEVEL = "A1";
 

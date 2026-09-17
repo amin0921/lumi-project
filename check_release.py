@@ -4,7 +4,7 @@ import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-EXPECTED_VERSION = "v2.35.0"
+EXPECTED_VERSION = "v2.36.0"
 
 REQUIRED_MARKERS = [
     EXPECTED_VERSION,
