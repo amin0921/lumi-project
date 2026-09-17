@@ -4,9 +4,10 @@ import sys
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-EXPECTED_VERSION = "v2.36.0"
+EXPECTED_VERSION = "v2.37.0"
 
 REQUIRED_MARKERS = [
+    "<!DOCTYPE html>",
     EXPECTED_VERSION,
     "انتخاب سطح A1 یا A2",
     "همه مأموریت‌های امروز کامل شد",

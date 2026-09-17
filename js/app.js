@@ -1,4 +1,4 @@
-var APP_VERSION = "v2.36.0";
+var APP_VERSION = "v2.37.0";
 var BUILD_TIMESTAMP = "__BUILD_TIMESTAMP__";
 var LEVEL = "A1";
 
@@ -7414,16 +7414,34 @@ function setQuizLevel(level) {
 }
 
 function makeClozePrompt(w) {
-  var sent = (w.en || "").trim();
-  var word = (w.word || "").trim();
-  if (!sent || !word) return "____";
-  var safe = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  var re = new RegExp("\\b" + safe + "\\w*\\b", "i");
-  if (re.test(sent)) return sent.replace(re, "____");
-  var first = word.split(/\s+/)[0].replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  var re2 = new RegExp("\\b" + first + "\\w*\\b", "i");
-  if (re2.test(sent)) return sent.replace(re2, "____");
-  return sent + " (____)";
+  var sent = (w && w.en ? w.en : "").trim();
+  var word = (w && w.word ? w.word : "").trim();
+  if (!sent || !word) return null;
+
+  var parts = word.split(/\s+/).filter(Boolean).map(function (p) {
+    return p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  });
+  if (parts.length === 0) return null;
+
+  var pattern = "\\b" + parts.join("\\s+") + "\\b";
+  var re = new RegExp(pattern, "i");
+  var m = sent.match(re);
+  if (!m) return null;
+
+  var blanked = m[0];
+  var prompt = sent.replace(re, "____");
+
+  // Safety: prompt must never contain target word or phrase in visible form
+  if (re.test(prompt)) return null;
+
+  var res = {
+    prompt: prompt,
+    blanked: blanked,
+    answer: blanked
+  };
+  res.toString = function () { return this.prompt; };
+  res.valueOf = function () { return this.prompt; };
+  return res;
 }
 
 function buildClozeDistractors(targetWord, itemCat, level, allWords) {
@@ -7539,22 +7557,27 @@ function buildCloze(level) {
     }
   }
   shuffleArr(all);
-  var picked = all.slice(0, QUIZ_LEN);
   quiz.qs = [];
-  for (var p = 0; p < picked.length; p++) {
-    var item = picked[p];
-    var closeOpts = buildClozeDistractors(item.w.word, item.cat, level, all);
+  for (var p = 0; p < all.length && quiz.qs.length < QUIZ_LEN; p++) {
+    var item = all[p];
+    var clozeData = makeClozePrompt(item.w);
+    if (!clozeData) continue;
+
+    var answerText = clozeData.answer;
+    var closeOpts = buildClozeDistractors(answerText, item.cat, level, all);
     var opts = closeOpts.slice();
-    opts.push(item.w.word);
+    if (opts.indexOf(answerText) === -1) {
+      opts.push(answerText);
+    }
     shuffleArr(opts);
     quiz.qs.push({
       word: item.w.word,
       wordKey: item.w.id || item.w.word,
-      answer: item.w.word,
+      answer: answerText,
       options: opts,
       cat: item.cat,
       level: level,
-      prompt: makeClozePrompt(item.w),
+      prompt: clozeData.prompt,
       hint: item.w.meaning || item.w.fa || ""
     });
   }
@@ -7683,6 +7706,10 @@ function startCloze(level) {
   quiz.ghostRecord = getGhostRecord("cloze", quizLevel);
 
   buildCloze(quizLevel);
+  if (!quiz.qs || quiz.qs.length === 0) {
+    showScreen("category");
+    return;
+  }
   updateQuizModesUI();
   document.getElementById("quizResults").style.display = "none";
   document.getElementById("quizPlayArea").style.display = "";
