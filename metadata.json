@@ -1,6 +1,0 @@
-{
-  "name": "Lumi",
-  "description": "اپلیکیشن آموزش و یادگیری زبان انگلیسی شامل واژگان، اصطلاحات، کوئیز و پیگیری پیشرفت روزانه.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
