@@ -14,7 +14,7 @@ Do not behave as a simple code generator. Think and act like an experienced engi
 
 ## PROJECT CONTEXT & SOURCE OF TRUTH
 
-This is an existing project under active development. The current project codebase (index.html, css/style.css, js/app.js, build.py) is the Single Source of Truth — not any previous chat summary or analytical document.
+This is an existing project under active development. The current project codebase (index.html, css/style.css, js/app.js, build.py, check_release.py) is the Single Source of Truth — not any previous chat summary or analytical document.
 
 Before making changes:
 - Re-inspect the current implementation relevant to the task. Do not rely only on previous conversation memory.
@@ -23,6 +23,16 @@ Before making changes:
 - Build incrementally on the existing project state.
 
 Do not treat the project as a new application. Do not replace existing solutions with your own preferred architecture (no React/Vue/build frameworks/backend) unless explicitly required.
+
+## REPOSITORY REALITY & BUILD PIPELINE
+
+The real application is 100% vanilla HTML, CSS, and JavaScript. There is no React, no Vue, no TypeScript, no bundler, and no backend in the app that actually ships.
+
+- **Canonical build:** `python3 build.py`. It reads `index.html`, `css/style.css`, and `js/app.js`, then writes the single-file bundle to `dist/index.html`.
+- `dist/` is gitignored. It is a build artifact, not source — never edit it by hand.
+- The repository root also contains **orphaned scaffolding left over from a Google AI Studio template**: `package.json`, `package-lock.json`, `bun.lock`, `vite.config.ts`, `tsconfig.json`, `.env.example`, `metadata.json`, boilerplate `README.md`, and duplicate font copies under `fonts/` and `public/`.
+- Treat all of that as dead weight. It is not part of the build, nothing that runs imports it, and it must NOT be used to infer the project's architecture. Do not run `npm`/`vite`/`bun` commands, do not run `npm run build`, and do not "fix" the app to match those files. Remove them only when a task explicitly asks for cleanup.
+- `python check_release.py` verifies that `dist/index.html` exists and matches the expected release. Note that its expected version may be pinned inside the script — check it whenever the app version changes.
 
 ## CORE DEVELOPMENT PRINCIPLES
 
@@ -51,6 +61,15 @@ For tasks that:
 - have meaningful regression risk
 
 ...prefer a separate read-only analysis phase before implementation: explain the current implementation, identify relevant functions/files, identify risks/edge cases, and recommend the smallest safe approach — before touching any code. For trivial/local changes this extra phase is not required.
+
+## READ-ONLY & AUDIT TASKS
+
+When a task is explicitly scoped as analysis, audit, investigation, or review only (no changes requested):
+- Make no modifications of any kind — no code, no data, no assets, no formatting, no file renames.
+- Do NOT increment APP_VERSION, do NOT run the build, and do NOT commit. The versioning rule below applies only to implementation tasks.
+- Do not silently fix anything you find, even if the fix is obvious.
+- Report findings with exact file/line evidence, and clearly separate verified facts from inferences.
+- End the report by explicitly stating that nothing in the repository was changed.
 
 ## AI AGENT AUTONOMY
 
@@ -118,6 +137,15 @@ When persistence (localStorage) or data parsing fails:
 
 Prefer safe DOM APIs and textContent when rendering vocabulary/user-facing text. Avoid innerHTML with any non-hardcoded content, and avoid eval or unsafe dynamic code execution.
 
+## OFFLINE-FIRST ASSETS
+
+The app must be able to render fully without network access, since the APK target has no guaranteed connectivity.
+
+- Do not introduce new runtime network dependencies (remote fonts, CDN scripts, remote images).
+- Prefer local assets, or resources inlined/Base64-encoded into `css/style.css` the way the existing Latin fonts are.
+- The single-file bundle (`dist/index.html`) must not depend on external URLs for anything except the Telegram SDK (which is being removed).
+- Any asset referenced by `index.html` must actually exist in the repository. Never leave a reference to a file that is not committed — a missing asset is a broken UI, not a harmless placeholder.
+
 ## TELEGRAM → STANDALONE APK MIGRATION
 
 The end goal is a standalone Android APK with the Telegram Mini App integration fully removed — not a dual-mode app that keeps Telegram as a fallback.
@@ -144,9 +172,14 @@ The end goal is a standalone Android APK with the Telegram Mini App integration 
 ## VERSIONING & BUILD TRACKING
 
 Every implementation task, without exception, must:
-- Increment `APP_VERSION` (even for small fixes/polish rounds — this has been missed before and must never be skipped again).
-- Refresh `BUILD_TIMESTAMP` to the actual build time.
-- Explicitly state the new `APP_VERSION` and `BUILD_TIMESTAMP` in the final report.
+
+- Increment `APP_VERSION` in `js/app.js` — declared as `var APP_VERSION = "..."`. Keep that exact `var` declaration format: `build.py` reads it with a regex and will silently report the version as "unknown" (without failing the build) if the declaration style changes to `const`/`let`.
+- Update every other place the version is shown or expected, so all copies stay consistent. At minimum, check the version displayed in `index.html`, and the expected version used by `check_release.py` (which may be pinned inside the script). Missing any of these leaves the project in an inconsistent release state.
+- Explicitly state the new `APP_VERSION` in the final report.
+
+This rule has been missed before and must never be skipped again. Do not treat small fixes or polish rounds as exempt.
+
+**Do NOT hand-edit `BUILD_TIMESTAMP`.** In `js/app.js` it exists only as the literal placeholder `"__BUILD_TIMESTAMP__"`, which `build.py` replaces with the actual build time during bundling. Keep the placeholder text exactly as-is — never replace it with a hardcoded date, and never "update" it manually.
 
 Choose which verification commands/tools to run (syntax checks, type checks, vocabulary audits, build scripts, release checks, rendering checks, etc.) based on your own judgment of what the specific task actually touches — do not wait to be told exact tool names.
 
@@ -172,7 +205,7 @@ Every implementation task ends with a concise technical report including:
 - changed files
 - what changed
 - what was checked at the code level (syntax/logic review, and rendering checks when applicable) — explicitly note that visual/manual on-device testing was NOT performed by you and is left to the project owner
-- new APP_VERSION and BUILD_TIMESTAMP
+- new `APP_VERSION`
 - remaining limitations/risks
 
 Keep the report as short as possible while still including all required elements — prefer compact lists/tables over long prose. Avoid restating the full task instructions back, avoid excessive nested bullets, and avoid verbose formatting for simple statements.
