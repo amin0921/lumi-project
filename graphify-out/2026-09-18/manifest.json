@@ -1,0 +1,176 @@
+{
+  "build.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "69f749c79277f7dfcaa4902c03512a1c",
+    "semantic_hash": "69f749c79277f7dfcaa4902c03512a1c"
+  },
+  "build_full_extraction.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "aeab0d830735a9c3e8b880376f0c65eb",
+    "semantic_hash": "aeab0d830735a9c3e8b880376f0c65eb"
+  },
+  "check_release.py": {
+    "mtime": 1789723200.7927434,
+    "seen": 1789723422.5574877,
+    "ast_hash": "116229c03262a5eec93c1fbb3b6c3d21",
+    "semantic_hash": ""
+  },
+  "cluster_pv.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "6402b600e0bf96235727d8fa5f909015",
+    "semantic_hash": "6402b600e0bf96235727d8fa5f909015"
+  },
+  "compress_font.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "3379b5ddc5c1943f38653ed43dc2293e",
+    "semantic_hash": "3379b5ddc5c1943f38653ed43dc2293e"
+  },
+  "create_all_pv_entries.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "e94b01fd3fec62031546a5d18b15ebf0",
+    "semantic_hash": "e94b01fd3fec62031546a5d18b15ebf0"
+  },
+  "detailed_inventory.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "4e0ab98f842fede4eda7a3ba951a5d5f",
+    "semantic_hash": "4e0ab98f842fede4eda7a3ba951a5d5f"
+  },
+  "existing_words.json": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "145aad9180e6991ea99652221e48659d",
+    "semantic_hash": "145aad9180e6991ea99652221e48659d"
+  },
+  "generate_all_entries.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "330c1c25373f15826371c87b0d476be5",
+    "semantic_hash": "330c1c25373f15826371c87b0d476be5"
+  },
+  "generate_pv_dataset.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "ab95f401d69fd659761b7b9977f30225",
+    "semantic_hash": "ab95f401d69fd659761b7b9977f30225"
+  },
+  "js/app.js": {
+    "mtime": 1789658232.3497732,
+    "seen": 1789677639.1814508,
+    "ast_hash": "67d9cc341d9ddbc2957ff9821888047b",
+    "semantic_hash": "67d9cc341d9ddbc2957ff9821888047b"
+  },
+  "make_entries_builder.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "55f898ebcee437ee6f569ce4284a3fa7",
+    "semantic_hash": "55f898ebcee437ee6f569ce4284a3fa7"
+  },
+  "organize_pv.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "8c653f00bd50621d2baf0fc60f688eab",
+    "semantic_hash": "8c653f00bd50621d2baf0fc60f688eab"
+  },
+  "populate_data.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "0eda54ee7af90ccac901e85bf18023de",
+    "semantic_hash": "0eda54ee7af90ccac901e85bf18023de"
+  },
+  "process_items.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "13562ec1f9a2164e8c13f0dd7206c103",
+    "semantic_hash": "13562ec1f9a2164e8c13f0dd7206c103"
+  },
+  "test_assembly.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "5204a420f8eb23f504e053d4defa42b9",
+    "semantic_hash": "5204a420f8eb23f504e053d4defa42b9"
+  },
+  "test_candidates.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "e5f64c2d069d8d460c8eef5596665970",
+    "semantic_hash": "e5f64c2d069d8d460c8eef5596665970"
+  },
+  "test_grouping.py": {
+    "mtime": 1789553206.0,
+    "seen": 1789677639.1814508,
+    "ast_hash": "321d35ee75296c976b680d137fbb2442",
+    "semantic_hash": "321d35ee75296c976b680d137fbb2442"
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1789677221.3652487,
+    "seen": 1789723422.5574877,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1789677221.402092,
+    "seen": 1789723422.5574877,
+    "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1789646329.0421245,
+    "seen": 1789723422.5574877,
+    "ast_hash": "c10ba9c95ba6918f1985ae0098beb4ae",
+    "semantic_hash": ""
+  },
+  "PROMPT-LIBRARY.md": {
+    "mtime": 1789674941.748787,
+    "seen": 1789723422.5574877,
+    "ast_hash": "8abae4decd45c51136ebbf89f43b30a1",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1789643643.397056,
+    "seen": 1789723422.5574877,
+    "ast_hash": "8371e86e906e3f5ee534477d5293d2a9",
+    "semantic_hash": ""
+  },
+  "assets/icons/README.md": {
+    "mtime": 1789553206.0,
+    "seen": 1789723422.5574877,
+    "ast_hash": "a3b5d9fd73d2ec14e8130ca7d77c533b",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1789723301.506949,
+    "seen": 1789723422.5574877,
+    "ast_hash": "5a79d9efe84764f566fe6c15faa02170",
+    "semantic_hash": ""
+  },
+  "assets/icons/idiom-behavior.png": {
+    "mtime": 1789646329.054895,
+    "seen": 1789723422.5574877,
+    "ast_hash": "ad8c0cf6b2383569b40407afce24ec4b",
+    "semantic_hash": ""
+  },
+  "assets/icons/idiom-effort.png": {
+    "mtime": 1789646329.0694222,
+    "seen": 1789723422.5574877,
+    "ast_hash": "e2b7872ac3d4fab0b94cd219cc536ba6",
+    "semantic_hash": ""
+  },
+  "assets/icons/idiom-everyday.png": {
+    "mtime": 1789646329.0820477,
+    "seen": 1789723422.5574877,
+    "ast_hash": "9a7e24d2fa385bf12e5e9a5f14739fc4",
+    "semantic_hash": ""
+  },
+  "assets/icons/idiom-feelings.png": {
+    "mtime": 1789646329.0940363,
+    "seen": 1789723422.5574877,
+    "ast_hash": "c06dcc440ff0e02f36459298e9f835a4",
+    "semantic_hash": ""
+  }
+}

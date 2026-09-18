@@ -46,10 +46,10 @@
         <span></span>
         <span></span>
       </button>
-      <div class="version-badge">v2.37.0</div>
+      <div class="version-badge">v2.38.0</div>
       <details class="version-notes">
-        <summary>تازه‌های v2.37.0</summary>
-        <div>رفع اشکال در آزمون «جای خالی در جمله»: سؤال‌ها دیگر ناقص یا با پاسخ نمایان نمایش داده نمی‌شوند.</div>
+        <summary>تازه‌های v2.38.0</summary>
+        <div>افزودن موتور تم، سوییچ حالت شب (Dark Mode) در تنظیمات و پالت تیره اولیه.</div>
         <div>فونت فارسی حالا به‌صورت محلی ذخیره شده و بدون اینترنت هم درست نمایش داده می‌شود.</div>
         <div style="margin-top:6px;font-size:10px;opacity:.75;direction:ltr;text-align:left;font-family:monospace;">Build: __BUILD_TIMESTAMP__</div>
       </details>
@@ -260,7 +260,7 @@
         </div>
 
         <div class="build-stamp-footer" id="buildStampFooter">
-          <span>Lumi v2.37.0</span> • <span class="stamp-time">Build: __BUILD_TIMESTAMP__</span>
+          <span>Lumi v2.38.0</span> • <span class="stamp-time">Build: __BUILD_TIMESTAMP__</span>
         </div>
       </div>
     </div>
@@ -980,7 +980,7 @@
                 </svg>
               </button>
               <span class="app-title">🧠 لغت‌یار</span>
-              <span id="appVersionTag" style="font-size:11px;opacity:.6;margin-inline-start:6px;">v2.37.0</span>
+              <span id="appVersionTag" style="font-size:11px;opacity:.6;margin-inline-start:6px;">v2.38.0</span>
             </div>
             <span class="streak-pill">
               <svg class="flame-icon" viewBox="0 0 24 24">
@@ -1141,6 +1141,17 @@
         <div class="settings-section">
           <div class="settings-group-title">ظاهر و سبک یادگیری</div>
           <div class="settings-list">
+            <div class="settings-row">
+              <div class="settings-row-icon chip-purple">🌙</div>
+              <div class="settings-row-info">
+                <div class="settings-row-title">حالت شب</div>
+                <div class="settings-row-sub" id="themeSub">غیرفعال</div>
+              </div>
+              <label class="switch">
+                <input id="themeSwitch" type="checkbox" />
+                <span class="switch-slider"></span>
+              </label>
+            </div>
             <div class="settings-row settings-row-stack">
               <div class="settings-row-info">
                 <div class="settings-row-title">سبک یادگیری</div>

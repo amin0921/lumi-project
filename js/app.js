@@ -1,4 +1,4 @@
-var APP_VERSION = "v2.37.0";
+var APP_VERSION = "v2.38.0";
 var BUILD_TIMESTAMP = "__BUILD_TIMESTAMP__";
 var LEVEL = "A1";
 
@@ -5796,7 +5796,7 @@ function normalizeProgress(data) {
   safe.settings.reminderTime = typeof safe.settings.reminderTime === "string" ? safe.settings.reminderTime : "20:00";
   if (safe.settings.sound === undefined) safe.settings.sound = true;
   if (typeof safe.settings.avatar !== "string") safe.settings.avatar = "student";
-  safe.settings.theme = "default";
+  safe.settings.theme = (safe.settings.theme === "dark") ? "dark" : "default";
   var allowedAvatars = ["student", "flower", "star", "cat"];
   if (allowedAvatars.indexOf(safe.settings.avatar) === -1) {
     safe.settings.avatar = "student";
@@ -5879,8 +5879,12 @@ var AVATAR_OPTIONS = {
 };
 
 function applyPersonalTheme() {
-  document.body.removeAttribute("data-theme");
-  if (progress.settings) progress.settings.theme = "default";
+  var currentTheme = (progress.settings && progress.settings.theme === "dark") ? "dark" : "default";
+  if (currentTheme === "dark") {
+    document.body.setAttribute("data-theme", "dark");
+  } else {
+    document.body.removeAttribute("data-theme");
+  }
 }
 
 function toEnglishDigits(s) { return String(s).replace(/[۰-۹]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹".indexOf(d); }); }
@@ -5905,6 +5909,11 @@ function syncPersonalizationUI() {
   for (var i = 0; i < avatarBtns.length; i++) {
     avatarBtns[i].classList.toggle("active", avatarBtns[i].getAttribute("data-avatar") === avatarKey);
   }
+  var themeSwitch = document.getElementById("themeSwitch");
+  var themeSub = document.getElementById("themeSub");
+  var isDark = progress.settings.theme === "dark";
+  if (themeSwitch) themeSwitch.checked = isDark;
+  if (themeSub) themeSub.textContent = isDark ? "فعال" : "غیرفعال";
   applyPersonalTheme();
 }
 
@@ -8421,6 +8430,15 @@ function bindHomeEvents() {
   for (var ac = 0; ac < avatarBtns.length; ac++) {
     avatarBtns[ac].addEventListener("click", function () {
       progress.settings.avatar = this.getAttribute("data-avatar") || "student";
+      saveProgress();
+      syncPersonalizationUI();
+    });
+  }
+
+  var themeSwitch = document.getElementById("themeSwitch");
+  if (themeSwitch) {
+    themeSwitch.addEventListener("change", function () {
+      progress.settings.theme = this.checked ? "dark" : "default";
       saveProgress();
       syncPersonalizationUI();
     });

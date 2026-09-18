@@ -1,0 +1,285 @@
+{
+  "communities": {
+    "0": [
+      "js_app",
+      "js_app_auditvocabularydata",
+      "js_app_buildcloze",
+      "js_app_buildclozedistractors",
+      "js_app_clearconfetti",
+      "js_app_countup",
+      "js_app_countup_step",
+      "js_app_escapehtml",
+      "js_app_fadayletter",
+      "js_app_isplainobject",
+      "js_app_launchconfetti",
+      "js_app_levelofcategory",
+      "js_app_makeclozeprompt",
+      "js_app_makeclozeprompt_res",
+      "js_app_makeclozeprompt_res_tostring",
+      "js_app_makeclozeprompt_res_valueof",
+      "js_app_makedefaultprogress",
+      "js_app_normalizeprogress",
+      "js_app_renderweekchart",
+      "js_app_setappheight",
+      "js_app_sortclozequestionsbydifficulty",
+      "js_app_studydays",
+      "js_app_toenglishdigits",
+      "js_app_totalknown",
+      "js_app_triggerprofileanimations",
+      "js_app_underlineword",
+      "js_app_updatelevelbadge"
+    ],
+    "1": [
+      "base64",
+      "build",
+      "build_full_extraction",
+      "check_release",
+      "cluster_pv",
+      "collections",
+      "compress_font",
+      "create_all_pv_entries",
+      "datetime",
+      "detailed_inventory",
+      "generate_all_entries",
+      "generate_pv_dataset",
+      "io",
+      "json",
+      "organize_pv",
+      "os",
+      "pathlib",
+      "populate_data",
+      "process_items",
+      "re",
+      "subprocess",
+      "sys",
+      "test_assembly",
+      "test_candidates",
+      "test_grouping"
+    ],
+    "2": [
+      "js_app_answerquiz",
+      "js_app_getbosscounters",
+      "js_app_getcategoryicon",
+      "js_app_getghostrecord",
+      "js_app_getquizlevelstats",
+      "js_app_incrementbosscounter",
+      "js_app_renderquiz",
+      "js_app_resetbosscounter",
+      "js_app_safestorageget",
+      "js_app_safestorageset",
+      "js_app_saveghostrecord",
+      "js_app_saveprogress",
+      "js_app_setquizlevel",
+      "js_app_showquizresults",
+      "js_app_startcloze",
+      "js_app_updatequizcomboui",
+      "js_app_updatequizmodesui",
+      "js_app_updatequizsteppedbar",
+      "js_app_updatestreak"
+    ],
+    "3": [
+      "js_app_currentwordkey",
+      "js_app_ensuredailymissions",
+      "js_app_knowncount",
+      "js_app_knowncountmany",
+      "js_app_markword",
+      "js_app_missionpercent",
+      "js_app_render",
+      "js_app_renderachievements",
+      "js_app_renderdailymissions",
+      "js_app_savelearningpath",
+      "js_app_syncreminderui",
+      "js_app_todaystr",
+      "js_app_topersiandigits",
+      "js_app_trackmissionquiz",
+      "js_app_trackmissionword",
+      "js_app_updatemarkui",
+      "js_app_updateprofilelevelbadge",
+      "js_app_updatetileprogress",
+      "js_app_updatevocabularya1progress"
+    ],
+    "4": [
+      "js_app_applypersonaltheme",
+      "js_app_bindhomeevents",
+      "js_app_closecategorydrawer",
+      "js_app_daysbetween",
+      "js_app_duewords",
+      "js_app_opencategorydrawer",
+      "js_app_readlearningpath",
+      "js_app_safestorageremove",
+      "js_app_selectcategory",
+      "js_app_showhomecomingsoon",
+      "js_app_showscreen",
+      "js_app_speakword",
+      "js_app_startreviewsession",
+      "js_app_syncpersonalizationui",
+      "js_app_updatehomedashboard"
+    ],
+    "5": [
+      "js_app_getintentfeedback",
+      "js_app_handlesentencecheck",
+      "js_app_handlesentencecheck_checkpatternmatch",
+      "js_app_handlesentenceclear",
+      "js_app_removesentencetoken",
+      "js_app_renderdialogue",
+      "js_app_rendersentencebuilder",
+      "js_app_rendersentenceresult",
+      "js_app_updatedialoguesummary",
+      "js_app_updatesentenceresult",
+      "js_app_updatewordbankbuttonsstate"
+    ],
+    "6": [
+      "js_app_buildbossquiz",
+      "js_app_buildcategorystreakquiz",
+      "js_app_buildquiz",
+      "js_app_categorymatchesquizlevel",
+      "js_app_geteligiblestreakcategories",
+      "js_app_shufflearr",
+      "js_app_startquiz"
+    ],
+    "7": [
+      "make_entries_builder"
+    ]
+  },
+  "cohesion": {
+    "0": 0.11396011396011396,
+    "1": 0.12,
+    "2": 0.19883040935672514,
+    "3": 0.17543859649122806,
+    "4": 0.21904761904761905,
+    "5": 0.21818181818181817,
+    "6": 0.5238095238095238,
+    "7": 1.0
+  },
+  "gods": [
+    {
+      "id": "js_app_bindhomeevents",
+      "label": "bindHomeEvents()",
+      "degree": 23
+    },
+    {
+      "id": "js_app_topersiandigits",
+      "label": "toPersianDigits()",
+      "degree": 15
+    },
+    {
+      "id": "js_app_showscreen",
+      "label": "showScreen()",
+      "degree": 13
+    },
+    {
+      "id": "js_app_renderquiz",
+      "label": "renderQuiz()",
+      "degree": 12
+    },
+    {
+      "id": "js_app_showquizresults",
+      "label": "showQuizResults()",
+      "degree": 12
+    },
+    {
+      "id": "js_app_markword",
+      "label": "markWord()",
+      "degree": 10
+    },
+    {
+      "id": "js_app_startquiz",
+      "label": "startQuiz()",
+      "degree": 10
+    },
+    {
+      "id": "js_app_safestorageset",
+      "label": "safeStorageSet()",
+      "degree": 9
+    },
+    {
+      "id": "js_app_updatequizmodesui",
+      "label": "updateQuizModesUI()",
+      "degree": 9
+    },
+    {
+      "id": "js_app_saveprogress",
+      "label": "saveProgress()",
+      "degree": 8
+    }
+  ],
+  "surprises": [
+    {
+      "source": "buildCloze()",
+      "target": "categoryMatchesQuizLevel()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 0 → community 6"
+    },
+    {
+      "source": "startCloze()",
+      "target": "buildCloze()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 0 → community 2"
+    },
+    {
+      "source": "step()",
+      "target": "toPersianDigits()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 0 → community 3"
+    },
+    {
+      "source": "showScreen()",
+      "target": "triggerProfileAnimations()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 0 → community 4"
+    },
+    {
+      "source": "answerQuiz()",
+      "target": "todayStr()",
+      "source_files": [
+        "js/app.js",
+        "js/app.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "note": "Bridges community 2 → community 3"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `bindHomeEvents()` connect `Community 4` to `Community 0`, `Community 2`, `Community 3`, `Community 5`, `Community 6`?",
+      "why": "High betweenness centrality (0.015) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `bindHomeEvents()` (e.g. with `closeCategoryDrawer()` and `openCategoryDrawer()`) actually correct?",
+      "why": "`bindHomeEvents()` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11396011396011396 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

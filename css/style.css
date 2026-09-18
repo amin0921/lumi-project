@@ -4531,3 +4531,86 @@ html, body, button, input, textarea, select, .screen {
 .latin-text {
   font-family: "Nunito", sans-serif !important;
 }
+
+/* ==========================================================================
+   Dark Mode Base Layer (Step 1 of 4)
+   ========================================================================== */
+body[data-theme="dark"] {
+  --bg: #1A1A17;
+  --surface: #262521;
+  --surface-2: #302E29;
+  --surface-shadow: #121210;
+  --border: #3A3833;
+  --text: #F2EFE6;
+  --text-secondary: #A8A296;
+  --accent: #3DBE97;
+  --accent-soft: #1E3A32;
+  --reward: #FFB86B;
+  --reward-dark: #E8973E;
+  --reward-soft: #3A2F20;
+
+  background: linear-gradient(135deg, #1A1A17 0%, #201F1A 35%, #1C1B18 100%);
+  color: var(--text);
+}
+
+/* Home Screen & Flashcard */
+body[data-theme="dark"] .face {
+  background: #262521;
+  border-color: #3A3833;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, .45), 0 2px 8px rgba(0, 0, 0, .25);
+}
+
+/* Quiz Screen Containers & Options */
+body[data-theme="dark"] .quiz-level-panel {
+  background: #262521;
+  border-color: #3A3833;
+}
+
+body[data-theme="dark"] .quiz-level-btn,
+body[data-theme="dark"] .quiz-mode-pill,
+body[data-theme="dark"] .quiz-risk-btn,
+body[data-theme="dark"] .quiz-combo-badge {
+  background: #302E29;
+  border-color: #3A3833;
+  color: var(--text);
+}
+
+body[data-theme="dark"] .quiz-option {
+  background: #262521;
+  border-color: #3A3833;
+  color: var(--text);
+}
+
+body[data-theme="dark"] .quiz-option-letter {
+  background: rgba(255, 255, 255, .08);
+  color: var(--text-secondary);
+}
+
+body[data-theme="dark"] .quiz-result-card {
+  background: #262521;
+  border-color: #3A3833;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .45);
+}
+
+/* Modals & Celebrations */
+body[data-theme="dark"] .celebrate-card,
+body[data-theme="dark"] .onboard-card {
+  background: #262521;
+  border-color: #3A3833;
+  color: var(--text);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .55);
+}
+
+/* Settings Rows */
+body[data-theme="dark"] .settings-row {
+  background: rgba(38, 37, 33, 0.7);
+  border-color: #3A3833;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3), 0 12px 22px rgba(0, 0, 0, 0.25);
+}
+
+body[data-theme="dark"] .reminder-time-row input[type="time"] {
+  background: #302E29;
+  border-color: #3A3833;
+  color: var(--text);
+}
+
